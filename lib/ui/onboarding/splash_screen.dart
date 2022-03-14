@@ -28,12 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Text(
-                Strings.appName,
-                style: TextStyle(
-                    color: AppColors.textColorLightBg,
-                    fontSize: Dimens.textSizeHeading1,
-                    fontFamily: FontFamily.josefinSans),
+              Image.asset(
+                "assets/images/Logo.png",
+                // height: MediaQuery.of(context).size.height * 0.6,
+                // width: double.infinity,
+                //fit: BoxFit.cover,
               ),
               Text(
                 'This is a safe space',

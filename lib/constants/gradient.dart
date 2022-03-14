@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 
-class gradientBg extends StatelessWidget {
+class GradientBg extends StatelessWidget {
+  const GradientBg({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

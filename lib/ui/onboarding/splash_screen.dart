@@ -4,6 +4,7 @@ import 'package:talk2me/constants/gradient.dart';
 import 'package:talk2me/constants/strings.dart';
 import 'package:talk2me/utils/device_utils.dart';
 import 'package:talk2me/constants/dimens.dart';
+import 'package:talk2me/constants/font_family.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key, required this.title}) : super(key: key);
@@ -31,13 +32,15 @@ class _SplashScreenState extends State<SplashScreen> {
                 Strings.appName,
                 style: TextStyle(
                     color: AppColors.textColorLightBg,
-                    fontSize: Dimens.textSizeHeading1),
+                    fontSize: Dimens.textSizeHeading1,
+                    fontFamily: FontFamily.josefinSans),
               ),
               Text(
                 'This is a safe space',
                 style: TextStyle(
-                    color: AppColors.subtitleTextDarkBg,
-                    fontSize: Dimens.textSizeSubtitle1),
+                    color: AppColors.subtitleTextLightBg,
+                    fontSize: Dimens.textSizeSubtitle1,
+                    fontFamily: FontFamily.josefinSans),
               ),
             ],
           ),

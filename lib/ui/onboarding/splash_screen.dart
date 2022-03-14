@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 style: TextStyle(
                     color: AppColors.subtitleTextDarkBg,
                     fontSize: Dimens.textSizeSubtitle1),
-              )
+              ),
             ],
           ),
         ],

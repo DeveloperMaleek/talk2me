@@ -29,11 +29,15 @@ class _SplashScreenState extends State<SplashScreen> {
             children: <Widget>[
               Text(
                 Strings.appName,
-                style: TextStyle(color: AppColors.textColorLightBg),
+                style: TextStyle(
+                    color: AppColors.textColorLightBg,
+                    fontSize: Dimens.textSizeHeading1),
               ),
               Text(
                 'This is a safe space',
-                style: TextStyle(color: AppColors.subtitleTextDarkBg),
+                style: TextStyle(
+                    color: AppColors.subtitleTextDarkBg,
+                    fontSize: Dimens.textSizeSubtitle1),
               )
             ],
           ),

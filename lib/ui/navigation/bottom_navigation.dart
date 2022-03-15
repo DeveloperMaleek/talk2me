@@ -5,10 +5,10 @@ import 'package:talk2me/constants/dimens.dart';
 import 'package:talk2me/constants/font_family.dart';
 
 class FloatingBottomAppBar extends StatefulWidget {
-  const FloatingBottomAppBar({
-    Key? key,
-  }) : super(key: key);
+  const FloatingBottomAppBar({Key? key, required this.pageController})
+      : super(key: key);
 
+  final PageController pageController;
   @override
   _FloatingBottomAppBarState createState() => _FloatingBottomAppBarState();
 }
@@ -22,7 +22,7 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
         elevation: 0,
         color: Colors.transparent,
         child: Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [_roundedAppBar()],
@@ -31,7 +31,7 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
 
   Widget _roundedAppBar() {
     return Container(
-      width: 312,
+      width: MediaQuery.of(context).size.width - 48,
       height: 64,
       decoration: BoxDecoration(
           boxShadow: const [
@@ -50,18 +50,23 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
         textStyle: TextStyle(
             fontFamily: FontFamily.josefinSans, fontSize: Dimens.textSizeBody2),
         tabBackgroundColor: AppColors.primaryColor,
-        gap: 8,
-        tabMargin: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+        gap: 4,
+        tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         activeColor: AppColors.textColorLightBg,
-        iconSize: 24,
+        iconSize: 20,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         duration: const Duration(milliseconds: 400),
         // tabBackgroundColor: Colors.grey[100]!,
         color: AppColors.subtitleTextLightBg,
+
         tabs: const [
           GButton(
             icon: Icons.dashboard,
             text: 'Home',
+          ),
+          GButton(
+            icon: Icons.spa,
+            text: 'Therapy',
           ),
           GButton(
             icon: Icons.workspaces,
@@ -71,16 +76,12 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
             icon: Icons.person,
             text: 'Profile',
           ),
-          // GButton(
-          //   icon: Icons.person,
-          //   // iconColor: color.AppColor.primaryTextColor,
-          //   text: 'PROFILE',
-          // ),
         ],
         selectedIndex: _selectedIndex,
         onTabChange: (index) {
           setState(() {
             _selectedIndex = index;
+            widget.pageController.jumpToPage(_selectedIndex);
           });
         },
       ),

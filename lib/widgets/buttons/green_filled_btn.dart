@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/constants/dimens.dart';
 
 class GreenFilledBtn extends StatelessWidget {
   final Color? backgroundColor;
   final Text? buttonText;
   final Function? onPressed;
 
-  GreenFilledBtn({this.backgroundColor, this.buttonText, this.onPressed});
+  GreenFilledBtn(
+      {Key? key, this.backgroundColor, this.buttonText, this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +23,18 @@ class GreenFilledBtn extends StatelessWidget {
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0))),
-                overlayColor: MaterialStateProperty.all<Color>(AppColors.primaryColor),
-                backgroundColor:
+                overlayColor:
                     MaterialStateProperty.all<Color>(AppColors.primaryColor),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(AppColors.primaryColor50),
+                textStyle: MaterialStateProperty.all(
+                  const TextStyle(
+                      fontSize: Dimens.textSizeButton,
+                      fontWeight: FontWeight.w500),
+                
+                    
+                      
+                ),
               ),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.center,

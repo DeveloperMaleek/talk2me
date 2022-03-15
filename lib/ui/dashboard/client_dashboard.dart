@@ -10,6 +10,8 @@ class ClientDashboard extends StatefulWidget {
 class _ClientDashboardState extends State<ClientDashboard> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Text("This is client dashboard"),
+    );
   }
 }

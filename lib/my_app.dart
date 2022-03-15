@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/ui/navigation/navigation.dart';
-import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup.dart';
-import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
-import 'package:talk2me/ui/onboarding/splash_screen.dart';
-import 'constants/strings.dart';
+import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,14 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: Strings.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(
-        title: "Splash Screen",
-      ),
+      home: const OnboardingScreen(),
     );
   }
 }

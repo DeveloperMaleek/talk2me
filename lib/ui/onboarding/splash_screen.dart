@@ -7,8 +7,8 @@ import 'package:talk2me/constants/dimens.dart';
 import 'package:talk2me/constants/font_family.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }

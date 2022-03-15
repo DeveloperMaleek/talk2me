@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
 import 'package:talk2me/ui/onboarding/splash_screen.dart';
-import 'constants/strings.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -9,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: Strings.appName,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(title: Strings.appName),
+      home: const OnboardingScreen(),
     );
   }
 }

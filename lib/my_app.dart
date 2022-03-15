@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/ui/onboarding/account_setup.dart';
+import 'package:talk2me/ui/navigation/navigation.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
 import 'package:talk2me/ui/onboarding/splash_screen.dart';
 import 'constants/strings.dart';
 
@@ -15,7 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyApp(),
+      home: const SplashScreen(
+        title: "Splash Screen",
+      ),
     );
   }
 }

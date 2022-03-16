@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.3), BlendMode.darken),
+                    Colors.black.withOpacity(0.8), BlendMode.darken),
               ),
             ),
             child: Padding(
@@ -175,9 +175,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
                     OutlineBtn(
-                      backgroundColor: AppColors.primaryColor,
                       buttonText: Text(
                         'Join with organization code'.toUpperCase(),
+                        style: TextStyle(color: AppColors.primaryColor),
                       ),
                     ),
                   ],

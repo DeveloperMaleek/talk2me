@@ -22,18 +22,15 @@ class GreenFilledBtn extends StatelessWidget {
             child: ElevatedButton(
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0))),
+                    borderRadius: new BorderRadius.circular(15.0))),
                 overlayColor:
                     MaterialStateProperty.all<Color>(AppColors.primaryColor),
                 backgroundColor:
-                    MaterialStateProperty.all<Color>(AppColors.primaryColor50),
+                    MaterialStateProperty.all<Color>(AppColors.primaryColor),
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(
                       fontSize: Dimens.textSizeButton,
                       fontWeight: FontWeight.w500),
-                
-                    
-                      
                 ),
               ),
               child: new Row(

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 
 class OutlineBtn extends StatelessWidget {
-  final Color? backgroundColor;
+  final Color? borderColor;
   final Text? buttonText;
   final Function? onPressed;
 
-  OutlineBtn({this.backgroundColor, this.buttonText, this.onPressed});
+  OutlineBtn({this.borderColor, this.buttonText, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,12 @@ class OutlineBtn extends StatelessWidget {
           new Expanded(
             child: OutlinedButton(
               style: ButtonStyle(
+                side: MaterialStateProperty.all(BorderSide(
+                    color: AppColors.primaryColor,
+                    width: 2,
+                    style: BorderStyle.solid)),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0))),
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(AppColors.primaryColor),
+                    borderRadius: new BorderRadius.circular(15.0))),
               ),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.center,

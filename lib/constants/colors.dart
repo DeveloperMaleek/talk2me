@@ -21,4 +21,5 @@ class AppColors {
   static const Color subtitleTextDarkBg = Color(0xFFBDBDBD);
   static const Color gradientFirstColor = Color(0xFFD4FC79);
   static const Color gradientSecondColor = Color(0xFF96e6a1);
+  static const Color tabUnderlineColor = Color(0xFFE5E5E5);
 }

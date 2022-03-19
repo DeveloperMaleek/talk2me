@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/dimens.dart';
 import 'package:talk2me/constants/font_family.dart';
-import 'package:talk2me/widgets/buttons/green_filled_btn.dart';
-import 'package:talk2me/widgets/buttons/outline_btn.dart';
+import 'package:talk2me/widgets/buttons/buttons.dart' as button;
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -75,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.3), BlendMode.darken),
+                    Colors.black.withOpacity(0.8), BlendMode.darken),
               ),
             ),
             child: Padding(
@@ -161,25 +160,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Expanded(
               child: Container(
                 height: _size.height * 0.3,
-                margin: EdgeInsets.fromLTRB(0, _size.height * 0.65, 0, 0),
+                margin: EdgeInsets.fromLTRB(20, _size.height * 0.65, 20, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    GreenFilledBtn(
-                      // backgroundColor: AppColors.primaryColor,
-                      buttonText: Text(
-                        'Create an Account'.toUpperCase(),
-                        style: TextStyle(
-                            fontFamily: FontFamily.josefinSans,
-                            color: AppColors.textColorLightBg),
-                      ),
+                    button.FilledButton(
+                      buttonText: "Create an Account",
+                      onPressed: () {},
                     ),
-                    OutlineBtn(
-                      backgroundColor: AppColors.primaryColor,
-                      buttonText: Text(
-                        'Join with organization code'.toUpperCase(),
-                      ),
+                    const SizedBox(
+                      height: 16,
                     ),
+                    button.OutlineButton(
+                        buttonText: "Join with organization code",
+                        buttonTextColor: AppColors.primaryColor,
+                        outlineColor: AppColors.primaryColor,
+                        onPressed: () {})
                   ],
                 ),
               ),

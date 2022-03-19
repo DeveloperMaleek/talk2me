@@ -7,6 +7,18 @@ import 'package:talk2me/constants/colors.dart';
 
 //always call it using text_content.classname()
 
+
+// class TextStylesGeneral {
+
+// Color? textColor;
+// String? text;
+// int? fontSize;
+
+//   TextStyle() {
+//     color
+//   }
+// }
+
 //////////////////////////
 ////// Heading One ///////
 //////////////////////////
@@ -152,7 +164,7 @@ class HeadingSix extends StatelessWidget {
     //Used for headline 1 in pages
     TextStyle _textStyle = TextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
         color: textColor);
 

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      home: const SessionTherapistPreview(),
+      home: const ClientNavigation(),
     );
   }
 }

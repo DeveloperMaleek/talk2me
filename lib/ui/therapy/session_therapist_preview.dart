@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:talk2me/widgets/profile_widgets.dart' as profile;
 
 class SessionTherapistPreview extends StatefulWidget {
   const SessionTherapistPreview({Key? key}) : super(key: key);
@@ -17,15 +19,17 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
+    List tabListHeading = ["Heading One", "Heading Two", "Heading Three"];
+    TabController _tabController =
+        TabController(length: tabListHeading.length, vsync: this);
 
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
         bottomSheet: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(16, 16, 16, 24),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
           decoration:
-              BoxDecoration(color: AppColors.greenBackground, boxShadow: const [
+              const BoxDecoration(color: AppColors.greenBackground, boxShadow: [
             BoxShadow(
               color: Color.fromARGB(30, 0, 0, 0),
               blurRadius: 10.0, // soften the shadow
@@ -43,144 +47,54 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.zero,
-                              topRight: Radius.zero,
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15)),
-                          // color: AppColors.darkBackground,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg"),
-                              colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.6),
-                                  BlendMode.darken))),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 4.5,
-                      // color: AppColors.darkBackground,
-                      child: AppBar(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        leading: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.keyboard_arrow_left)),
-                      )),
-                  Positioned(
-                      left: 16,
-                      top: MediaQuery.of(context).size.height / 5.8,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                border: Border.all(
-                                    color: AppColors.primaryColor,
-                                    width: 2,
-                                    style: BorderStyle.solid)),
-                            child: ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.circular(100),
-                                child: Image.network(
-                                  "https://res.cloudinary.com/michelletakuro/image/upload/v1647271296/talk2me-assets/img/profile-background-4.jpg",
-                                  height: 80,
-                                  width: 80,
-                                  fit: BoxFit.fill,
-                                )),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 32,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Asamoah Gyan",
-                                      style: TextStyle(
-                                          color: AppColors.textColorLightBg,
-                                          fontSize: Dimens.textSizeHeading6,
-                                          fontFamily: FontFamily.josefinSans),
-                                    ),
-                                    Text(
-                                      "Available",
-                                      style: TextStyle(
-                                          color: AppColors.successColor,
-                                          fontSize: Dimens.textSizeBody2,
-                                          fontFamily: FontFamily.josefinSans),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Ratings",
-                                      style: TextStyle(
-                                          color: AppColors.subtitleTextLightBg,
-                                          fontSize: Dimens.textSizeBody2,
-                                          fontFamily: FontFamily.josefinSans),
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          size: 18,
-                                          color: AppColors.successColor,
-                                        ),
-                                        Text(
-                                          "4.5",
-                                          style: TextStyle(
-                                              color: AppColors.successColor,
-                                              fontSize:
-                                                  Dimens.textSizeSubtitle1,
-                                              fontFamily:
-                                                  FontFamily.josefinSans),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ))
-                ],
-              ),
+              profile.TopSection(
+                  profileName: "Asamoah Gyan",
+                  coverImage:
+                      "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg",
+                  profileImage:
+                      "https://res.cloudinary.com/michelletakuro/image/upload/v1647271296/talk2me-assets/img/profile-background-4.jpg",
+                  planOrStatus: "Available",
+                  planOrStatusColor: AppColors.successColor,
+                  onPressed: () {},
+                  ratingOrStatusText: "Rating",
+                  ratingOrStatusResponseText: "4.5",
+                  ratingsIcon: Icons.star,
+                  ratingsOrStatusColor: AppColors.successColor),
 
               // Overview and Review Tabs are here
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),
+
+              profile.TabHeadings(
+                tabController: _tabController,
+                tabHeadingOne: "Overview",
+                tabHeadingTwo: "Is this working?",
+                tabHeadingThree: Text("data"),
+              ),
+
+              profile.TabContent(tabController: _tabController),
+
               Container(
                 width: double.maxFinite,
                 child: TabBar(
-                    indicator: UnderlineTabIndicator(
+                    indicator: const UnderlineTabIndicator(
                         borderSide: BorderSide(
                             color: AppColors.textColorLightBg,
                             width: 4,
                             style: BorderStyle.solid)),
-                    labelPadding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     indicatorSize: TabBarIndicatorSize.label,
-                    labelStyle: TextStyle(
-                        fontFamily: FontFamily.josefinSans,
-                        fontSize: Dimens.textSizeHeading6),
+                    labelStyle: GoogleFonts.josefinSans(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.15,
+                    ),
                     labelColor: AppColors.textColorLightBg,
                     unselectedLabelColor: AppColors.subtitleTextLightBg,
                     isScrollable: true,
                     controller: _tabController,
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: "Overview",
                       ),
@@ -191,12 +105,12 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
               ),
 
               Container(
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 width: MediaQuery.of(context).size.height,
                 height: 500,
                 child: TabBarView(
                     controller: _tabController,
-                    children: [_overView(), Text("Reviews tab is here")]),
+                    children: [_overView(), const Text("Reviews tab is here")]),
               )
             ],
           ),
@@ -206,18 +120,16 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
   }
 
   Widget _overView() {
-    SizedBox spacing = SizedBox(
+    SizedBox spacing = const SizedBox(
       height: 16,
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
-          style: TextStyle(
-              color: AppColors.textColorLightBg,
-              fontFamily: FontFamily.josefinSans,
-              fontSize: Dimens.textSizeBody1),
+        const text_content.BodyTextOne(
+          text:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+          textColor: AppColors.textColorLightBg,
         ),
         spacing,
         Row(
@@ -227,8 +139,8 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
               alignment: Alignment.centerLeft,
               color: AppColors.darkBackground,
               splashColor: AppColors.primaryColor,
-              padding: EdgeInsets.all(0),
-              icon: FaIcon(FontAwesomeIcons.facebookSquare),
+              padding: const EdgeInsets.all(0),
+              icon: const FaIcon(FontAwesomeIcons.facebookSquare),
               iconSize: 30,
             ),
             IconButton(
@@ -236,8 +148,8 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
               splashColor: AppColors.primaryColor,
               onPressed: () {},
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.all(0),
-              icon: FaIcon(FontAwesomeIcons.twitterSquare),
+              padding: const EdgeInsets.all(0),
+              icon: const FaIcon(FontAwesomeIcons.twitterSquare),
               iconSize: 30,
             ),
             IconButton(
@@ -245,8 +157,8 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
               splashColor: AppColors.primaryColor,
               onPressed: () {},
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.all(0),
-              icon: FaIcon(FontAwesomeIcons.linkedin),
+              padding: const EdgeInsets.all(0),
+              icon: const FaIcon(FontAwesomeIcons.linkedin),
               iconSize: 30,
             ),
           ],
@@ -255,11 +167,27 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Expertise",
-              style: TextStyle(
-                  color: AppColors.textColorLightBg,
-                  fontSize: Dimens.textSizeBody1),
+            text_content.HeadingSix(
+              text: "Expertise",
+              textColor: AppColors.textColorLightBg,
+            ),
+            spacing,
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(
+                          color: AppColors.primaryColor,
+                          width: 1,
+                          style: BorderStyle.solid)),
+                  child: text_content.BodyTextOne(
+                    text: "Counselling",
+                    textColor: AppColors.textColorLightBg,
+                  ),
+                )
+              ],
             )
           ],
         )

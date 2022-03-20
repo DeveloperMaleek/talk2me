@@ -9,7 +9,7 @@ class AppColors {
   static const Color primaryColor50 = Color(0xFFCBF3D0);
   static const Color primaryColor25 = Color(0xFFE5F9E7);
   static const Color lightBackground = Color(0xFFF7F7F7);
-  static const Color greenBackground = Color(0xFFF8FFF9);
+  static const Color greenBackground = Color(0xFFEFFFF2);
   static const Color darkBackground = Color(0xFF101010);
   static const Color errorColor = Color(0xFFD21C1C);
   static const Color warningColor = Color(0xFFFF8C26);
@@ -21,4 +21,6 @@ class AppColors {
   static const Color subtitleTextDarkBg = Color(0xFFBDBDBD);
   static const Color gradientFirstColor = Color(0xFFD4FC79);
   static const Color gradientSecondColor = Color(0xFF96e6a1);
+  static const Color tabUnderlineColor = Color(0xFFE5E5E5);
+  static const Color outlineColor = Color(0xFFEDEDED);
 }

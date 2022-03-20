@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
 
 class FloatingBottomAppBar extends StatefulWidget {
   const FloatingBottomAppBar({Key? key, required this.pageController})
@@ -47,8 +45,7 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
           borderRadius: BorderRadius.circular(15),
           color: AppColors.greenBackground),
       child: GNav(
-        textStyle: TextStyle(
-            fontFamily: FontFamily.josefinSans, fontSize: Dimens.textSizeBody2),
+        textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         tabBackgroundColor: AppColors.primaryColor,
         gap: 4,
         tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 0),

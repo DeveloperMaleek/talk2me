@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
+import 'package:talk2me/constants/text_styles.dart' as text_content;
 
 // How to use any of the buttons as an instance: copy and paste the code below
 
-//import 'package:talk2me/widgets/buttons/green_filled_btn.dart' as button;
+//import 'package:talk2me/widgets/buttons.dart' as button;
 
 //always call it using button.classname()
 
@@ -27,19 +26,16 @@ class FilledButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(buttonText.toUpperCase()),
+        child: text_content.ButtonText(
+          text: buttonText,
+          textColor: AppColors.textColorPrimary,
+        ),
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: const EdgeInsets.all(16),
           primary: AppColors.primaryColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          onPrimary: AppColors.textColorPrimary,
-          textStyle: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: Dimens.textSizeButton,
-            fontFamily: FontFamily.josefinSans,
-          ),
         ),
       ),
     );
@@ -70,20 +66,17 @@ class OutlineButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
         onPressed: onPressed,
-        child: Text(buttonText.toUpperCase()),
+        child: text_content.ButtonText(
+          text: buttonText,
+          textColor: buttonTextColor,
+        ),
         style: OutlinedButton.styleFrom(
           elevation: 0,
           padding: const EdgeInsets.all(16),
-          primary: buttonTextColor,
           side: BorderSide(
               color: outlineColor, width: 2, style: BorderStyle.solid),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          textStyle: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: Dimens.textSizeButton,
-            fontFamily: FontFamily.josefinSans,
-          ),
         ),
       ),
     );

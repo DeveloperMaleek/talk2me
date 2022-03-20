@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
-import 'package:talk2me/widgets/buttons/buttons.dart' as button;
+import 'package:talk2me/widgets/buttons.dart' as button;
+import 'package:talk2me/constants/text_styles.dart' as text_content;
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -28,15 +27,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 150),
+      duration: const Duration(milliseconds: 150),
       height: 8.0,
       width: 32.0,
-      margin: EdgeInsets.all(1),
+      margin: const EdgeInsets.all(1),
       decoration: BoxDecoration(
           color: isActive
               ? AppColors.greenBackground
               : AppColors.subtitleTextLightBg,
-          borderRadius: BorderRadius.all(Radius.circular(12.0))),
+          borderRadius: const BorderRadius.all(Radius.circular(12.0))),
     );
   }
 
@@ -69,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             height: _size.height,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
+                image: const AssetImage(
                   "assets/images/image-bg-1.jpg",
                 ),
                 fit: BoxFit.cover,
@@ -82,65 +81,47 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: PageView(
                 controller: _controller,
                 onPageChanged: (value) => _setPageState(value),
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 children: <Widget>[
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Copy Text specific to users',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                    children: const <Widget>[
+                      text_content.HeadingSix(
+                        text: 'Copy Text specific to users',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                       SizedBox(height: 16.0),
-                      Text(
-                        'Subcopy Text specific to client',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                      text_content.SubtitleOne(
+                        text: 'Subcopy Text specific to client',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Copy Text specific to users2',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                    children: const <Widget>[
+                      text_content.HeadingSix(
+                        text: 'Copy Text specific to users',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                       SizedBox(height: 16.0),
-                      Text(
-                        'Subcopy Text specific to client2',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                      text_content.SubtitleOne(
+                        text: 'Subcopy Text specific to client',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Copy Text specific to users3',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                    children: const <Widget>[
+                      text_content.HeadingSix(
+                        text: 'Copy Text specific to users',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                       SizedBox(height: 16.0),
-                      Text(
-                        'Subcopy Text specific to client3',
-                        style: TextStyle(
-                            color: AppColors.textColorDarkBg,
-                            fontSize: Dimens.textSizeHeading6,
-                            fontFamily: FontFamily.josefinSans),
+                      text_content.SubtitleOne(
+                        text: 'Subcopy Text specific to client',
+                        textColor: AppColors.textColorDarkBg,
                       ),
                     ],
                   ),

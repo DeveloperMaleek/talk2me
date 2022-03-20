@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/ui/navigation/navigation.dart';
 import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
 import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
+import 'package:talk2me/ui/therapy/client_therapy.dart';
 import 'package:talk2me/ui/therapy/session_therapist_preview.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnboardingScreen(),
+      home: const ClientNavigation(),
     );
   }
 }

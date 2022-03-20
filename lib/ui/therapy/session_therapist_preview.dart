@@ -19,9 +19,7 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    List tabListHeading = ["Heading One", "Heading Two", "Heading Three"];
-    TabController _tabController =
-        TabController(length: tabListHeading.length, vsync: this);
+    TabController _tabController = TabController(length: 2, vsync: this);
 
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
@@ -45,153 +43,31 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              profile.TopSection(
-                  profileName: "Asamoah Gyan",
-                  coverImage:
-                      "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg",
-                  profileImage:
-                      "https://res.cloudinary.com/michelletakuro/image/upload/v1647271296/talk2me-assets/img/profile-background-4.jpg",
-                  planOrStatus: "Available",
-                  planOrStatusColor: AppColors.successColor,
-                  onPressed: () {},
-                  ratingOrStatusText: "Rating",
-                  ratingOrStatusResponseText: "4.5",
-                  ratingsIcon: Icons.star,
-                  ratingsOrStatusColor: AppColors.successColor),
+            child: Column(children: [
+          profile.TopSection(
+              profileName: "Asamoah Gyan",
+              coverImage:
+                  "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg",
+              profileImage:
+                  "https://res.cloudinary.com/michelletakuro/image/upload/v1647271296/talk2me-assets/img/profile-background-4.jpg",
+              planOrStatus: "Available",
+              planOrStatusColor: AppColors.successColor,
+              onPressed: () {},
+              ratingOrStatusText: "Rating",
+              ratingOrStatusResponseText: "4.5",
+              ratingsIcon: Icons.star,
+              ratingsOrStatusColor: AppColors.successColor),
 
-              // Overview and Review Tabs are here
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-
-              profile.TabHeadings(
-                tabController: _tabController,
-                tabHeadingOne: "Overview",
-                tabHeadingTwo: "Is this working?",
-                tabHeadingThree: Text("data"),
-              ),
-
-              profile.TabContent(tabController: _tabController),
-
-              Container(
-                width: double.maxFinite,
-                child: TabBar(
-                    indicator: const UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                            color: AppColors.textColorLightBg,
-                            width: 4,
-                            style: BorderStyle.solid)),
-                    labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                    indicatorSize: TabBarIndicatorSize.label,
-                    labelStyle: GoogleFonts.josefinSans(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.15,
-                    ),
-                    labelColor: AppColors.textColorLightBg,
-                    unselectedLabelColor: AppColors.subtitleTextLightBg,
-                    isScrollable: true,
-                    controller: _tabController,
-                    tabs: const [
-                      Tab(
-                        text: "Overview",
-                      ),
-                      Tab(
-                        text: "Reviews",
-                      )
-                    ]),
-              ),
-
-              Container(
-                margin: const EdgeInsets.all(16),
-                width: MediaQuery.of(context).size.height,
-                height: 500,
-                child: TabBarView(
-                    controller: _tabController,
-                    children: [_overView(), const Text("Reviews tab is here")]),
-              )
-            ],
+          // Overview and Review Tabs are here
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
           ),
-
-          // Profile Section is here
-        ));
-  }
-
-  Widget _overView() {
-    SizedBox spacing = const SizedBox(
-      height: 16,
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const text_content.BodyTextOne(
-          text:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
-          textColor: AppColors.textColorLightBg,
-        ),
-        spacing,
-        Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.facebookSquare),
-              iconSize: 30,
-            ),
-            IconButton(
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.twitterSquare),
-              iconSize: 30,
-            ),
-            IconButton(
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.linkedin),
-              iconSize: 30,
-            ),
-          ],
-        ),
-        spacing,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            text_content.HeadingSix(
-              text: "Expertise",
-              textColor: AppColors.textColorLightBg,
-            ),
-            spacing,
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                          color: AppColors.primaryColor,
-                          width: 1,
-                          style: BorderStyle.solid)),
-                  child: text_content.BodyTextOne(
-                    text: "Counselling",
-                    textColor: AppColors.textColorLightBg,
-                  ),
-                )
-              ],
-            )
-          ],
-        )
-      ],
-    );
+          profile.TabHeadings(
+            tabController: _tabController,
+            tabHeadingOne: "Overview",
+            tabHeadingTwo: "Reviews",
+          ),
+          profile.TabContent(tabController: _tabController)
+        ])));
   }
 }

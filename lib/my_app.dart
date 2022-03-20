@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/ui/navigation/navigation.dart';
 import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
 import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
+import 'package:talk2me/ui/therapy/select_available_sessions.dart';
 import 'package:talk2me/ui/therapy/session_therapist_preview.dart';
 
 class MyApp extends StatelessWidget {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
             GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      home: const ClientNavigation(),
+      home: const SelectAvailableSessions(),
     );
   }
 }

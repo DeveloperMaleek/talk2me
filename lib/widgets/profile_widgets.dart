@@ -6,19 +6,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
+// This widget contains the profile tab headings for therapists profile
+
 class TabHeadings extends StatelessWidget {
-  const TabHeadings(
-      {Key? key,
-      required this.tabController,
-      required this.tabHeadingOne,
-      required this.tabHeadingTwo,
-      this.tabHeadingThree})
-      : super(key: key);
+  const TabHeadings({
+    Key? key,
+    required this.tabController,
+    required this.tabHeadingOne,
+    required this.tabHeadingTwo,
+  }) : super(key: key);
 
   final TabController tabController;
   final String tabHeadingOne;
   final String tabHeadingTwo;
-  final Text? tabHeadingThree;
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +51,13 @@ class TabHeadings extends StatelessWidget {
                 child: text_content.HeadingSix(
               text: tabHeadingTwo,
               textColor: AppColors.textColorLightBg,
-            )),
-            Tab(child: tabHeadingThree),
+            ))
           ]),
     );
   }
 }
+
+// This Widget contains the Profile tab contents for therapists profile.
 
 class TabContent extends StatelessWidget {
   const TabContent({Key? key, required this.tabController}) : super(key: key);
@@ -65,23 +66,40 @@ class TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.height,
-      height: 500,
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height -
+          (MediaQuery.of(context).size.height / 4.5),
       child: TabBarView(controller: tabController, children: [
         _overView(),
-        const Text("Check if this Reviews tab is here"),
-        const Text("Another Check if this Reviews tab is here"),
+        _review(),
       ]),
     );
   }
 
+// This is the overview tab
+
   Widget _overView() {
+    containerBox(String skillName) {
+      return Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            border: Border.all(
+                color: AppColors.primaryColor,
+                width: 1,
+                style: BorderStyle.solid)),
+        child: text_content.BodyTextOne(
+          text: skillName,
+          textColor: AppColors.textColorLightBg,
+        ),
+      );
+    }
+
     SizedBox spacing = const SizedBox(
       height: 16,
     );
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const text_content.BodyTextOne(
           text:
@@ -129,26 +147,180 @@ class TabContent extends StatelessWidget {
               textColor: AppColors.textColorLightBg,
             ),
             spacing,
-            Row(
+            Wrap(
+              runSpacing: 10,
+              spacing: 10,
               children: [
-                Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                          color: AppColors.primaryColor,
-                          width: 1,
-                          style: BorderStyle.solid)),
-                  child: text_content.BodyTextOne(
-                    text: "Counselling",
-                    textColor: AppColors.textColorLightBg,
-                  ),
-                )
+                containerBox("Counselling"),
+                containerBox("Teen Talk"),
+                containerBox("Psychotherapy"),
+                containerBox("Clinical Therapy")
+              ],
+            )
+          ],
+        ),
+        spacing,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            text_content.HeadingSix(
+              text: "Fluent in",
+              textColor: AppColors.textColorLightBg,
+            ),
+            spacing,
+            Wrap(
+              runSpacing: 10,
+              spacing: 10,
+              children: [
+                containerBox("English"),
+                containerBox("French"),
+                containerBox("Ashanti"),
+                containerBox("Twi"),
+                containerBox("Swahili"),
+                containerBox("Yoruba"),
+                containerBox("Igbo"),
+              ],
+            )
+          ],
+        ),
+        spacing,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            text_content.HeadingSix(
+              text: "Interests",
+              textColor: AppColors.textColorLightBg,
+            ),
+            spacing,
+            Wrap(
+              runSpacing: 10,
+              spacing: 10,
+              children: [
+                containerBox("Gender"),
+                containerBox("Mental Health"),
+                containerBox("Football"),
+                containerBox("Organization Psychology"),
+                containerBox("Human Evolution"),
               ],
             )
           ],
         )
       ],
+    );
+  }
+
+// This is the review tab
+
+  Widget _review() {
+    // A function to pass the review text from the client
+    reviewBox(String reviewText, String imageLink, String userName) {
+      return Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            text_content.BodyTextOne(
+                text: reviewText, textColor: AppColors.textColorLightBg),
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                          color: AppColors.primaryColor,
+                          width: 2,
+                          style: BorderStyle.solid)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset(
+                          imageLink,
+                          height: 30,
+                          width: 30,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      text_content.BodyTextTwo(
+                        text: userName,
+                        textColor: AppColors.textColorLightBg,
+                      )
+                    ],
+                  ),
+                ),
+                text_content.BodyTextTwo(
+                  text: "24/03/2020",
+                  textColor: AppColors.textColorLightBg,
+                )
+              ],
+            )
+          ],
+        ),
+      );
+    }
+
+    return Expanded(
+      child: Column(
+        children: [
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-four.png",
+            "Humane-Air",
+          ),
+          Divider(
+            height: 24,
+            color: AppColors.subtitleTextDarkBg,
+          ),
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-three.png",
+            "Jelly Bean",
+          ),
+          Divider(
+            height: 24,
+            color: AppColors.subtitleTextDarkBg,
+          ),
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-five.png",
+            "Sane madman",
+          ),
+          Divider(
+            height: 24,
+            color: AppColors.subtitleTextDarkBg,
+          ),
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-five.png",
+            "Olakunle",
+          ),
+          Divider(
+            height: 24,
+            color: AppColors.subtitleTextDarkBg,
+          ),
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-five.png",
+            "Mitchelle",
+          ),
+          Divider(
+            height: 24,
+            color: AppColors.subtitleTextDarkBg,
+          ),
+          reviewBox(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
+            "assets/images/avatar-five.png",
+            "Tecghie",
+          ),
+        ],
+      ),
     );
   }
 }

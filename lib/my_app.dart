@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      home: const SelectAvailableSessions(),
+      home: const ClientNavigation(),
     );
   }
 }

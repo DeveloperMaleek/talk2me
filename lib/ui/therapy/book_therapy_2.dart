@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/widgets/buttons.dart'as button;
+import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
 import 'package:talk2me/widgets/range.dart';
@@ -19,7 +19,9 @@ class _BookTherapy1State extends State<BookTherapy2> {
       backgroundColor: AppColors.lightBackground,
       appBar: app_bar_btn.AppBarNavWithBackButton(
         iconColor: AppColors.textColorLightBg,
-        onPressed: () {},
+        onPressed: () {
+          // Navigator.pop(context);
+        },
       ),
       body: Container(
         // height: MediaQuery.of(context).size.height,
@@ -65,7 +67,7 @@ class _BookTherapy1State extends State<BookTherapy2> {
                               padding: const EdgeInsets.only(top: 0),
                               children: [
                                 const SizedBox(
-                                  height: 16,
+                                  height: 48,
                                 ),
                                 button.OutlineButton(
                                     buttonText: 'Yes',

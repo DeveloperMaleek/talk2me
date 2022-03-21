@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/buttons.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
@@ -60,7 +61,11 @@ class _ClientTherapyState extends State<ClientTherapy> {
                             height: 32,
                           ),
                           FilledButton(
-                              buttonText: 'Book a session', onPressed: () {}),
+                              buttonText: 'Book a session',
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, route.therapyBookSession);
+                              }),
                         ],
                       ),
                     ),

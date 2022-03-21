@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
@@ -40,7 +41,7 @@ class _BookTherapy1State extends State<BookTherapy1> {
                     children: <Widget>[
                       const text_content.BodyTextOne(
                         text:
-                            'What do you want help with by\n booking this therapy session.',
+                            'What do you want help with by\n booking this therapy session?',
                         textColor: AppColors.textColorLightBg,
                       ),
                       SizedBox(
@@ -65,12 +66,15 @@ class _BookTherapy1State extends State<BookTherapy1> {
                               padding: const EdgeInsets.only(top: 0),
                               children: [
                                 const SizedBox(
-                                  height: 16,
+                                  height: 32,
                                 ),
                                 button.OutlineButton(
                                     buttonText: 'Anxiety',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
@@ -78,7 +82,10 @@ class _BookTherapy1State extends State<BookTherapy1> {
                                 button.OutlineButton(
                                     buttonText: 'Tackling stress',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
@@ -86,7 +93,10 @@ class _BookTherapy1State extends State<BookTherapy1> {
                                 button.OutlineButton(
                                     buttonText: 'Managing Anger',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
@@ -94,7 +104,10 @@ class _BookTherapy1State extends State<BookTherapy1> {
                                 button.OutlineButton(
                                     buttonText: 'Depression',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
@@ -102,7 +115,10 @@ class _BookTherapy1State extends State<BookTherapy1> {
                                 button.OutlineButton(
                                     buttonText: 'Eating disorder',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
@@ -110,15 +126,21 @@ class _BookTherapy1State extends State<BookTherapy1> {
                                 button.OutlineButton(
                                     buttonText: 'Bipolar',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                                 const SizedBox(
                                   height: 16,
                                 ),
                                 button.OutlineButton(
-                                    buttonText: 'Addition',
+                                    buttonText: 'Addiction',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, route.therapyBookSession2);
+                                    },
                                     outlineColor: AppColors.primaryColor),
                               ],
                             ),

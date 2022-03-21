@@ -7,7 +7,6 @@ import 'package:talk2me/constants/colors.dart';
 
 //always call it using text_content.classname()
 
-
 // class TextStylesGeneral {
 
 // Color? textColor;
@@ -180,11 +179,16 @@ class HeadingSix extends StatelessWidget {
 //////////////////////////
 
 class SubtitleOne extends StatelessWidget {
-  const SubtitleOne({Key? key, required this.text, required this.textColor})
+  const SubtitleOne(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
   @override
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
@@ -197,6 +201,7 @@ class SubtitleOne extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      textAlign: textAlignment,
     );
   }
 }

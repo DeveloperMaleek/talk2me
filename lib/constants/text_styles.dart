@@ -254,6 +254,7 @@ class BodyTextOne extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      // textAlign: TextAlign.center,
     );
   }
 }

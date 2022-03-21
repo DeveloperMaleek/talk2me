@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:talk2me/ui/navigation/navigation.dart';
-import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
-import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
-import 'package:talk2me/ui/therapy/booking_session_success.dart';
-import 'package:talk2me/ui/therapy/select_available_sessions.dart';
-import 'package:talk2me/ui/therapy/session_therapist_preview.dart';
 import 'package:talk2me/routes.dart' as route;
 
 class MyApp extends StatelessWidget {
@@ -16,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {},
       theme: ThemeData(
         textTheme:
             GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),

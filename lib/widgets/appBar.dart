@@ -10,7 +10,7 @@ class AppBarNav extends StatelessWidget with PreferredSizeWidget {
       this.pageHeading = '',
       this.buttonText = '',
       this.buttonColor = Colors.transparent})
-      : preferredSize = const Size.fromHeight(40.0),
+      : preferredSize = const Size.fromHeight(56.0),
         super(key: key);
 
   final String pageHeading;

@@ -126,6 +126,8 @@ class _ClientDashboardState extends State<ClientDashboard>
                   ],
                 )),
 
+                
+
             // Anonymous profile section
             Container(
                 width: MediaQuery.of(context).size.width,

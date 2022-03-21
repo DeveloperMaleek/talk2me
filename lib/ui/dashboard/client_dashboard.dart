@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/buttons.dart';
 import 'package:talk2me/widgets/dashboard_widget.dart' as dashboard;
 
@@ -115,7 +116,10 @@ class _ClientDashboardState extends State<ClientDashboard>
                           ),
                           FilledButton(
                               buttonText: "Book a session now",
-                              onPressed: () {})
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, route.selectAvailableSessions);
+                              })
                         ],
                       ),
                     )

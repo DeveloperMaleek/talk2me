@@ -7,7 +7,6 @@ import 'package:talk2me/constants/colors.dart';
 
 //always call it using text_content.classname()
 
-
 // class TextStylesGeneral {
 
 // Color? textColor;
@@ -249,6 +248,7 @@ class BodyTextOne extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      // textAlign: TextAlign.center,
     );
   }
 }

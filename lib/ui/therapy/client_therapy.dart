@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/widgets/buttons.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
 

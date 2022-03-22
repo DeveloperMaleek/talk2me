@@ -40,9 +40,6 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
         ),
         appBar: app_bar.AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
-          onPressed: () {
-            // Navigator.pop(context);
-          },
         ),
         body: SingleChildScrollView(
           child: Column(

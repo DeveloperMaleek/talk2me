@@ -153,11 +153,12 @@ class HeadingFive extends StatelessWidget {
 //////////////////////////
 
 class HeadingSix extends StatelessWidget {
-  const HeadingSix({Key? key, required this.text, required this.textColor})
+  const HeadingSix({Key? key, required this.text, required this.textColor, this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
   @override
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
@@ -170,6 +171,7 @@ class HeadingSix extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      textAlign: textAlignment,
     );
   }
 }
@@ -211,11 +213,17 @@ class SubtitleOne extends StatelessWidget {
 //////////////////////////
 
 class SubtitleTwo extends StatelessWidget {
-  const SubtitleTwo({Key? key, required this.text, required this.textColor})
+  const SubtitleTwo(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
+
   @override
   Widget build(BuildContext context) {
     //Used for Small Text Subtitle in pages
@@ -228,6 +236,7 @@ class SubtitleTwo extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      textAlign: textAlignment,
     );
   }
 }
@@ -237,11 +246,13 @@ class SubtitleTwo extends StatelessWidget {
 //////////////////////////
 
 class BodyTextOne extends StatelessWidget {
-  const BodyTextOne({Key? key, required this.text, required this.textColor})
+  const BodyTextOne({Key? key, required this.text, required this.textColor, this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
+  
   @override
   Widget build(BuildContext context) {
     //Used for Big Body Text  in pages
@@ -254,6 +265,7 @@ class BodyTextOne extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      textAlign: textAlignment
       // textAlign: TextAlign.center,
     );
   }

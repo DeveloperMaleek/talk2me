@@ -108,9 +108,11 @@ class _ClientDashboardState extends State<ClientDashboard>
                       child: Column(
                         children: [
                           const text_content.BodyTextOne(
-                              text:
-                                  "You do not have any upcoming therapy session.",
-                              textColor: AppColors.textColorLightBg),
+                            text:
+                                "You do not have any upcoming therapy session.",
+                            textColor: AppColors.textColorLightBg,
+                            textAlignment: TextAlign.center,
+                          ),
                           const SizedBox(
                             height: 32,
                           ),
@@ -125,8 +127,6 @@ class _ClientDashboardState extends State<ClientDashboard>
                     )
                   ],
                 )),
-
-                
 
             // Anonymous profile section
             Container(

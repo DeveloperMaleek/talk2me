@@ -16,83 +16,62 @@ class _BookTherapy1State extends State<BookTherapy2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightBackground,
-      appBar: app_bar_btn.AppBarNavWithBackButton(
-        iconColor: AppColors.textColorLightBg,
-        onPressed: () {
+        backgroundColor: AppColors.lightBackground,
+        appBar: app_bar_btn.AppBarNavWithBackButton(
+          iconColor: AppColors.textColorLightBg,
+          // onPressed: () {
           // Navigator.pop(context);
-        },
-      ),
-      body: Container(
-        // height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+          // },
+        ),
+        body: CustomScrollView(slivers: [
+          SliverFillRemaining(
+              child: Column(children: [
             const ProgressIndicatorBar(
-              totalSteps: 2,
+              totalSteps: 4,
               currentStep: 2,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
             Expanded(
-              child: ListView(children: <Widget>[
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      const text_content.BodyTextOne(
-                        text:
-                            'Would you like to take a quick\n survey to let us know how to\n help you better?',
-                        textColor: AppColors.textColorLightBg,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.1,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.65,
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            decoration: const BoxDecoration(
-                              color: AppColors.greenBackground,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15),
-                                topRight: Radius.circular(15),
-                              ),
-                            ),
-                            child: ListView(
-                              padding: const EdgeInsets.only(top: 0),
-                              children: [
-                                const SizedBox(
-                                  height: 48,
-                                ),
-                                button.OutlineButton(
-                                    buttonText: 'Yes',
-                                    buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
-                                    outlineColor: AppColors.primaryColor),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                button.OutlineButton(
-                                    buttonText: 'No',
-                                    buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
-                                    outlineColor: AppColors.primaryColor),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ]),
-              ]),
+              child: const text_content.HeadingSix(
+                text:
+                    'Would you like to take a quick\nsurvey to let us know how to\nhelp you better?',
+                textColor: AppColors.textColorLightBg,
+                textAlignment: TextAlign.center,
+              ),
             ),
-          ],
-        ),
-      ),
-    );
+            Container(
+              width: double.infinity,
+              // height: MediaQuery.of(context).size.height * 0.65,
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 24, bottom: 48),
+              decoration: const BoxDecoration(
+                color: AppColors.greenBackground,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: Column(
+                children: [
+                  button.OutlineButton(
+                      buttonText: 'Yes',
+                      buttonTextColor: AppColors.textColorLightBg,
+                      onPressed: () {},
+                      outlineColor: AppColors.primaryColor),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  button.OutlineButton(
+                      buttonText: 'No',
+                      buttonTextColor: AppColors.textColorLightBg,
+                      onPressed: () {},
+                      outlineColor: AppColors.primaryColor),
+                ],
+              ),
+            )
+          ]))
+        ]));
   }
 }

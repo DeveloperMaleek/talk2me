@@ -16,30 +16,35 @@ class _ClientTherapyState extends State<ClientTherapy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightBackground,
-      appBar: app_bar_btn.AppBarNav(
-        pageHeading: 'Therapy',
-        buttonText: 'My Notes',
-        buttonColor: AppColors.primaryColor,
-      ),
-      body: ListView(children: <Widget>[
-        Container(
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                text_content.BodyTextOne(
-                  text: 'Your upcoming therapy session will appear here',
-                  textColor: AppColors.textColorLightBg,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.35,
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
+        backgroundColor: AppColors.lightBackground,
+        appBar: app_bar_btn.AppBarNav(
+          pageHeading: 'Therapy',
+          buttonText: 'My Notes',
+          buttonColor: AppColors.primaryColor,
+        ),
+        //
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverFillRemaining(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: text_content.BodyTextOne(
+                          text:
+                              'Your upcoming therapy session \nwill appear here',
+                          textColor: AppColors.textColorLightBg,
+                          textAlignment: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      padding: EdgeInsets.only(
+                          left: 24, right: 24, top: 24, bottom: 64),
                       decoration: const BoxDecoration(
                         color: AppColors.greenBackground,
                         borderRadius: BorderRadius.only(
@@ -47,18 +52,20 @@ class _ClientTherapyState extends State<ClientTherapy> {
                           topRight: Radius.circular(15),
                         ),
                       ),
-                      child: ListView(
-                        padding: const EdgeInsets.only(top: 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(
-                            height: 45,
-                          ),
-                          const text_content.BodyTextOne(
+                          Align(
+                            alignment: Alignment.center,
+                            child: const text_content.BodyTextOne(
                               text:
-                                  "You have no upcoming session. Do you want to book a session with a therapist now? ",
-                              textColor: AppColors.textColorLightBg),
+                                  "You have no upcoming session. \n\nDo you want to book a session with a \ntherapist now? ",
+                              textColor: AppColors.textColorLightBg,
+                              textAlignment: TextAlign.center,
+                            ),
+                          ),
                           const SizedBox(
-                            height: 32,
+                            height: 48,
                           ),
                           FilledButton(
                               buttonText: 'Book a session',
@@ -67,13 +74,11 @@ class _ClientTherapyState extends State<ClientTherapy> {
                                     context, route.therapyBookSession);
                               }),
                         ],
-                      ),
-                    ),
-                  ],
-                ),
-              ]),
-        ),
-      ]),
-    );
+                      ))
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }

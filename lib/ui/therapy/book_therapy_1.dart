@@ -28,7 +28,7 @@ class _BookTherapy1State extends State<BookTherapy1> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const ProgressIndicatorBar(
-              totalSteps: 2,
+              totalSteps: 3,
               currentStep: 1,
             ),
             SizedBox(

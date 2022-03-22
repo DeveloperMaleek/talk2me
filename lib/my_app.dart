@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/routes.dart' as route;
+import 'package:talk2me/ui/therapy/therapist_selection.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
             GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      // home: const ClientNavigation(),
+      // home: const TherapistSelection(),
       onGenerateRoute: route.controller,
       initialRoute: route.clientNavigation,
     );

@@ -4,6 +4,7 @@ import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
 import 'package:talk2me/widgets/range.dart';
+import 'package:talk2me/routes.dart' as route;
 
 class BookTherapy2 extends StatefulWidget {
   const BookTherapy2({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _BookTherapy1State extends State<BookTherapy2> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const ProgressIndicatorBar(
-              totalSteps: 2,
+              totalSteps: 3,
               currentStep: 2,
             ),
             SizedBox(
@@ -80,7 +81,8 @@ class _BookTherapy1State extends State<BookTherapy2> {
                                 button.OutlineButton(
                                     buttonText: 'No',
                                     buttonTextColor: AppColors.textColorLightBg,
-                                    onPressed: () {},
+                                    onPressed: () {Navigator.pushNamed(
+                                          context, route.therapySelection);},
                                     outlineColor: AppColors.primaryColor),
                               ],
                             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_center;
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
 import 'package:talk2me/widgets/range.dart';
 import 'package:talk2me/widgets/therapy_lists.dart';
@@ -27,7 +28,7 @@ class _TherapistSelectionState extends State<TherapistSelection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const ProgressIndicatorBar(
-                  totalSteps: 3,
+                  totalSteps: 4,
                   currentStep: 3,
                 ),
                 // SizedBox(
@@ -102,15 +103,21 @@ class _TherapistSelectionState extends State<TherapistSelection> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Column(
                           children: [
-                            TherapistListContainer(
-                                therapistImage: 'assets/images/dp.png',
-                                therapistName: "Dr. Asamoah Jessie",
-                                status: 'Available',
-                                statusColor: AppColors.successColor,
-                                starRating: Icons.star,
-                                starRatingColor: AppColors.successColor,
-                                ratingNumber: "4.5",
-                                ratingColor: AppColors.successColor),
+                            GestureDetector(
+                              onTap: (() {
+                                Navigator.pushNamed(
+                                    context, route.sessionTherapistPreview);
+                              }),
+                              child: TherapistListContainer(
+                                  therapistImage: 'assets/images/dp.png',
+                                  therapistName: "Dr. Asamoah Jessie",
+                                  status: 'Available',
+                                  statusColor: AppColors.successColor,
+                                  starRating: Icons.star,
+                                  starRatingColor: AppColors.successColor,
+                                  ratingNumber: "4.5",
+                                  ratingColor: AppColors.successColor),
+                            ),
                             SizedBox(height: 8),
                             TherapistListContainer(
                                 therapistImage: 'assets/images/dp.png',

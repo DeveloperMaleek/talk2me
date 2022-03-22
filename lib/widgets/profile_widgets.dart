@@ -381,8 +381,10 @@ class TopSection extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: IconButton(
-                  onPressed: onPressed(),
-                  icon: const Icon(Icons.keyboard_arrow_left)),
+                onPressed: onPressed(),
+                icon: const Icon(Icons.keyboard_arrow_left),
+                color: AppColors.textColorDarkBg,
+              ),
             )),
         Positioned(
           left: 16,

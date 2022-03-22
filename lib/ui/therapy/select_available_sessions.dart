@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/appBar.dart' as app_bar;
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:talk2me/widgets/range.dart';
@@ -35,7 +35,9 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
           ]),
           child: button.FilledButton(
             buttonText: "Confirm Booking",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, route.bookedSessionSuccessful);
+            },
           ),
         ),
         appBar: app_bar.AppBarNavWithBackButton(

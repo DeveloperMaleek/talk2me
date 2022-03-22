@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/routes.dart' as route;
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
@@ -39,7 +40,9 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview>
           ]),
           child: button.FilledButton(
             buttonText: "Proceed to book session",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, route.selectAvailableSessions);
+            },
           ),
         ),
         body: SingleChildScrollView(

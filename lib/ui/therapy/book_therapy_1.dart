@@ -112,7 +112,7 @@ class _BookTherapy1State extends State<BookTherapy1> {
                           height: 16,
                         ),
                         button.OutlineButton(
-                            buttonText: 'Bipolar',
+                            buttonText: 'HeartBreak',
                             buttonTextColor: AppColors.textColorLightBg,
                             onPressed: () {
                               Navigator.pushNamed(

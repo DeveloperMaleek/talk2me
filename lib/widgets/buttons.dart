@@ -13,9 +13,11 @@ import 'package:talk2me/constants/text_styles.dart' as text_content;
 //////////////////////////
 
 class FilledButton extends StatelessWidget {
-  const FilledButton(
-      {Key? key, required this.buttonText, required this.onPressed})
-      : super(key: key);
+  FilledButton({
+    Key? key,
+    required this.buttonText,
+    required this.onPressed,
+  }) : super(key: key);
 
   final String buttonText;
   final Function() onPressed;
@@ -31,6 +33,7 @@ class FilledButton extends StatelessWidget {
           textColor: AppColors.textColorPrimary,
         ),
         style: ElevatedButton.styleFrom(
+          maximumSize: Size.fromWidth(MediaQuery.of(context).size.width),
           elevation: 0,
           padding: const EdgeInsets.all(16),
           primary: AppColors.primaryColor,

@@ -20,9 +20,6 @@ class _BookTherapy1State extends State<BookTherapy2> {
         backgroundColor: AppColors.lightBackground,
         appBar: app_bar_btn.AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
-          // onPressed: () {
-          // Navigator.pop(context);
-          // },
         ),
         body: CustomScrollView(slivers: [
           SliverFillRemaining(

@@ -71,7 +71,7 @@ class TabContent extends StatelessWidget {
       height: MediaQuery.of(context).size.height -
           (MediaQuery.of(context).size.height / 4.5),
       child: TabBarView(controller: tabController, children: [
-        _overView(),
+        _overView(context),
         _review(),
       ]),
     );
@@ -79,7 +79,7 @@ class TabContent extends StatelessWidget {
 
 // This is the overview tab
 
-  Widget _overView() {
+  Widget _overView(BuildContext context) {
     containerBox(String skillName) {
       return Container(
         padding: EdgeInsets.all(8),
@@ -139,71 +139,80 @@ class TabContent extends StatelessWidget {
           ],
         ),
         spacing,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            text_content.HeadingSix(
-              text: "Expertise",
-              textColor: AppColors.textColorLightBg,
-            ),
-            spacing,
-            Wrap(
-              runSpacing: 10,
-              spacing: 10,
-              children: [
-                containerBox("Counselling"),
-                containerBox("Teen Talk"),
-                containerBox("Psychotherapy"),
-                containerBox("Clinical Therapy")
-              ],
-            )
-          ],
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              text_content.HeadingSix(
+                text: "Expertise",
+                textColor: AppColors.textColorLightBg,
+              ),
+              spacing,
+              Wrap(
+                runSpacing: 10,
+                spacing: 10,
+                children: [
+                  containerBox("Counselling"),
+                  containerBox("Teen Talk"),
+                  containerBox("Psychotherapy"),
+                  containerBox("Clinical Therapy")
+                ],
+              )
+            ],
+          ),
         ),
         spacing,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            text_content.HeadingSix(
-              text: "Fluent in",
-              textColor: AppColors.textColorLightBg,
-            ),
-            spacing,
-            Wrap(
-              runSpacing: 10,
-              spacing: 10,
-              children: [
-                containerBox("English"),
-                containerBox("French"),
-                containerBox("Ashanti"),
-                containerBox("Twi"),
-                containerBox("Swahili"),
-                containerBox("Yoruba"),
-                containerBox("Igbo"),
-              ],
-            )
-          ],
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              text_content.HeadingSix(
+                text: "Fluent in",
+                textColor: AppColors.textColorLightBg,
+              ),
+              spacing,
+              Wrap(
+                runSpacing: 10,
+                spacing: 10,
+                children: [
+                  containerBox("English"),
+                  containerBox("French"),
+                  containerBox("Ashanti"),
+                  containerBox("Twi"),
+                  containerBox("Swahili"),
+                  containerBox("Yoruba"),
+                  containerBox("Igbo"),
+                ],
+              )
+            ],
+          ),
         ),
         spacing,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            text_content.HeadingSix(
-              text: "Interests",
-              textColor: AppColors.textColorLightBg,
-            ),
-            spacing,
-            Wrap(
-              runSpacing: 10,
-              spacing: 10,
-              children: [
-                containerBox("Gender"),
-                containerBox("Mental Health"),
-                containerBox("Football"),
-                containerBox("Organization Psychology"),
-                containerBox("Human Evolution"),
-              ],
-            )
-          ],
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              text_content.HeadingSix(
+                text: "Interests",
+                textColor: AppColors.textColorLightBg,
+              ),
+              spacing,
+              Wrap(
+                runSpacing: 10,
+                spacing: 10,
+                children: [
+                  containerBox("Gender"),
+                  containerBox("Mental Health"),
+                  containerBox("Football"),
+                  containerBox("Organization Psychology"),
+                  containerBox("Human Evolution"),
+                ],
+              )
+            ],
+          ),
         )
       ],
     );
@@ -266,8 +275,9 @@ class TabContent extends StatelessWidget {
       );
     }
 
-    return Expanded(
-      child: Column(
+    return Container(
+      padding: EdgeInsets.only(bottom: 100),
+      child: ListView(
         children: [
           reviewBox(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",

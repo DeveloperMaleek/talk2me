@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const TherapistSelection(),
       onGenerateRoute: route.controller,
-      initialRoute: route.clientNavigation,
+      initialRoute: route.onboardingScreen,
     );
   }
 }

@@ -15,11 +15,15 @@ import 'package:talk2me/constants/text_styles.dart' as text_content;
 class FilledButton extends StatelessWidget {
   FilledButton({
     Key? key,
+    this.buttonColor = AppColors.primaryColor,
+    this.buttonTextColor = AppColors.textColorPrimary,
     required this.buttonText,
     required this.onPressed,
   }) : super(key: key);
 
   final String buttonText;
+  final Color? buttonColor;
+  final Color buttonTextColor;
   final Function() onPressed;
 
   @override
@@ -30,13 +34,13 @@ class FilledButton extends StatelessWidget {
         onPressed: onPressed,
         child: text_content.ButtonText(
           text: buttonText,
-          textColor: AppColors.textColorPrimary,
+          textColor: buttonTextColor,
         ),
         style: ElevatedButton.styleFrom(
           maximumSize: Size.fromWidth(MediaQuery.of(context).size.width),
           elevation: 0,
           padding: const EdgeInsets.all(16),
-          primary: AppColors.primaryColor,
+          primary: buttonColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),

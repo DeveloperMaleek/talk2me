@@ -120,7 +120,7 @@ class _ClientDashboardState extends State<ClientDashboard>
                               buttonText: "Book a session now",
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, route.selectAvailableSessions);
+                                    context, route.therapyBookSession);
                               })
                         ],
                       ),

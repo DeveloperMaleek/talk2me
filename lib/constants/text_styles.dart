@@ -127,11 +127,12 @@ class HeadingFour extends StatelessWidget {
 //////////////////////////
 
 class HeadingFive extends StatelessWidget {
-  const HeadingFive({Key? key, required this.text, required this.textColor})
+  const HeadingFive({Key? key, required this.text, required this.textColor, this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
   @override
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
@@ -144,6 +145,7 @@ class HeadingFive extends StatelessWidget {
     return Text(
       text,
       style: _textStyle,
+      textAlign: textAlignment,
     );
   }
 }

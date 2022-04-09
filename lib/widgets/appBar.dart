@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 
@@ -61,12 +62,13 @@ class AppBarNavWithBackButton extends StatelessWidget with PreferredSizeWidget {
     required this.iconColor,
     // this.endContent = const Text("Talk2me"),
     this.pageHeading = '',
+    this.endContent = '',
   })  : preferredSize = const Size.fromHeight(40.0),
         super(key: key);
   // late Function onPressed;
   final Color iconColor;
   final String pageHeading;
-  // final Widget? endContent;
+  final String endContent;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +82,19 @@ class AppBarNavWithBackButton extends StatelessWidget with PreferredSizeWidget {
           },
           icon: const Icon(Icons.keyboard_arrow_left),
           color: iconColor,
-        ));
+        ),
+        title: _pagetittle(endContent));
   }
 
-  Widget _pagetittle(Widget content) {
+  Widget _pagetittle(String content) {
     return Row(
-      children: [content],
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        SvgPicture.asset(
+          content,
+          width: 80,
+        )
+      ],
     );
   }
 }

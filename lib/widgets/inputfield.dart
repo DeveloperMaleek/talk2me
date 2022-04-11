@@ -12,7 +12,8 @@ class InputField extends StatelessWidget {
     required this.placeholder,
     this.onChanged,
     this.inputType,
-    this.suffixText = "this",
+    this.suffixText = "",
+    this.onTap,
   }) : super(key: key);
 
   final String label;
@@ -23,6 +24,7 @@ class InputField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? inputType;
   final String suffixText;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +44,12 @@ class InputField extends StatelessWidget {
           onChanged: onChanged,
           maxLength: characterLength,
           decoration: InputDecoration(
-            suffix: BodyTextTwo(
-              text: suffixText,
-              textColor: AppColors.subtitleTextLightBg,
+            suffix: GestureDetector(
+              onTap: onTap,
+              child: BodyTextTwo(
+                text: suffixText,
+                textColor: AppColors.subtitleTextLightBg,
+              ),
             ),
             contentPadding: const EdgeInsets.fromLTRB(16, 19, 16, 19),
             errorText: errorText,

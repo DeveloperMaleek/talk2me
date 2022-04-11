@@ -63,12 +63,16 @@ class AppBarNavWithBackButton extends StatelessWidget with PreferredSizeWidget {
     // this.endContent = const Text("Talk2me"),
     this.pageHeading = '',
     this.endContent = '',
+    this.padding = const EdgeInsets.only(left: 0, right: 0),
+    this.margin = const EdgeInsets.only(left: 0, right: 0),
   })  : preferredSize = const Size.fromHeight(40.0),
         super(key: key);
   // late Function onPressed;
   final Color iconColor;
   final String pageHeading;
   final String endContent;
+  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +81,7 @@ class AppBarNavWithBackButton extends StatelessWidget with PreferredSizeWidget {
         elevation: 0,
         // title: _pagetittle(),
         leading: IconButton(
+          padding: padding,
           onPressed: () {
             Navigator.pop(context);
           },

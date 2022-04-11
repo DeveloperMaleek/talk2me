@@ -74,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SingleChildScrollView(
           child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             child: PageView.builder(
               itemCount: onBoardingContent.length,
@@ -98,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             bottom: 24,
             child: Container(
               height: MediaQuery.of(context).size.height,
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,9 +112,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         button.FilledButton(
                           buttonText: "Create an Account",
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, route.personalSignUp);
+                          },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         button.OutlineButton(
@@ -124,23 +126,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             onPressed: () {
                               Navigator.pushNamed(context, route.joinWithOrg);
                             }),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            text_content.BodyTextOne(
-                              text: "Already have an account? ",
-                              textColor: AppColors.subtitleTextDarkBg,
-                            ),
-                            text_content.BodyTextOne(
-                              text: "Login",
-                              textColor: AppColors.primaryColor,
-                            )
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, route.loginPage);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              text_content.BodyTextOne(
+                                text: "Already have an account? ",
+                                textColor: AppColors.subtitleTextDarkBg,
+                              ),
+                              text_content.BodyTextOne(
+                                text: "Login",
+                                textColor: AppColors.primaryColor,
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         Container(
@@ -175,12 +182,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ],
                     ),
                   ),
-
-                  // PageView.builder(
-                  //   itemBuilder: (context, index) {
-                  //     return ProgressScroll(index: index);
-                  //   },
-                  // )
                 ],
               ),
             ),
@@ -216,7 +217,7 @@ class ScrollableBodyWidget extends StatelessWidget {
                 fit: BoxFit.fitHeight)),
         Positioned(
             child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
           height: MediaQuery.of(context).size.height,
           child: Center(
             child: onBoardingContent[index],

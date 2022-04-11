@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/ui/dashboard/client_dashboard.dart';
 import 'package:talk2me/ui/navigation/navigation.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup.dart';
 import 'package:talk2me/ui/onboarding/employee_verification.dart';
 import 'package:talk2me/ui/onboarding/join_with_org.dart';
+import 'package:talk2me/ui/onboarding/login_page.dart';
 import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
+import 'package:talk2me/ui/onboarding/personal_user_signup.dart';
 import 'package:talk2me/ui/therapy/book_therapy_1.dart';
 import 'package:talk2me/ui/therapy/book_therapy_2.dart';
 import 'package:talk2me/ui/therapy/booking_session_success.dart';
@@ -26,11 +29,20 @@ const String clientSessionMode = "clientSessionMode";
 const String onboardingScreen = "onboardingScreen";
 const String joinWithOrg = "joinWithOrg";
 const String employeeVerification = "employeeVerification";
+const String personalSignUp = "personalSignup";
+const String loginPage = "loginPage";
+const String accountSetup = "accountSetup";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case clientNavigation:
       return MaterialPageRoute(builder: (context) => ClientNavigation());
+    case accountSetup:
+      return MaterialPageRoute(builder: (context) => AccountSetup());
+    case loginPage:
+      return MaterialPageRoute(builder: (context) => LoginPage());
+    case personalSignUp:
+      return MaterialPageRoute(builder: (context) => PersonalUserSignup());
     case employeeVerification:
       return MaterialPageRoute(builder: (context) => EmployeeVerification());
     case joinWithOrg:

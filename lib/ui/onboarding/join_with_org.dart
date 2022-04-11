@@ -3,6 +3,7 @@ import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/shapes.dart';
 import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
+import 'package:talk2me/widgets/appBar.dart';
 import 'package:talk2me/widgets/buttons.dart';
 import 'package:talk2me/widgets/inputfield.dart';
 
@@ -21,10 +22,6 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
-      // appBar: AppBarNavWithBackButton(
-      //   iconColor: AppColors.textColorLightBg,
-      //   endContent: "assets/images/talk2me_logo_black.svg",
-      // ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -78,18 +75,44 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
                       const SizedBox(
                         height: 24,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          BodyTextOne(
-                            text: "Already have an account? ",
-                            textColor: AppColors.subtitleTextLightBg,
-                          ),
-                          BodyTextOne(
-                            text: "Login",
-                            textColor: AppColors.textColorLightBg,
-                          )
-                        ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, loginPage);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            BodyTextOne(
+                              text: "Already have an account? ",
+                              textColor: AppColors.subtitleTextLightBg,
+                            ),
+                            BodyTextOne(
+                              text: "Login",
+                              textColor: AppColors.textColorLightBg,
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, personalSignUp);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            BodyTextOne(
+                              text: "Create a personal account? ",
+                              textColor: AppColors.subtitleTextLightBg,
+                            ),
+                            BodyTextOne(
+                              text: "Continue here",
+                              textColor: AppColors.textColorLightBg,
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),

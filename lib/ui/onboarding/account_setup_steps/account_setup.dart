@@ -1,37 +1,141 @@
-// import 'package:flutter/material.dart';
-// import 'package:talk2me/constants/colors.dart';
-// import 'package:talk2me/constants/strings.dart';
-// import 'package:talk2me/utils/device_utils.dart';
-// import 'package:talk2me/constants/dimens.dart';
-// import 'package:talk2me/constants/font_family.dart';
-// import 'package:talk2me/ui/onboarding/account_setup_steps/acount_setup_one.dart';
-// import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_four.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_three.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup_two.dart';
+import 'package:talk2me/ui/onboarding/account_setup_steps/acount_setup_one.dart';
+import 'package:talk2me/widgets/buttons.dart';
 
-// class AccountSetup extends StatefulWidget {
-//   const AccountSetup({Key? key}) : super(key: key);
+List<Widget> bodyContent = [
+  const AccountSetupOne(),
+  const AccountSetupTwo(),
+  const AccountSetupThree(),
+  const AccountSetupFour()
+];
 
-//   @override
-//   State<AccountSetup> createState() => _AccountSetupState();
-// }
+class AccountSetup extends StatefulWidget {
+  const AccountSetup({Key? key}) : super(key: key);
 
-// class _AccountSetupState extends State<AccountSetup> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       backgroundColor: AppColors.lightBackground,
-//       body: Padding(
-//         padding: EdgeInsets.only(top: 40, right: 16, left: 16, bottom: 0),
-//         child: StepProgressIndicator(
-//           totalSteps: 4,
-//           currentStep: 1,
-//           selectedColor: AppColors.primaryColor,
-//           unselectedColor: AppColors.subtitleTextDarkBg,
-//           direction: Axis.horizontal,
-//           progressDirection: TextDirection.ltr,
-//           padding: 0,
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  State<AccountSetup> createState() => _AccountSetupState();
+}
+
+class _AccountSetupState extends State<AccountSetup> {
+  int pagePosition = 0;
+  PageController _pageController = PageController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: AppColors.lightBackground,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(16, 52, 16, 48),
+            child: Column(
+              children: [
+                _progressIndicator(context),
+                const SizedBox(
+                  height: 48,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: bodyContent.length,
+                    itemBuilder: ((context, index) {
+                      return BodyContent(
+                        index: index,
+                      );
+                    }),
+                    onPageChanged: (index) {
+                      setState(() {
+                        pagePosition = index;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        floatingActionButtonLocation: pagePosition != 3
+            ? FloatingActionButtonLocation.endFloat
+            : FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: pagePosition != 3
+            ? FloatingActionButton(
+                onPressed: () {
+                  setState(() {
+                    _pageController.animateToPage(++pagePosition,
+                        duration: const Duration(milliseconds: 250),
+                        curve: Curves.easeOutSine);
+                  });
+                },
+                elevation: 0,
+                backgroundColor: AppColors.primaryColor,
+                child: const Icon(Icons.keyboard_arrow_right,
+                    color: AppColors.textColorPrimary))
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: FilledButton(buttonText: "complete", onPressed: () {})));
+  }
+
+  Container _progressIndicator(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              color: pagePosition >= 0
+                  ? AppColors.primaryColor
+                  : AppColors.subtitleTextLightBg,
+              width: MediaQuery.of(context).size.height / 4,
+              height: 4,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: pagePosition >= 1
+                  ? AppColors.primaryColor
+                  : AppColors.subtitleTextLightBg,
+              width: MediaQuery.of(context).size.height / 4,
+              height: 4,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: pagePosition >= 2
+                  ? AppColors.primaryColor
+                  : AppColors.subtitleTextLightBg,
+              width: MediaQuery.of(context).size.height,
+              height: 4,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: pagePosition >= 3
+                  ? AppColors.primaryColor
+                  : AppColors.subtitleTextLightBg,
+              width: MediaQuery.of(context).size.height,
+              height: 4,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BodyContent extends StatelessWidget {
+  const BodyContent({Key? key, required this.index}) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: bodyContent[index],
+    );
+  }
+}

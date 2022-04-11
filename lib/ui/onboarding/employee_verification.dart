@@ -28,19 +28,16 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
                       text: "Talk2me Employees’ wellness support",
                       textColor: AppColors.textColorLightBg),
                   const SizedBox(height: 12),
-                  const SubtitleOne(
-                      text: "Talke2me cares about you as her employee.",
-                      textColor: AppColors.subtitleTextLightBg),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: const SubtitleOne(
+                        text: "Talke2me cares about you as her employee.",
+                        textColor: AppColors.subtitleTextLightBg),
+                  ),
                   const SizedBox(height: 36),
                   InputField(
                     label: "First name",
                     placeholder: "first name",
-                    onChanged: (newValue) {},
-                  ),
-                  const SizedBox(height: 16),
-                  InputField(
-                    label: "Last name",
-                    placeholder: "last name",
                     onChanged: (newValue) {},
                   ),
                   const SizedBox(height: 16),

@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/strings.dart';
+import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/utils/device_utils.dart';
 import 'package:talk2me/constants/dimens.dart';
 import 'package:talk2me/constants/font_family.dart';
+
+// List feelingState = [
+//   false,
+//   false,
+//   false,
+//   false,
+//   false,
+// ];
+
+enum FeelingStates { down, justthere, normal, good, great }
+String selectedFeeling = '';
 
 class AccountSetupThree extends StatefulWidget {
   const AccountSetupThree({Key? key}) : super(key: key);
@@ -15,68 +27,131 @@ class AccountSetupThree extends StatefulWidget {
 class _AccountSetupThreeState extends State<AccountSetupThree> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
-      children: [
-        Container(
-            decoration: BoxDecoration(
-                color: AppColors.darkBackground,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.zero,
-                    topRight: Radius.zero,
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15)),
-                // color: AppColors.darkBackground,
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg"))),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 4.5,
-            // color: AppColors.darkBackground,
-            child: Column(
-              children: [
-                AppBar(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  leading: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.keyboard_arrow_left)),
+    double gifSize = MediaQuery.of(context).size.width * 0.175;
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              const HeadingSix(
+                text: "Good evening, Malik",
+                textColor: AppColors.textColorLightBg,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: const [
+                      HeadingSix(
+                          textAlignment: TextAlign.center,
+                          text: "How are you feeling today?",
+                          textColor: AppColors.textColorLightBg),
+                      Padding(
+                          padding: EdgeInsets.only(top: 8),
+                          child: SubtitleTwo(
+                              text: "Select the best that applies to you",
+                              textColor: AppColors.subtitleTextLightBg)),
+                    ],
+                  ),
                 ),
-              ],
-            )),
+              )
+            ],
+          ),
+          Center(
+            child: Container(
+                width: double.maxFinite,
+                height: 400,
+                padding: const EdgeInsets.only(top: 36),
+                child: Stack(children: [
+                  Positioned.fill(
+                      top: 0,
+                      bottom: 260,
+                      child: Align(
+                          alignment: Alignment.topCenter,
+                          child: _feelingsContainer(
+                              0,
+                              gifSize,
+                              "Normal",
+                              "https://res.cloudinary.com/michelletakuro/image/upload/v1647271298/talk2me-assets/gif/normal.gif",
+                              FeelingStates.normal))),
+                  Positioned(
+                      bottom: 140,
+                      left: 30,
+                      child: _feelingsContainer(
+                          1,
+                          gifSize,
+                          "Good",
+                          "https://res.cloudinary.com/michelletakuro/image/upload/v1647271300/talk2me-assets/gif/good.gif",
+                          FeelingStates.good)),
+                  Positioned(
+                      bottom: 140,
+                      right: 30,
+                      child: _feelingsContainer(
+                          2,
+                          gifSize,
+                          "Down",
+                          "https://res.cloudinary.com/michelletakuro/image/upload/v1647271301/talk2me-assets/gif/sad-look.gif",
+                          FeelingStates.down)),
+                  Positioned(
+                      bottom: 0,
+                      right: 70,
+                      child: _feelingsContainer(
+                          3,
+                          gifSize,
+                          "Just there",
+                          "https://res.cloudinary.com/michelletakuro/image/upload/v1647271299/talk2me-assets/gif/just-there.gif",
+                          FeelingStates.justthere)),
+                  Positioned(
+                      bottom: 0,
+                      left: 70,
+                      child: _feelingsContainer(
+                          4,
+                          gifSize,
+                          "Great",
+                          "https://res.cloudinary.com/michelletakuro/image/upload/v1647271298/talk2me-assets/gif/great.gif",
+                          FeelingStates.great)),
+                ])),
+          ),
+        ],
+      ),
+    );
+  }
 
-        // Profile Section is here
-        Stack(children: [
-          Positioned(
-              top: 0,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Text Status Posted by Therapist"),
-                    Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
-                          child: Image(
-                            height: 80,
-                            width: 80,
-                            image: NetworkImage(
-                                "https://res.cloudinary.com/michelletakuro/image/upload/v1647271297/talk2me-assets/img/profile-background-9.jpg"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ))
-        ]),
-      ],
-    )));
+  GestureDetector _feelingsContainer(int index, double gifSize,
+      String feelingsText, String imageUrl, var value) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedFeeling = value.toString();
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: selectedFeeling == value.toString()
+              ? Border.all(color: AppColors.primaryColor, width: 3)
+              : Border.all(color: Colors.transparent, width: 3),
+        ),
+        child: Column(
+          children: [
+            Image.network(
+              imageUrl,
+              height: gifSize,
+              width: gifSize,
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            BodyTextTwo(
+              text: feelingsText,
+              textColor: AppColors.textColorLightBg,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

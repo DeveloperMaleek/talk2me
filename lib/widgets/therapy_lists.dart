@@ -12,7 +12,8 @@ class TherapistListContainer extends StatelessWidget {
       required this.starRating,
       required this.starRatingColor,
       required this.ratingNumber,
-      required this.ratingColor})
+      required this.ratingColor,
+      required this.availabilityStatus})
       : super(key: key);
 
   final String therapistImage;
@@ -23,43 +24,33 @@ class TherapistListContainer extends StatelessWidget {
   final Color starRatingColor;
   final String ratingNumber;
   final Color ratingColor;
+  final bool availabilityStatus;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      color: AppColors.lightBackground,
-      padding: EdgeInsets.all(8),
-      child: Row(
-        children: [
-          Image(image: AssetImage(therapistImage)),
-          SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                text_content.BodyTextOne(
-                    text: therapistName, textColor: AppColors.textColorLightBg),
-                SizedBox(height: 4),
-                text_content.CaptionText(
-                  text: status,
-                  textColor: statusColor,
-                ),
-              ],
-            ),
-          ),
-          Row(
+    bool availability = false;
+    return ListTile(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        tileColor: availability == availabilityStatus
+            ? AppColors.greenBackground
+            : AppColors.orangeBackground,
+        style: ListTileStyle.list,
+        leading: Image(image: AssetImage(therapistImage)),
+        title: text_content.BodyTextOne(
+            text: therapistName, textColor: AppColors.textColorLightBg),
+        subtitle: text_content.CaptionText(
+          text: status,
+          textColor: statusColor,
+        ),
+        trailing: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.end,
+            spacing: 4,
             children: [
               Icon(starRating, size: 16, color: ratingColor),
-              SizedBox(height: 5),
               text_content.BodyTextTwo(
                 text: ratingNumber,
                 textColor: ratingColor,
-              )
-            ],
-          )
-        ],
-      ),
-    );
+              ),
+            ]));
   }
 }

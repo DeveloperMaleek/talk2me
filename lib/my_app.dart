@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/ui/therapy/therapist_selection.dart';
+import 'package:talk2me/views/therapy/therapist_selection.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

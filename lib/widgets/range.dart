@@ -11,17 +11,14 @@ class ProgressIndicatorBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 24, right: 16, left: 16, bottom: 0),
-      child: StepProgressIndicator(
-        totalSteps: totalSteps,
-        currentStep: currentStep,
-        selectedColor: AppColors.primaryColor,
-        unselectedColor: AppColors.subtitleTextDarkBg,
-        direction: Axis.horizontal,
-        progressDirection: TextDirection.ltr,
-        padding: 0,
-      ),
+    return StepProgressIndicator(
+      totalSteps: totalSteps,
+      currentStep: currentStep,
+      selectedColor: AppColors.primaryColor,
+      unselectedColor: AppColors.subtitleTextLightBg,
+      direction: Axis.horizontal,
+      progressDirection: TextDirection.ltr,
+      padding: 0,
     );
   }
 }

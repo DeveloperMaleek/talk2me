@@ -23,4 +23,5 @@ class AppColors {
   static const Color gradientSecondColor = Color(0xFF96e6a1);
   static const Color tabUnderlineColor = Color(0xFFE5E5E5);
   static const Color outlineColor = Color(0xFFEDEDED);
+  static const Color orangeBackground = Color(0xFFFFF3E9);
 }

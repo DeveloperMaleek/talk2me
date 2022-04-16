@@ -10,21 +10,20 @@ class InputField extends StatelessWidget {
     this.errorText,
     this.obscureText = false,
     required this.placeholder,
-    this.onChanged,
     this.inputType,
     this.suffixText = "",
-    this.onTap,
+    this.onTap, required this.controller,
   }) : super(key: key);
 
   final String label;
   final String placeholder;
   final String? errorText;
   final int? characterLength;
-  final Function(String)? onChanged;
   final bool obscureText;
   final TextInputType? inputType;
   final String suffixText;
   final Function()? onTap;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +38,9 @@ class InputField extends StatelessWidget {
           height: 8,
         ),
         TextFormField(
+          controller: controller,
           keyboardType: inputType,
           obscureText: obscureText,
-          onChanged: onChanged,
           maxLength: characterLength,
           decoration: InputDecoration(
             suffix: GestureDetector(

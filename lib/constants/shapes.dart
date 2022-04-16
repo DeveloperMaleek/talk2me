@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:talk2me/constants/colors.dart';
 
 class RPSCustomPainter extends CustomPainter {
   @override
@@ -200,6 +201,34 @@ class RPSCustomPainterTwo extends CustomPainter {
     path1.close();
 
     canvas.drawPath(path1, paint1);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+class ChatRPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint0 = Paint()
+      ..color = AppColors.primaryColor
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 3.72;
+
+    Path path0 = Path();
+    path0.moveTo(size.width * 0.0031250, 0);
+    path0.lineTo(size.width * 0.0025000, size.height * 0.9840000);
+    path0.lineTo(size.width * 0.9968750, size.height * 0.9800000);
+    path0.quadraticBezierTo(size.width * 0.9968750, size.height * 0.3935000,
+        size.width * 0.9968750, size.height * 0.1980000);
+    path0.quadraticBezierTo(size.width * 0.7620312, size.height * 0.1985000,
+        size.width * 0.0575000, size.height * 0.2000000);
+    path0.lineTo(size.width * 0.0031250, 0);
+    path0.close();
+
+    canvas.drawPath(path0, paint0);
   }
 
   @override

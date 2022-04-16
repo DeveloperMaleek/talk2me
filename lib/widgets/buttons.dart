@@ -28,22 +28,19 @@ class FilledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: text_content.ButtonText(
-          text: buttonText,
-          textColor: buttonTextColor,
-        ),
-        style: ElevatedButton.styleFrom(
-          maximumSize: Size.fromWidth(MediaQuery.of(context).size.width),
-          elevation: 0,
-          padding: const EdgeInsets.all(16),
-          primary: buttonColor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        ),
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: text_content.ButtonText(
+        text: buttonText,
+        textColor: buttonTextColor,
+      ),
+      style: ElevatedButton.styleFrom(
+        fixedSize: Size(MediaQuery.of(context).size.width, 50),
+        elevation: 0,
+        padding: const EdgeInsets.all(16),
+        primary: buttonColor,
+        enableFeedback: false,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
     );
   }
@@ -69,22 +66,19 @@ class OutlineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: OutlinedButton(
-        onPressed: onPressed,
-        child: text_content.ButtonText(
-          text: buttonText,
-          textColor: buttonTextColor,
-        ),
-        style: OutlinedButton.styleFrom(
-          elevation: 0,
-          padding: const EdgeInsets.all(16),
-          side: BorderSide(
-              color: outlineColor, width: 2, style: BorderStyle.solid),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        ),
+    return OutlinedButton(
+      onPressed: onPressed,
+      child: text_content.ButtonText(
+        text: buttonText,
+        textColor: buttonTextColor,
+      ),
+      style: OutlinedButton.styleFrom(
+        fixedSize: Size(MediaQuery.of(context).size.width, 50),
+        elevation: 0,
+        padding: const EdgeInsets.all(16),
+        side:
+            BorderSide(color: outlineColor, width: 2, style: BorderStyle.solid),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
     );
   }

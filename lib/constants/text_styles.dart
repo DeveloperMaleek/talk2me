@@ -127,7 +127,11 @@ class HeadingFour extends StatelessWidget {
 //////////////////////////
 
 class HeadingFive extends StatelessWidget {
-  const HeadingFive({Key? key, required this.text, required this.textColor, this.textAlignment})
+  const HeadingFive(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
@@ -155,7 +159,11 @@ class HeadingFive extends StatelessWidget {
 //////////////////////////
 
 class HeadingSix extends StatelessWidget {
-  const HeadingSix({Key? key, required this.text, required this.textColor, this.textAlignment})
+  const HeadingSix(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
@@ -248,13 +256,17 @@ class SubtitleTwo extends StatelessWidget {
 //////////////////////////
 
 class BodyTextOne extends StatelessWidget {
-  const BodyTextOne({Key? key, required this.text, required this.textColor, this.textAlignment})
+  const BodyTextOne(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
   final TextAlign? textAlignment;
-  
+
   @override
   Widget build(BuildContext context) {
     //Used for Big Body Text  in pages
@@ -264,12 +276,9 @@ class BodyTextOne extends StatelessWidget {
         letterSpacing: 0.5,
         color: textColor);
 
-    return Text(
-      text,
-      style: _textStyle,
-      textAlign: textAlignment
-      // textAlign: TextAlign.center,
-    );
+    return Text(text, style: _textStyle, textAlign: textAlignment
+        // textAlign: TextAlign.center,
+        );
   }
 }
 
@@ -278,11 +287,16 @@ class BodyTextOne extends StatelessWidget {
 //////////////////////////
 
 class BodyTextTwo extends StatelessWidget {
-  const BodyTextTwo({Key? key, required this.text, required this.textColor})
+  const BodyTextTwo(
+      {Key? key,
+      required this.text,
+      required this.textColor,
+      this.textAlignment})
       : super(key: key);
 
   final String text;
   final Color textColor;
+  final TextAlign? textAlignment;
   @override
   Widget build(BuildContext context) {
     //Used for Small Body Text in pages
@@ -292,10 +306,7 @@ class BodyTextTwo extends StatelessWidget {
         letterSpacing: 0.25,
         color: textColor);
 
-    return Text(
-      text,
-      style: _textStyle,
-    );
+    return Text(text, style: _textStyle, textAlign: textAlignment);
   }
 }
 

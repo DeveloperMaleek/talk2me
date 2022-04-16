@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/ui/dashboard/client_dashboard.dart';
-import 'package:talk2me/ui/navigation/navigation.dart';
-import 'package:talk2me/ui/onboarding/account_setup_steps/account_setup.dart';
-import 'package:talk2me/ui/onboarding/employee_verification.dart';
-import 'package:talk2me/ui/onboarding/join_with_org.dart';
-import 'package:talk2me/ui/onboarding/login_page.dart';
-import 'package:talk2me/ui/onboarding/onboarding_screen.dart';
-import 'package:talk2me/ui/onboarding/personal_user_signup.dart';
-import 'package:talk2me/ui/therapy/book_therapy_1.dart';
-import 'package:talk2me/ui/therapy/book_therapy_2.dart';
-import 'package:talk2me/ui/therapy/booking_session_success.dart';
-import 'package:talk2me/ui/therapy/client_session_mode.dart';
-import 'package:talk2me/ui/therapy/client_therapy.dart';
-import 'package:talk2me/ui/therapy/select_available_sessions.dart';
-import 'package:talk2me/ui/therapy/session_therapist_preview.dart';
-import 'package:talk2me/ui/therapy/therapist_selection.dart';
+import 'package:talk2me/views/dashboard/client_dashboard.dart';
+import 'package:talk2me/views/navigation/navigation.dart';
+import 'package:talk2me/views/onboarding/account_setup_steps/account_setup.dart';
+import 'package:talk2me/views/onboarding/employee_verification.dart';
+import 'package:talk2me/views/onboarding/join_with_org.dart';
+import 'package:talk2me/views/onboarding/login_page.dart';
+import 'package:talk2me/views/onboarding/onboarding_screen.dart';
+import 'package:talk2me/views/onboarding/personal_user_signup.dart';
+import 'package:talk2me/views/onboarding/words_of_affirmation/woa_page.dart';
+import 'package:talk2me/views/therapy/book_therapy.dart';
+import 'package:talk2me/views/therapy/book_therapy_1.dart';
+import 'package:talk2me/views/therapy/book_therapy_2.dart';
+import 'package:talk2me/views/therapy/booking_session_success.dart';
+import 'package:talk2me/views/therapy/client_session_mode.dart';
+import 'package:talk2me/views/therapy/client_therapy.dart';
+import 'package:talk2me/views/therapy/select_available_sessions.dart';
+import 'package:talk2me/views/therapy/session_therapist_preview.dart';
+import 'package:talk2me/views/therapy/therapist_selection.dart';
 
 const String clientDashboardPage = 'clientDashboardPage';
 const String selectAvailableSessions = 'selectAvailableSessions';
@@ -32,6 +34,7 @@ const String employeeVerification = "employeeVerification";
 const String personalSignUp = "personalSignup";
 const String loginPage = "loginPage";
 const String accountSetup = "accountSetup";
+const String wordsOfAffirmation = "wordsOfAffirmation";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
@@ -39,6 +42,8 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ClientNavigation());
     case accountSetup:
       return MaterialPageRoute(builder: (context) => AccountSetup());
+    case wordsOfAffirmation:
+      return MaterialPageRoute(builder: (context) => WordsOfAffirmation());
     case loginPage:
       return MaterialPageRoute(builder: (context) => LoginPage());
     case personalSignUp:

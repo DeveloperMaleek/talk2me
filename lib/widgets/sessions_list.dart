@@ -153,22 +153,33 @@ class UpcomingSession extends StatelessWidget {
 }
 
 class OtherUpcomingSessions extends StatelessWidget {
-  const OtherUpcomingSessions({Key? key}) : super(key: key);
+  const OtherUpcomingSessions(
+      {Key? key,
+      this.borderColor = AppColors.primaryColor,
+      this.containerPadding = const EdgeInsets.all(12)})
+      : super(key: key);
+
+  final Color borderColor;
+  final EdgeInsetsGeometry containerPadding;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [_sessionList("Thursday, 12 March", "12:15 PM")],
+      children: [
+        _sessionList(
+            "Thursday, 12 March", "12:15 PM", borderColor, containerPadding)
+      ],
     );
   }
 
-  Widget _sessionList(String date, String time) {
+  Widget _sessionList(String date, String time, Color borderColor,
+      EdgeInsetsGeometry containerPadding) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: AppColors.primaryColor, width: 2)),
-      padding: EdgeInsets.all(12),
+          border: Border.all(color: borderColor, width: 2)),
+      padding: containerPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

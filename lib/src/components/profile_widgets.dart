@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/widgets/appBar.dart';
-import 'package:talk2me/widgets/buttons.dart' as button;
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:talk2me/constants/text_styles.dart' as text_content;
-import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 int tab = 0;
 
@@ -24,7 +22,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 2, vsync: this);
-    return Container(
+    return SizedBox(
         width: double.maxFinite,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           TabBar(
@@ -52,7 +50,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    text_content.HeadingSix(
+                    HeadingSix(
                       text: "Overview",
                       textColor: AppColors.textColorLightBg,
                     ),
@@ -71,7 +69,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    text_content.HeadingSix(
+                    HeadingSix(
                       text: "Reviews",
                       textColor: AppColors.textColorLightBg,
                     ),
@@ -112,7 +110,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                 color: AppColors.primaryColor,
                 width: 1,
                 style: BorderStyle.solid)),
-        child: text_content.BodyTextOne(
+        child: BodyTextOne(
           text: skillName,
           textColor: AppColors.textColorLightBg,
         ),
@@ -124,7 +122,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
     );
     return Column(
       children: [
-        const text_content.BodyTextOne(
+        const BodyTextOne(
           text:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
           textColor: AppColors.textColorLightBg,
@@ -162,12 +160,12 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
           ],
         ),
         spacing,
-        Container(
+        SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              text_content.HeadingSix(
+              HeadingSix(
                 text: "Expertise",
                 textColor: AppColors.textColorLightBg,
               ),
@@ -186,12 +184,12 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
           ),
         ),
         spacing,
-        Container(
+        SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              text_content.HeadingSix(
+              HeadingSix(
                 text: "Fluent in",
                 textColor: AppColors.textColorLightBg,
               ),
@@ -213,12 +211,12 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
           ),
         ),
         spacing,
-        Container(
+        SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              text_content.HeadingSix(
+              HeadingSix(
                 text: "Interests",
                 textColor: AppColors.textColorLightBg,
               ),
@@ -250,7 +248,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            text_content.BodyTextOne(
+            BodyTextOne(
                 text: reviewText, textColor: AppColors.textColorLightBg),
             SizedBox(
               height: 16,
@@ -280,14 +278,14 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                       SizedBox(
                         width: 4,
                       ),
-                      text_content.BodyTextTwo(
+                      BodyTextTwo(
                         text: userName,
                         textColor: AppColors.textColorLightBg,
                       )
                     ],
                   ),
                 ),
-                text_content.BodyTextTwo(
+                BodyTextTwo(
                   text: "24/03/2020",
                   textColor: AppColors.textColorLightBg,
                 )
@@ -298,7 +296,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
       );
     }
 
-    return Container(
+    return SizedBox(
       child: Column(
         children: [
           reviewBox(
@@ -439,11 +437,11 @@ class TopSection extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        text_content.HeadingFive(
+                        HeadingFive(
                           text: profileName,
                           textColor: AppColors.textColorLightBg,
                         ),
-                        text_content.BodyTextTwo(
+                        BodyTextTwo(
                           text: planOrStatus,
                           textColor: planOrStatusColor,
                         )
@@ -478,14 +476,14 @@ class TopSection extends StatelessWidget {
 
   //Use this function when calling either the Therapists Ratings or the Status of the CLient at the far right of the profile. You can refer to the design for better understanding
   Widget _ratingOrClientStatusText(String text) {
-    return text_content.BodyTextTwo(
+    return BodyTextTwo(
       text: text,
       textColor: AppColors.subtitleTextLightBg,
     );
   }
 
   Widget _responseText(String text, Color color) {
-    return text_content.SubtitleOne(
+    return SubtitleOne(
       text: text,
       textColor: color,
     );

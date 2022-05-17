@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/widgets/buttons.dart' as button;
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
+// import 'package:talk2me/widgets/buttons.dart' as button;
 
 class UpcomingSession extends StatelessWidget {
   const UpcomingSession({Key? key}) : super(key: key);
@@ -121,7 +122,7 @@ class UpcomingSession extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: button.FilledButton(
+                    child: FilledButton(
                         buttonText: "start session",
                         onPressed: () {
                           Navigator.pushNamed(context, clientSessionMode);

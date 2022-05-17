@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class InputField extends StatelessWidget {
   const InputField({
@@ -12,7 +12,8 @@ class InputField extends StatelessWidget {
     required this.placeholder,
     this.inputType,
     this.suffixText = "",
-    this.onTap, required this.controller,
+    this.onTap,
+    required this.controller,
   }) : super(key: key);
 
   final String label;

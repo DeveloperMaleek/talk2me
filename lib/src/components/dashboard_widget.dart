@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart' as text_content;
-import 'package:talk2me/widgets/buttons.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 int tabPosition = 0;
 
@@ -24,7 +24,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 5, vsync: this);
     double gifSize = MediaQuery.of(context).size.width * 0.175;
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -63,7 +63,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                               width: gifSize,
                             ),
                             _spacing(),
-                            const text_content.BodyTextTwo(
+                            const BodyTextTwo(
                               text: "Down",
                               textColor: AppColors.textColorLightBg,
                             ),
@@ -82,7 +82,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                               width: gifSize,
                             ),
                             _spacing(),
-                            text_content.BodyTextTwo(
+                            BodyTextTwo(
                               text: "Just there",
                               textColor: AppColors.textColorLightBg,
                             ),
@@ -101,7 +101,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                             width: gifSize,
                           ),
                           _spacing(),
-                          text_content.BodyTextTwo(
+                          BodyTextTwo(
                             text: "Normal",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -119,7 +119,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                             width: gifSize,
                           ),
                           _spacing(),
-                          text_content.BodyTextTwo(
+                          BodyTextTwo(
                             text: "Good",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -137,7 +137,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                             width: gifSize,
                           ),
                           _spacing(),
-                          text_content.BodyTextTwo(
+                          BodyTextTwo(
                             text: "Great",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -241,13 +241,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
     String content,
   ) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      text_content.SubtitleOne(
-          text: heading, textColor: AppColors.textColorLightBg),
+      SubtitleOne(text: heading, textColor: AppColors.textColorLightBg),
       SizedBox(
         height: 16,
       ),
-      text_content.BodyTextTwo(
-          text: content, textColor: AppColors.textColorLightBg),
+      BodyTextTwo(text: content, textColor: AppColors.textColorLightBg),
     ]);
   }
 
@@ -262,13 +260,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
           borderRadius: BorderRadius.circular(15),
           color: AppColors.greenBackground),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        text_content.SubtitleOne(
-            text: heading, textColor: AppColors.textColorLightBg),
+        SubtitleOne(text: heading, textColor: AppColors.textColorLightBg),
         SizedBox(
           height: 16,
         ),
-        text_content.BodyTextTwo(
-            text: content, textColor: AppColors.textColorLightBg),
+        BodyTextTwo(text: content, textColor: AppColors.textColorLightBg),
         SizedBox(
           height: 16,
         ),

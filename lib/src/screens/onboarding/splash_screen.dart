@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/gradient.dart';
-import 'package:talk2me/constants/strings.dart';
-import 'package:talk2me/utils/device_utils.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
+import 'package:talk2me/src/static/gradient.dart';
+import 'package:talk2me/src/utils/device_utils.dart';
+import 'package:talk2me/theme/colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -37,9 +34,10 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(
                 'This is a safe space',
                 style: TextStyle(
-                    color: AppColors.subtitleTextLightBg,
-                    fontSize: Dimens.textSizeSubtitle1,
-                    fontFamily: FontFamily.josefinSans),
+                  color: AppColors.subtitleTextLightBg,
+                  // fontSize: Dimens.textSizeSubtitle1,
+                  // fontFamily: FontFamily.josefinSans
+                ),
               ),
             ],
           ),

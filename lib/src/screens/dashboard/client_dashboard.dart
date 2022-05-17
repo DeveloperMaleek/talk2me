@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/widgets/buttons.dart';
-import 'package:talk2me/widgets/dashboard_widget.dart';
-import 'package:talk2me/widgets/sessions_list.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/components/dashboard_widget.dart';
+import 'package:talk2me/src/components/sessions_list.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class ClientDashboard extends StatefulWidget {
   const ClientDashboard({Key? key}) : super(key: key);

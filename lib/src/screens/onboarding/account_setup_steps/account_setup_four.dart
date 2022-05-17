@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/strings.dart';
-import 'package:talk2me/constants/text_styles.dart';
-import 'package:talk2me/utils/device_utils.dart';
-import 'package:talk2me/constants/dimens.dart';
-import 'package:talk2me/constants/font_family.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 List responseState = [
   false,

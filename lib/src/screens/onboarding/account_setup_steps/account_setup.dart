@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/progressIndicator.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/views/onboarding/account_setup_steps/account_setup_four.dart';
-import 'package:talk2me/views/onboarding/account_setup_steps/account_setup_three.dart';
-import 'package:talk2me/views/onboarding/account_setup_steps/account_setup_two.dart';
-import 'package:talk2me/views/onboarding/account_setup_steps/acount_setup_one.dart';
-import 'package:talk2me/widgets/buttons.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_four.dart';
+import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_three.dart';
+import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_two.dart';
+import 'package:talk2me/src/screens/onboarding/account_setup_steps/acount_setup_one.dart';
+import 'package:talk2me/src/static/progressIndicator.dart';
+import 'package:talk2me/theme/colors.dart';
+
 
 List<Widget> bodyContent = [
   const AccountSetupOne(),

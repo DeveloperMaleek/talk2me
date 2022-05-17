@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/shapes.dart';
-import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/widgets/appBar.dart';
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/widgets/inputfield.dart';
+import 'package:talk2me/src/components/buttons.dart' as buttons;
+import 'package:talk2me/src/components/inputfield.dart';
+import 'package:talk2me/src/static/shapes.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -77,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     const SizedBox(height: 24),
-                    button.FilledButton(
+                    buttons.FilledButton(
                         buttonText: "Login",
                         onPressed: () {
                           onLoginButtonPressed();
@@ -110,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    button.OutlineButton(
+                    buttons.OutlineButton(
                         buttonText: "Continue with google",
                         buttonTextColor: AppColors.errorColor,
                         onPressed: () {},

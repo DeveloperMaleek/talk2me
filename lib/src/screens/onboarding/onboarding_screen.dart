@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:talk2me/src/components/buttons.dart' as button;
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 List onBoardingImages = [
@@ -15,13 +15,13 @@ List onBoardingContent = [
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: const <Widget>[
-      text_content.HeadingFive(
+      HeadingFive(
         text: 'Get access to professional therapists in minutes.',
         textAlignment: TextAlign.center,
         textColor: AppColors.textColorDarkBg,
       ),
       SizedBox(height: 16.0),
-      text_content.SubtitleOne(
+      SubtitleOne(
         text: 'Subcopy Text specific to client',
         textColor: AppColors.primaryColor,
       ),
@@ -30,13 +30,13 @@ List onBoardingContent = [
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: const <Widget>[
-      text_content.HeadingFive(
+      HeadingFive(
         text: 'Copy Text specific to users',
         textAlignment: TextAlign.center,
         textColor: AppColors.textColorDarkBg,
       ),
       SizedBox(height: 16.0),
-      text_content.SubtitleOne(
+      SubtitleOne(
         text: 'Subcopy Text specific to client',
         textColor: AppColors.textColorDarkBg,
       ),
@@ -45,13 +45,13 @@ List onBoardingContent = [
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: const <Widget>[
-      text_content.HeadingFive(
+      HeadingFive(
         text: 'Copy Text specific to users',
         textAlignment: TextAlign.center,
         textColor: AppColors.textColorDarkBg,
       ),
       SizedBox(height: 16.0),
-      text_content.SubtitleOne(
+      SubtitleOne(
         text: 'Subcopy Text specific to client',
         textColor: AppColors.textColorDarkBg,
       ),
@@ -107,80 +107,78 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     "assets/images/talk2me_logo_white.svg",
                     width: 100,
                   ),
-                  Container(
-                    child: Column(
-                      children: [
-                        button.FilledButton(
-                          buttonText: "Create an Account",
+                  Column(
+                    children: [
+                      button.FilledButton(
+                        buttonText: "Create an Account",
+                        onPressed: () {
+                          Navigator.pushNamed(context, route.personalSignUp);
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      button.OutlineButton(
+                          buttonText: "Join with organization code",
+                          buttonTextColor: AppColors.primaryColor,
+                          outlineColor: AppColors.primaryColor,
                           onPressed: () {
-                            Navigator.pushNamed(context, route.personalSignUp);
-                          },
+                            Navigator.pushNamed(context, route.joinWithOrg);
+                          }),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, route.loginPage);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            BodyTextOne(
+                              text: "Already have an account? ",
+                              textColor: AppColors.subtitleTextDarkBg,
+                            ),
+                            BodyTextOne(
+                              text: "Login",
+                              textColor: AppColors.primaryColor,
+                            )
+                          ],
                         ),
-                        const SizedBox(
-                          height: 10,
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              color: pagePosition == 0
+                                  ? AppColors.primaryColor
+                                  : AppColors.subtitleTextLightBg,
+                              width: 50,
+                              height: 4,
+                            ),
+                            Container(
+                              color: pagePosition == 1
+                                  ? AppColors.primaryColor
+                                  : AppColors.subtitleTextLightBg,
+                              width: 50,
+                              height: 4,
+                            ),
+                            Container(
+                              color: pagePosition == 2
+                                  ? AppColors.primaryColor
+                                  : AppColors.subtitleTextLightBg,
+                              width: 50,
+                              height: 4,
+                            )
+                          ],
                         ),
-                        button.OutlineButton(
-                            buttonText: "Join with organization code",
-                            buttonTextColor: AppColors.primaryColor,
-                            outlineColor: AppColors.primaryColor,
-                            onPressed: () {
-                              Navigator.pushNamed(context, route.joinWithOrg);
-                            }),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, route.loginPage);
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              text_content.BodyTextOne(
-                                text: "Already have an account? ",
-                                textColor: AppColors.subtitleTextDarkBg,
-                              ),
-                              text_content.BodyTextOne(
-                                text: "Login",
-                                textColor: AppColors.primaryColor,
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                color: pagePosition == 0
-                                    ? AppColors.primaryColor
-                                    : AppColors.subtitleTextLightBg,
-                                width: 50,
-                                height: 4,
-                              ),
-                              Container(
-                                color: pagePosition == 1
-                                    ? AppColors.primaryColor
-                                    : AppColors.subtitleTextLightBg,
-                                width: 50,
-                                height: 4,
-                              ),
-                              Container(
-                                color: pagePosition == 2
-                                    ? AppColors.primaryColor
-                                    : AppColors.subtitleTextLightBg,
-                                width: 50,
-                                height: 4,
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ],
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 // How to use any of the buttons as an instance: copy and paste the code below
 
@@ -30,7 +30,7 @@ class FilledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: text_content.ButtonText(
+      child: ButtonText(
         text: buttonText,
         textColor: buttonTextColor,
       ),
@@ -68,7 +68,7 @@ class OutlineButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      child: text_content.ButtonText(
+      child: ButtonText(
         text: buttonText,
         textColor: buttonTextColor,
       ),

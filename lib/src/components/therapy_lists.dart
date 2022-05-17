@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/routes.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class TherapistListContainer extends StatelessWidget {
   const TherapistListContainer(
@@ -40,9 +40,9 @@ class TherapistListContainer extends StatelessWidget {
             : AppColors.orangeBackground,
         style: ListTileStyle.list,
         leading: Image(image: AssetImage(therapistImage)),
-        title: text_content.BodyTextOne(
+        title: BodyTextOne(
             text: therapistName, textColor: AppColors.textColorLightBg),
-        subtitle: text_content.CaptionText(
+        subtitle: CaptionText(
           text: status,
           textColor: statusColor,
         ),
@@ -51,7 +51,7 @@ class TherapistListContainer extends StatelessWidget {
             spacing: 4,
             children: [
               Icon(starRating, size: 16, color: ratingColor),
-              text_content.BodyTextTwo(
+              BodyTextTwo(
                 text: ratingNumber,
                 textColor: ratingColor,
               ),

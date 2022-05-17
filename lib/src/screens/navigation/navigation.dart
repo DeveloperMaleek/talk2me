@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/views/dashboard/client_dashboard.dart';
-import 'package:talk2me/views/navigation/bottom_navigation.dart';
-import 'package:talk2me/views/profile/client_profile.dart';
-import 'package:talk2me/views/safe_space/client_safe_space.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/views/therapy/client_therapy.dart';
+import 'package:talk2me/src/screens/dashboard/client_dashboard.dart';
+import 'package:talk2me/src/screens/navigation/bottom_navigation.dart';
+import 'package:talk2me/src/screens/profile/client_profile.dart';
+import 'package:talk2me/src/screens/safe_space/client_safe_space.dart';
+import 'package:talk2me/src/screens/therapy/client_therapy.dart';
+import 'package:talk2me/theme/colors.dart';
+
 
 class ClientNavigation extends StatefulWidget {
   const ClientNavigation({Key? key}) : super(key: key);

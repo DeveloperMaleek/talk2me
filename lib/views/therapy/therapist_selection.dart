@@ -85,7 +85,24 @@ class _TherapistSelectionState extends State<TherapistSelection> {
                       textColor: AppColors.textColorLightBg),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: 500,
+                    height: 170,
+                    child: ListView.builder(
+                        itemCount: previousTherapist.length,
+                        itemBuilder: ((context, index) {
+                          return PreviousTherapist(index: index);
+                        })),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SubtitleOne(
+                      text: "Also recommended for you",
+                      textColor: AppColors.textColorLightBg),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    height: 170,
                     child: ListView.builder(
                         itemCount: previousTherapist.length,
                         itemBuilder: ((context, index) {
@@ -96,102 +113,7 @@ class _TherapistSelectionState extends State<TherapistSelection> {
               ),
             ],
           ),
-        )
-
-        // SingleChildScrollView(
-        //   child: Column(
-
-        //       children: [
-        //         const ProgressIndicatorBar(
-        //           totalSteps: 5,
-        //           currentStep: 3,
-        //         ),
-        //         SizedBox(
-        //           height: 16,
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.only(right: 16, left: 16),
-
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.all(16.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               SizedBox(height: 16),
-        //               text_center.HeadingSix(
-        //                   text: "Previous therapist",
-        //                   textColor: AppColors.textColorLightBg),
-        //               SizedBox(height: 16),
-        //               ListView.builder(
-        //                   itemCount: previousTherapist.length,
-        //                   itemBuilder: ((context, index) {
-        //                     return PreviousTherapist(
-        //                       index: index,
-        //                     );
-        //                   })),
-        //               TherapistListContainer(
-        //                   availabilityStatus: false,
-        //                   therapistImage: 'assets/images/dp.png',
-        //                   therapistName: "Dr. Asamoah Jessie",
-        //                   status: 'Away',
-        //                   statusColor: AppColors.warningColor,
-        //                   starRating: Icons.star,
-        //                   starRatingColor: AppColors.successColor,
-        //                   ratingNumber: "4.5",
-        //                   ratingColor: AppColors.successColor),
-        //             ],
-        //           ),
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.all(16.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               SizedBox(height: 16),
-        //               text_center.HeadingSix(
-        //                   text: "Suggested therapists",
-        //                   textColor: AppColors.textColorLightBg),
-        //               SizedBox(height: 16),
-        //               Container(
-        //                 padding: EdgeInsets.all(12),
-        //                 decoration: BoxDecoration(
-        //                     color: AppColors.greenBackground,
-        //                     borderRadius: BorderRadius.circular(15)),
-        //                 child: Column(
-        //                   children: [
-
-        //                   ],
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.all(16.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               SizedBox(height: 16),
-        //               text_center.HeadingSix(
-        //                   text: "Also recommended for you",
-        //                   textColor: AppColors.textColorLightBg),
-        //               SizedBox(height: 16),
-        //               Container(
-        //                 padding: EdgeInsets.all(12),
-        //                 decoration: BoxDecoration(
-        //                     color: AppColors.greenBackground,
-        //                     borderRadius: BorderRadius.circular(15)),
-        //                 child: Column(
-        //                   children: [],
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       ]),
-        // ),
-        );
+        ));
   }
 }
 

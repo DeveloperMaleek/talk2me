@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
+import 'package:talk2me/routes.dart';
 
 class TherapistListContainer extends StatelessWidget {
   const TherapistListContainer(
@@ -30,6 +31,9 @@ class TherapistListContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool availability = false;
     return ListTile(
+        onTap: () {
+          Navigator.pushNamed(context, sessionTherapistPreview);
+        },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         tileColor: availability == availabilityStatus
             ? AppColors.greenBackground

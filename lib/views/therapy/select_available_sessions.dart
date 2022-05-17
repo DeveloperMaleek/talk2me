@@ -6,6 +6,11 @@ import 'package:talk2me/widgets/appBar.dart' as app_bar;
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:talk2me/widgets/range.dart';
 
+enum Interval { weekly, biweekly, monthly }
+enum TimeSlot { timeOne, timeTwo, timeThree }
+String selectedInterval = '';
+String selectedTimeSlot = '';
+
 class SelectAvailableSessions extends StatefulWidget {
   const SelectAvailableSessions({Key? key}) : super(key: key);
 
@@ -44,6 +49,7 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
           iconColor: AppColors.textColorLightBg,
         ),
         body: SingleChildScrollView(
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,7 +59,7 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.all(16),
+                margin: EdgeInsets.symmetric(vertical: 24),
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                     border: Border.all(color: AppColors.outlineColor),
@@ -112,9 +118,9 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                       spacing: 16,
                       runSpacing: 16,
                       children: [
-                        _containerBox("Weekly", AppColors.subtitleTextDarkBg),
-                        _containerBox("Bi-Weekly", AppColors.primaryColor),
-                        _containerBox("Monthly", AppColors.subtitleTextDarkBg),
+                        _containerBox("Weekly", 0, Interval.weekly),
+                        _containerBox("Bi-Weekly", 1, Interval.biweekly),
+                        _containerBox("Monthly", 2, Interval.monthly),
                       ],
                     ),
                     Divider(
@@ -140,9 +146,9 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                       spacing: 16,
                       runSpacing: 16,
                       children: [
-                        _containerBox("07:00 PM", AppColors.subtitleTextDarkBg),
-                        _containerBox("04:00 PM", AppColors.primaryColor),
-                        _containerBox("11:15 PM", AppColors.subtitleTextDarkBg),
+                        // _containerBox("07:00 PM", 0, TimeSlot.timeOne),
+                        // _containerBox("04:00 PM", 1, TimeSlot.timeTwo),
+                        // _containerBox("11:15 PM", 2, TimeSlot.timeThree),
                       ],
                     ),
                   ],
@@ -153,16 +159,31 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
         ));
   }
 
-  Widget _containerBox(String interval, Color outlineColor) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
+  Widget _containerBox(String interval, int index, var value) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedInterval = value.toString();
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          border: Border.all(
-              color: outlineColor, width: 1, style: BorderStyle.solid)),
-      child: text_content.BodyTextOne(
-        text: interval,
-        textColor: AppColors.textColorLightBg,
+          border: selectedInterval == value.toString()
+              ? Border.all(
+                  color: AppColors.primaryColor,
+                  width: 1,
+                  style: BorderStyle.solid)
+              : Border.all(
+                  color: AppColors.subtitleTextDarkBg,
+                  width: 1,
+                  style: BorderStyle.solid),
+        ),
+        child: text_content.BodyTextOne(
+          text: interval,
+          textColor: AppColors.textColorLightBg,
+        ),
       ),
     );
   }

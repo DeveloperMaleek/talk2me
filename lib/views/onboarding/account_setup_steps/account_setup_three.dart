@@ -6,13 +6,6 @@ import 'package:talk2me/utils/device_utils.dart';
 import 'package:talk2me/constants/dimens.dart';
 import 'package:talk2me/constants/font_family.dart';
 
-// List feelingState = [
-//   false,
-//   false,
-//   false,
-//   false,
-//   false,
-// ];
 
 enum FeelingStates { down, justthere, normal, good, great }
 String selectedFeeling = '';

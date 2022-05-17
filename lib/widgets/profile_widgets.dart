@@ -1,80 +1,103 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/widgets/appBar.dart';
 import 'package:talk2me/widgets/buttons.dart' as button;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
+int tab = 0;
+
 // This widget contains the profile tab headings for therapists profile
 
-class TabHeadings extends StatelessWidget {
-  const TabHeadings({
+class ProfileTab extends StatefulWidget {
+  const ProfileTab({
     Key? key,
-    required this.tabController,
-    required this.tabHeadingOne,
-    required this.tabHeadingTwo,
   }) : super(key: key);
 
-  final TabController tabController;
-  final String tabHeadingOne;
-  final String tabHeadingTwo;
-
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      child: TabBar(
-          indicator: const UnderlineTabIndicator(
-              borderSide: BorderSide(
-                  color: AppColors.textColorLightBg,
-                  width: 4,
-                  style: BorderStyle.solid)),
-          labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-          indicatorSize: TabBarIndicatorSize.label,
-          labelStyle: GoogleFonts.josefinSans(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.15,
-          ),
-          labelColor: AppColors.textColorLightBg,
-          unselectedLabelColor: AppColors.subtitleTextLightBg,
-          isScrollable: true,
-          controller: tabController,
-          tabs: [
-            Tab(
-                child: text_content.HeadingSix(
-              text: tabHeadingOne,
-              textColor: AppColors.textColorLightBg,
-            )),
-            Tab(
-                child: text_content.HeadingSix(
-              text: tabHeadingTwo,
-              textColor: AppColors.textColorLightBg,
-            ))
-          ]),
-    );
-  }
+  State<ProfileTab> createState() => _ProfileTab();
 }
 
-// This Widget contains the Profile tab contents for therapists profile.
-
-class TabContent extends StatelessWidget {
-  const TabContent({Key? key, required this.tabController}) : super(key: key);
-  final TabController tabController;
-
+class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 2, vsync: this);
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height -
-          (MediaQuery.of(context).size.height / 4.5),
-      child: TabBarView(controller: tabController, children: [
-        _overView(context),
-        _review(),
-      ]),
-    );
+        width: double.maxFinite,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          TabBar(
+              padding: EdgeInsets.only(top: 15),
+              controller: _tabController,
+              onTap: (index) {
+                setState(() {
+                  tab = index;
+                });
+              },
+              indicator:
+                  const UnderlineTabIndicator(borderSide: BorderSide.none),
+              labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              indicatorSize: TabBarIndicatorSize.label,
+              labelStyle: GoogleFonts.josefinSans(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.15,
+              ),
+              labelColor: AppColors.textColorLightBg,
+              unselectedLabelColor: AppColors.subtitleTextLightBg,
+              isScrollable: true,
+              tabs: [
+                Tab(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    text_content.HeadingSix(
+                      text: "Overview",
+                      textColor: AppColors.textColorLightBg,
+                    ),
+                    Visibility(
+                      visible: tab == 0,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 8),
+                        width: 80,
+                        height: 4,
+                        color: AppColors.darkBackground,
+                      ),
+                    )
+                  ],
+                )),
+                Tab(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    text_content.HeadingSix(
+                      text: "Reviews",
+                      textColor: AppColors.textColorLightBg,
+                    ),
+                    Visibility(
+                      visible: tab == 1,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 8),
+                        width: 70,
+                        height: 4,
+                        color: AppColors.darkBackground,
+                      ),
+                    )
+                  ],
+                ))
+              ]),
+          Container(
+            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+            width: MediaQuery.of(context).size.width,
+            // height: MediaQuery.of(context).size.height -
+            //     (MediaQuery.of(context).size.height / 4.5),
+            child: Column(children: [
+              Visibility(visible: tab == 0, child: _overView(context)),
+              Visibility(visible: tab == 1, child: _review()),
+            ]),
+          )
+        ]));
   }
 
 // This is the overview tab
@@ -276,8 +299,7 @@ class TabContent extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.only(bottom: 100),
-      child: ListView(
+      child: Column(
         children: [
           reviewBox(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
@@ -335,6 +357,8 @@ class TabContent extends StatelessWidget {
   }
 }
 
+// This Widget contains the Profile tab contents for therapists profile.
+
 // This section is for the top container of the profile page. It can be used for both the therapists and the clients. It must contain the following information: Profile Name, Cover Image, Profile Image, Plan or Status Text. It can contain either of the followings: Button text, Ratings Icon for therapists or Status text for clients.
 
 class TopSection extends StatelessWidget {
@@ -345,7 +369,6 @@ class TopSection extends StatelessWidget {
     required this.profileImage,
     required this.planOrStatus,
     required this.planOrStatusColor,
-    required this.onPressed,
     required this.ratingOrStatusText,
     required this.ratingOrStatusResponseText,
     required this.ratingsOrStatusColor,
@@ -358,7 +381,6 @@ class TopSection extends StatelessWidget {
   final String profileImage;
   final String planOrStatus; // Use this for texts under the profile name
   final Color planOrStatusColor;
-  final Function onPressed;
   final String ratingOrStatusText;
   final String ratingOrStatusResponseText;
   final Color ratingsOrStatusColor;
@@ -376,25 +398,15 @@ class TopSection extends StatelessWidget {
                     topRight: Radius.zero,
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15)),
-                // color: AppColors.darkBackground,
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(coverImage
-                        // "https://res.cloudinary.com/michelletakuro/image/upload/v1647271307/talk2me-assets/img/profile-background-12.jpg"
-                        ),
+                    image: AssetImage(coverImage),
                     colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.6), BlendMode.darken))),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 4.5,
-            // color: AppColors.darkBackground,
-            child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              leading: IconButton(
-                onPressed: onPressed(),
-                icon: const Icon(Icons.keyboard_arrow_left),
-                color: AppColors.textColorDarkBg,
-              ),
+            child: AppBarNavWithBackButton(
+              iconColor: AppColors.textColorDarkBg,
             )),
         Positioned(
           left: 16,
@@ -411,9 +423,8 @@ class TopSection extends StatelessWidget {
               child: ClipRRect(
                   clipBehavior: Clip.antiAlias,
                   borderRadius: BorderRadius.circular(100),
-                  child: Image.network(
+                  child: Image.asset(
                     profileImage,
-                    // "https://res.cloudinary.com/michelletakuro/image/upload/v1647271296/talk2me-assets/img/profile-background-4.jpg",
                     height: 80,
                     width: 80,
                     fit: BoxFit.fill,

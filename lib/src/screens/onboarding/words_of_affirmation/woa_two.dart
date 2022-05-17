@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/shapes.dart';
-import 'package:talk2me/constants/text_styles.dart';
+import 'package:talk2me/src/static/shapes.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class WordsOfAffirmationTwo extends StatefulWidget {
   const WordsOfAffirmationTwo({Key? key}) : super(key: key);

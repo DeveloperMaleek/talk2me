@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/progressIndicator.dart';
-import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/views/onboarding/words_of_affirmation/woa_one.dart';
-import 'package:talk2me/views/onboarding/words_of_affirmation/woa_three.dart';
-import 'package:talk2me/views/onboarding/words_of_affirmation/woa_two.dart';
-import 'package:talk2me/widgets/buttons.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_one.dart';
+import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_three.dart';
+import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_two.dart';
+import 'package:talk2me/src/static/progressIndicator.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 List<Widget> bodyContent = [
   const WordsOfAffirmationOne(),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/shapes.dart';
-import 'package:talk2me/constants/text_styles.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/widgets/appBar.dart';
-import 'package:talk2me/widgets/buttons.dart';
-import 'package:talk2me/widgets/inputfield.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/components/inputfield.dart';
+import 'package:talk2me/src/static/shapes.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class JoinWithOrganization extends StatefulWidget {
   const JoinWithOrganization({Key? key}) : super(key: key);

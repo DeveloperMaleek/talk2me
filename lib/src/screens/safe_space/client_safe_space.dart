@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
-import 'package:talk2me/widgets/appBar.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class ClientSafeSpace extends StatefulWidget {
   const ClientSafeSpace({Key? key}) : super(key: key);

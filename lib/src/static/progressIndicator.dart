@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
 
 class SingleProgressIndicator extends StatelessWidget {
   const SingleProgressIndicator(

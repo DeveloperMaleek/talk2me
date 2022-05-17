@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/theme/colors.dart';
 
 class GradientBg extends StatelessWidget {
   @override

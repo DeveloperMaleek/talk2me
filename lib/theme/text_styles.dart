@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
 
 // How to use any of the texts as an instance: copy and paste the code below
 

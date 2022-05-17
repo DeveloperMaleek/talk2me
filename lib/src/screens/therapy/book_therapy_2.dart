@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/range.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
+import 'package:talk2me/src/components/buttons.dart' as button;
+import 'package:talk2me/routes.dart' as route;
+
+class BookTherapy2 extends StatefulWidget {
+  const BookTherapy2({Key? key}) : super(key: key);
+
+  @override
+  State<BookTherapy2> createState() => _BookTherapy1State();
+}
+
+class _BookTherapy1State extends State<BookTherapy2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: AppColors.lightBackground,
+        appBar: AppBarNavWithBackButton(
+          iconColor: AppColors.textColorLightBg,
+        ),
+        body: CustomScrollView(slivers: [
+          SliverFillRemaining(
+              child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: const ProgressIndicatorBar(
+                totalSteps: 5,
+                currentStep: 2,
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: const HeadingSix(
+                  text:
+                      'Would you like to take a quick\nsurvey to let us know how to\nhelp you better?',
+                  textColor: AppColors.textColorLightBg,
+                  textAlignment: TextAlign.center,
+                ),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              // height: MediaQuery.of(context).size.height * 0.65,
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 24, bottom: 48),
+              decoration: const BoxDecoration(
+                color: AppColors.greenBackground,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: Column(
+                children: [
+                  button.OutlineButton(
+                      buttonText: 'Yes',
+                      buttonTextColor: AppColors.textColorLightBg,
+                      onPressed: () {},
+                      outlineColor: AppColors.primaryColor),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  button.OutlineButton(
+                      buttonText: 'No',
+                      buttonTextColor: AppColors.textColorLightBg,
+                      onPressed: () {
+                        Navigator.pushNamed(context, route.therapySelection);
+                      },
+                      outlineColor: AppColors.primaryColor),
+                ],
+              ),
+            )
+          ]))
+        ]));
+  }
+}

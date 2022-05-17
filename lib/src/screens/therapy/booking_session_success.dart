@@ -38,7 +38,8 @@ class SessionSuccessPage extends StatelessWidget {
                   buttonTextColor: AppColors.textColorLightBg,
                   onPressed: () {
                     Provider.of<booloi>(context, listen: false).toggle();
-                    Navigator.pushNamed(context, clientTherapy);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, clientTherapy, (route) => false);
                   },
                   outlineColor: Colors.transparent)
             ],

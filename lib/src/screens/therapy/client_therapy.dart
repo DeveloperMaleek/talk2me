@@ -6,6 +6,8 @@ import 'package:talk2me/src/components/sessions_list.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
+
+
 class ClientTherapy extends StatefulWidget {
   const ClientTherapy({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class ClientTherapy extends StatefulWidget {
 }
 
 class _ClientTherapyState extends State<ClientTherapy> {
-  final PageController _pageController = PageController(initialPage: 1);
+  // final PageController _pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

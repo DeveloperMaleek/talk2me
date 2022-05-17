@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:talk2me/constants/colors.dart';
+import 'package:talk2me/theme/colors.dart';
 
 class FloatingBottomAppBar extends StatefulWidget {
   const FloatingBottomAppBar({Key? key, required this.pageController})

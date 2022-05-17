@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
-import 'package:talk2me/constants/strings.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/views/navigation/navigation.dart';
+import 'package:talk2me/src/static/strings.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 import 'dart:core';
 
-import 'package:talk2me/widgets/buttons.dart' as button;
+import 'package:talk2me/src/components/buttons.dart' as button;
 
 class SessionSuccessPage extends StatelessWidget {
   const SessionSuccessPage({Key? key}) : super(key: key);

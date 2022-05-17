@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart';
-import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
-import 'package:talk2me/widgets/range.dart';
-import 'package:talk2me/widgets/therapy_lists.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/range.dart';
+import 'package:talk2me/src/components/therapy_lists.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 List previousTherapist = [
   const TherapistListContainer(
@@ -41,7 +40,7 @@ class _TherapistSelectionState extends State<TherapistSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
-        appBar: app_bar_btn.AppBarNavWithBackButton(
+        appBar: AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
         ),
         body: SingleChildScrollView(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/text_styles.dart' as text_content;
 import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/widgets/appBar.dart' as app_bar;
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/widgets/range.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/components/range.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 enum Interval { weekly, biweekly, monthly }
 enum TimeSlot { timeOne, timeTwo, timeThree }
@@ -38,14 +38,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
               ),
             )
           ]),
-          child: button.FilledButton(
+          child: FilledButton(
             buttonText: "Confirm Booking",
             onPressed: () {
               Navigator.pushNamed(context, route.bookedSessionSuccessful);
             },
           ),
         ),
-        appBar: app_bar.AppBarNavWithBackButton(
+        appBar: AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
         ),
         body: SingleChildScrollView(
@@ -68,14 +68,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Available sessions section
-                    text_content.HeadingSix(
+                    HeadingSix(
                       text: "Available sessions",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    text_content.SubtitleTwo(
+                    SubtitleTwo(
                       text: "Date you select here will be your session days",
                       textColor: AppColors.subtitleTextLightBg,
                     ),
@@ -100,14 +100,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
 
                     // Select interval section
 
-                    text_content.HeadingSix(
+                    HeadingSix(
                       text: "Select interval",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    text_content.SubtitleTwo(
+                    SubtitleTwo(
                       text: "How do you want your sessions to come on?",
                       textColor: AppColors.subtitleTextLightBg,
                     ),
@@ -127,14 +127,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                         height: 40,
                         thickness: 2,
                         color: AppColors.outlineColor),
-                    text_content.HeadingSix(
+                    HeadingSix(
                       text: "Available time slot",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    text_content.SubtitleTwo(
+                    SubtitleTwo(
                       text:
                           "What time do you want to always have your sessions?",
                       textColor: AppColors.subtitleTextLightBg,
@@ -180,7 +180,7 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                   width: 1,
                   style: BorderStyle.solid),
         ),
-        child: text_content.BodyTextOne(
+        child: BodyTextOne(
           text: interval,
           textColor: AppColors.textColorLightBg,
         ),
@@ -198,18 +198,15 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
           borderRadius: BorderRadius.circular(15)),
       child: Column(
         children: [
-          text_content.SubtitleTwo(
-              text: day, textColor: AppColors.textColorLightBg),
+          SubtitleTwo(text: day, textColor: AppColors.textColorLightBg),
           SizedBox(
             height: 10,
           ),
-          text_content.SubtitleOne(
-              text: date, textColor: AppColors.textColorLightBg),
+          SubtitleOne(text: date, textColor: AppColors.textColorLightBg),
           SizedBox(
             height: 10,
           ),
-          text_content.CaptionText(
-              text: slot, textColor: AppColors.subtitleTextLightBg)
+          CaptionText(text: slot, textColor: AppColors.subtitleTextLightBg)
         ],
       ),
     );

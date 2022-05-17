@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/progressIndicator.dart';
-import 'package:talk2me/views/therapy/book_therapy_1.dart';
-import 'package:talk2me/views/therapy/book_therapy_2.dart';
-import 'package:talk2me/views/therapy/select_available_sessions.dart';
-import 'package:talk2me/views/therapy/session_therapist_preview.dart';
-import 'package:talk2me/views/therapy/therapist_selection.dart';
-import 'package:talk2me/widgets/appBar.dart';
+import 'package:talk2me/components/appBar.dart';
+import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
+import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
+import 'package:talk2me/src/screens/therapy/select_available_sessions.dart';
+import 'package:talk2me/src/screens/therapy/session_therapist_preview.dart';
+import 'package:talk2me/src/screens/therapy/therapist_selection.dart';
+import 'package:talk2me/src/static/progressIndicator.dart';
+import 'package:talk2me/theme/colors.dart';
 
 List bodyContent = [
   BookTherapy1(),

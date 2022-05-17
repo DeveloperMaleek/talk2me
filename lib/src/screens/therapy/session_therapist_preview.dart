@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/widgets/profile_widgets.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/components/profile_widgets.dart';
+import 'package:talk2me/theme/colors.dart';
 
 int tab = 0;
 
@@ -33,7 +33,7 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview> {
             ),
           )
         ]),
-        child: button.FilledButton(
+        child: FilledButton(
           buttonText: "Proceed to book session",
           onPressed: () {
             Navigator.pushNamed(context, route.selectAvailableSessions);

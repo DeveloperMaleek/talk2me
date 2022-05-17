@@ -1,12 +1,10 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
 import 'package:talk2me/routes.dart';
-import 'package:talk2me/widgets/buttons.dart';
-import 'package:talk2me/constants/text_styles.dart';
-import 'package:talk2me/widgets/appBar.dart';
-import 'package:talk2me/widgets/sessions_list.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/buttons.dart';
+import 'package:talk2me/src/components/sessions_list.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class ClientTherapy extends StatefulWidget {
   const ClientTherapy({Key? key}) : super(key: key);

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
-import 'package:talk2me/constants/text_styles.dart' as text_content;
-import 'package:talk2me/widgets/buttons.dart' as button;
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
 
 class ClientSessionMode extends StatefulWidget {
   const ClientSessionMode({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
-        appBar: app_bar_btn.AppBarNavWithBackButton(
+        appBar: AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
         ),
         body: CustomScrollView(slivers: [
@@ -27,7 +26,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
                 padding: const EdgeInsets.only(top: 100),
                 child: Column(
                   children: [
-                    const text_content.HeadingSix(
+                    const HeadingSix(
                       text: 'Choose your session mode',
                       textColor: AppColors.textColorLightBg,
                       textAlignment: TextAlign.center,
@@ -35,7 +34,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
                     SizedBox(
                       height: 10,
                     ),
-                    text_content.SubtitleTwo(
+                    SubtitleTwo(
                       text:
                           'This is not default, you can change it anytime in-session',
                       textColor: AppColors.subtitleTextLightBg,
@@ -58,7 +57,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
               ),
               child: Column(
                 children: [
-                  text_content.BodyTextOne(
+                  BodyTextOne(
                       text:
                           "To get the best out of a therapy session we recommend the video call mode",
                       textColor: AppColors.textColorLightBg),
@@ -77,7 +76,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          text_content.SubtitleOne(
+                          SubtitleOne(
                               text: "Video",
                               textColor: AppColors.textColorLightBg),
                           Icon(
@@ -103,7 +102,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          text_content.SubtitleOne(
+                          SubtitleOne(
                               text: "Audio",
                               textColor: AppColors.textColorLightBg),
                           Icon(
@@ -129,7 +128,7 @@ class Client_SessionModeState extends State<ClientSessionMode> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          text_content.SubtitleOne(
+                          SubtitleOne(
                               text: "Chat",
                               textColor: AppColors.textColorLightBg),
                           Icon(

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/constants/progressIndicator.dart';
 import 'package:talk2me/routes.dart' as route;
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/constants/text_styles.dart' as text_content;
-import 'package:talk2me/widgets/appBar.dart';
-import 'package:talk2me/widgets/range.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/range.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
+import 'package:talk2me/src/components/buttons.dart' as button;
 
 class BookTherapy1 extends StatefulWidget {
   const BookTherapy1({Key? key}) : super(key: key);
@@ -33,7 +32,7 @@ class _BookTherapy1State extends State<BookTherapy1> {
               height: 200,
               child: Align(
                 alignment: Alignment.center,
-                child: text_content.HeadingSix(
+                child: HeadingSix(
                   text:
                       'What do you want help with by\nbooking this therapy session?',
                   textColor: AppColors.textColorLightBg,

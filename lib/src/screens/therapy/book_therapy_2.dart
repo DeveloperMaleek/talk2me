@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/constants/colors.dart';
-import 'package:talk2me/widgets/buttons.dart' as button;
-import 'package:talk2me/constants/text_styles.dart' as text_content;
-import 'package:talk2me/widgets/appBar.dart' as app_bar_btn;
-import 'package:talk2me/widgets/range.dart';
+import 'package:talk2me/src/components/appBar.dart';
+import 'package:talk2me/src/components/range.dart';
+import 'package:talk2me/theme/colors.dart';
+import 'package:talk2me/theme/text_styles.dart';
+import 'package:talk2me/src/components/buttons.dart' as button;
 import 'package:talk2me/routes.dart' as route;
 
 class BookTherapy2 extends StatefulWidget {
@@ -18,7 +18,7 @@ class _BookTherapy1State extends State<BookTherapy2> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
-        appBar: app_bar_btn.AppBarNavWithBackButton(
+        appBar: AppBarNavWithBackButton(
           iconColor: AppColors.textColorLightBg,
         ),
         body: CustomScrollView(slivers: [
@@ -34,7 +34,7 @@ class _BookTherapy1State extends State<BookTherapy2> {
             Expanded(
               child: Align(
                 alignment: Alignment.center,
-                child: const text_content.HeadingSix(
+                child: const HeadingSix(
                   text:
                       'Would you like to take a quick\nsurvey to let us know how to\nhelp you better?',
                   textColor: AppColors.textColorLightBg,

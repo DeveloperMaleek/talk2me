@@ -372,6 +372,7 @@ class TopSection extends StatelessWidget {
     required this.ratingsOrStatusColor,
     this.ratingsIcon,
     this.buttonText,
+    this.statusButtonVisible = false,
   }) : super(key: key);
 
   final String profileName;
@@ -384,6 +385,7 @@ class TopSection extends StatelessWidget {
   final Color ratingsOrStatusColor;
   final IconData? ratingsIcon;
   final String? buttonText;
+  final bool statusButtonVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -408,25 +410,53 @@ class TopSection extends StatelessWidget {
             )),
         Positioned(
           left: 16,
-          top: MediaQuery.of(context).size.height / 5.8,
+          top: MediaQuery.of(context).size.height / 6,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  border: Border.all(
-                      color: AppColors.primaryColor,
-                      width: 2,
-                      style: BorderStyle.solid)),
-              child: ClipRRect(
-                  clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    profileImage,
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.fill,
-                  )),
+            // Profile picture
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                            color: AppColors.primaryColor,
+                            width: 2,
+                            style: BorderStyle.solid)),
+                    child: ClipRRect(
+                        clipBehavior: Clip.antiAlias,
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          profileImage,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.fill,
+                        )),
+                  ),
+                  Visibility(
+                    visible: statusButtonVisible,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        // fixedSize: Size(MediaQuery.of(context).size.width, 50),
+                        elevation: 0,
+                        padding: const EdgeInsets.all(10),
+                        primary: AppColors.primaryColor,
+                        enableFeedback: false,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                      child: BodyTextTwo(
+                          text: "Change Status",
+                          textColor: AppColors.textColorPrimary),
+                    ),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width - 32,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/components/appBar.dart';
+import 'package:talk2me/src/components/appBar.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
 import 'package:talk2me/src/screens/therapy/select_available_sessions.dart';

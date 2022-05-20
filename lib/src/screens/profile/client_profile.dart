@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/src/components/profile_widgets.dart';
+import 'package:talk2me/src/screens/profile/components/client_profile_comp.dart';
 import 'package:talk2me/theme/colors.dart';
 
 class ClientProfile extends StatefulWidget {
@@ -29,6 +30,10 @@ class _ClientProfileState extends State<ClientProfile> {
               buttonText: "Change Status",
               statusButtonVisible: true,
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
+            ClientProfileTab()
           ],
         ),
       ),

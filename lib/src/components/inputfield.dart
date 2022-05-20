@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -53,7 +54,7 @@ class InputField extends StatelessWidget {
             ),
             contentPadding: const EdgeInsets.fromLTRB(16, 19, 16, 19),
             errorText: errorText,
-            errorStyle: TextStyle(
+            errorStyle: GoogleFonts.josefinSans(
                 color: AppColors.errorColor,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
                 fontWeight: FontWeight.w400),
@@ -66,7 +67,7 @@ class InputField extends StatelessWidget {
                 borderSide:
                     BorderSide(color: AppColors.primaryColor, width: 2)),
             hintText: placeholder,
-            hintStyle: TextStyle(
+            hintStyle: GoogleFonts.josefinSans(
                 color: AppColors.subtitleTextLightBg,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
                 fontWeight: FontWeight.w400),

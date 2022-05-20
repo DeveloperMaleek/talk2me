@@ -360,20 +360,21 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
 // This section is for the top container of the profile page. It can be used for both the therapists and the clients. It must contain the following information: Profile Name, Cover Image, Profile Image, Plan or Status Text. It can contain either of the followings: Button text, Ratings Icon for therapists or Status text for clients.
 
 class TopSection extends StatelessWidget {
-  const TopSection({
-    Key? key,
-    required this.profileName,
-    required this.coverImage,
-    required this.profileImage,
-    required this.planOrStatus,
-    required this.planOrStatusColor,
-    required this.ratingOrStatusText,
-    required this.ratingOrStatusResponseText,
-    required this.ratingsOrStatusColor,
-    this.ratingsIcon,
-    this.buttonText,
-    this.statusButtonVisible = false,
-  }) : super(key: key);
+  const TopSection(
+      {Key? key,
+      required this.profileName,
+      required this.coverImage,
+      required this.profileImage,
+      required this.planOrStatus,
+      required this.planOrStatusColor,
+      required this.ratingOrStatusText,
+      required this.ratingOrStatusResponseText,
+      required this.ratingsOrStatusColor,
+      this.ratingsIcon,
+      this.buttonText,
+      this.statusButtonVisible = false,
+      this.onPressed})
+      : super(key: key);
 
   final String profileName;
   final String coverImage;
@@ -386,6 +387,7 @@ class TopSection extends StatelessWidget {
   final IconData? ratingsIcon;
   final String? buttonText;
   final bool statusButtonVisible;
+  final Function? onPressed;
 
   @override
   Widget build(BuildContext context) {

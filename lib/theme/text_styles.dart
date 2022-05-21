@@ -206,7 +206,7 @@ class SubtitleOne extends StatelessWidget {
     //Used for Big Text Subtitle in pages
     TextStyle _textStyle = GoogleFonts.josefinSans(
         fontSize: 16,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
         color: textColor);
 

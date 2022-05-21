@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                         InputField(
                           controller: _passwordTextEditingController,
                           suffixText: _passwordVisible ? "Show" : "Hide",
-                          onTap: () {
+                          onSuffixTextTap: () {
                             passwordVisible();
                           },
                           label: "Password",

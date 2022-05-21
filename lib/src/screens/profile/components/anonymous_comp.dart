@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
+import 'package:talk2me/src/screens/profile/client_profile.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -12,8 +13,6 @@ class AnonymousComp extends StatefulWidget {
 }
 
 class _AnonymousCompState extends State<AnonymousComp> {
-  bool isAnonymous = false;
-
   final TextEditingController _anonymousTextEditingController =
       TextEditingController();
 
@@ -43,6 +42,8 @@ class _AnonymousCompState extends State<AnonymousComp> {
                   onChanged: (bool value) {
                     setState(() {
                       isAnonymous = value;
+                      print(isAnonymous);
+                      // ClientProfile().isAnonymous = value;
                     });
                   })
             ],
@@ -55,9 +56,8 @@ class _AnonymousCompState extends State<AnonymousComp> {
           visible: isAnonymous,
           child: InputField(
             controller: _anonymousTextEditingController,
-            inputType: TextInputType.emailAddress,
             label: "Display name",
-            placeholder: "Your name when you switch to anonymous",
+            placeholder: "Your anonymous display name",
           ),
         ),
         SizedBox(

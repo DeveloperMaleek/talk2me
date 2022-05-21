@@ -12,9 +12,13 @@ class InputField extends StatelessWidget {
     this.obscureText = false,
     required this.placeholder,
     this.inputType,
-    this.suffixText = "",
-    this.onTap,
+    this.onSuffixIconTap,
+    this.onSuffixTextTap,
     required this.controller,
+    this.suffixText = '',
+    this.iconData,
+    this.onTextInputTapped,
+    this.maxLines = 1,
   }) : super(key: key);
 
   final String label;
@@ -24,8 +28,12 @@ class InputField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? inputType;
   final String suffixText;
-  final Function()? onTap;
+  final Function()? onSuffixIconTap;
+  final Function()? onSuffixTextTap;
+  final Function()? onTextInputTapped;
   final TextEditingController controller;
+  final IconData? iconData;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +49,25 @@ class InputField extends StatelessWidget {
         ),
         TextFormField(
           controller: controller,
+          maxLines: maxLines,
+          onTap: onTextInputTapped,
           keyboardType: inputType,
           obscureText: obscureText,
           maxLength: characterLength,
           decoration: InputDecoration(
-            suffix: GestureDetector(
-              onTap: onTap,
-              child: BodyTextTwo(
-                text: suffixText,
-                textColor: AppColors.subtitleTextLightBg,
+            suffixIcon: IconButton(
+              iconSize: 30,
+              icon: Icon(
+                iconData,
+                color: AppColors.primaryColor,
               ),
+              onPressed: onSuffixIconTap,
             ),
+            suffix: GestureDetector(
+                onTap: onSuffixTextTap,
+                child: BodyTextTwo(
+                    text: suffixText,
+                    textColor: AppColors.subtitleTextLightBg)),
             contentPadding: const EdgeInsets.fromLTRB(16, 19, 16, 19),
             errorText: errorText,
             errorStyle: GoogleFonts.josefinSans(

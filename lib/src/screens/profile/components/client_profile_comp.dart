@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:talk2me/src/screens/profile/components/anonymous_comp.dart';
 import 'package:talk2me/src/screens/profile/components/overview_comp.dart';
+import 'package:talk2me/src/screens/profile/components/settings_comp.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
-import 'package:talk2me/src/components/inputfield.dart';
-
-int tab = 0;
 
 class ClientProfileTab extends StatefulWidget {
   const ClientProfileTab({
@@ -19,6 +16,7 @@ class ClientProfileTab extends StatefulWidget {
 
 class _ClientProfileTab extends State<ClientProfileTab>
     with TickerProviderStateMixin {
+  int tab = 0;
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -104,16 +102,12 @@ class _ClientProfileTab extends State<ClientProfileTab>
             width: MediaQuery.of(context).size.width,
             // height: MediaQuery.of(context).size.height -
             //     (MediaQuery.of(context).size.height / 4.5),
-            child: Column(children: [
+            child: IndexedStack(index: tab, children: [
               Visibility(visible: tab == 0, child: OverviewComp()),
               Visibility(visible: tab == 1, child: AnonymousComp()),
-              Visibility(visible: tab == 2, child: _settings()),
+              Visibility(visible: tab == 2, child: SettingsComp()),
             ]),
           )
         ]));
-  }
-
-  Widget _settings() {
-    return Container();
   }
 }

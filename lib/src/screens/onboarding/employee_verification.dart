@@ -4,7 +4,6 @@ import 'package:talk2me/src/components/inputfield.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
-
 class EmployeeVerification extends StatefulWidget {
   const EmployeeVerification({Key? key}) : super(key: key);
 
@@ -69,7 +68,7 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
                     obscureText: true,
                     placeholder: "password",
                     controller: _passwordTextEditingController,
-                    onTap: () {},
+                    onSuffixTextTap: () {},
                   ),
                   const SizedBox(height: 24),
                   FilledButton(

@@ -359,20 +359,23 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
 
 // This section is for the top container of the profile page. It can be used for both the therapists and the clients. It must contain the following information: Profile Name, Cover Image, Profile Image, Plan or Status Text. It can contain either of the followings: Button text, Ratings Icon for therapists or Status text for clients.
 
+
 class TopSection extends StatelessWidget {
-  const TopSection({
-    Key? key,
-    required this.profileName,
-    required this.coverImage,
-    required this.profileImage,
-    required this.planOrStatus,
-    required this.planOrStatusColor,
-    required this.ratingOrStatusText,
-    required this.ratingOrStatusResponseText,
-    required this.ratingsOrStatusColor,
-    this.ratingsIcon,
-    this.buttonText,
-  }) : super(key: key);
+  const TopSection(
+      {Key? key,
+      required this.profileName,
+      required this.coverImage,
+      required this.profileImage,
+      required this.planOrStatus,
+      required this.planOrStatusColor,
+      required this.ratingOrStatusText,
+      required this.ratingOrStatusResponseText,
+      required this.ratingsOrStatusColor,
+      this.ratingsIcon,
+      this.buttonText,
+      this.statusButtonVisible = false,
+      this.onPressed})
+      : super(key: key);
 
   final String profileName;
   final String coverImage;
@@ -384,6 +387,8 @@ class TopSection extends StatelessWidget {
   final Color ratingsOrStatusColor;
   final IconData? ratingsIcon;
   final String? buttonText;
+  final bool statusButtonVisible;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -408,25 +413,53 @@ class TopSection extends StatelessWidget {
             )),
         Positioned(
           left: 16,
-          top: MediaQuery.of(context).size.height / 5.8,
+          top: MediaQuery.of(context).size.height / 6,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  border: Border.all(
-                      color: AppColors.primaryColor,
-                      width: 2,
-                      style: BorderStyle.solid)),
-              child: ClipRRect(
-                  clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    profileImage,
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.fill,
-                  )),
+            // Profile picture
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                            color: AppColors.primaryColor,
+                            width: 2,
+                            style: BorderStyle.solid)),
+                    child: ClipRRect(
+                        clipBehavior: Clip.antiAlias,
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          profileImage,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.fill,
+                        )),
+                  ),
+                  Visibility(
+                    visible: statusButtonVisible,
+                    child: ElevatedButton(
+                      onPressed: onPressed,
+                      style: ElevatedButton.styleFrom(
+                        // fixedSize: Size(MediaQuery.of(context).size.width, 50),
+                        elevation: 0,
+                        padding: const EdgeInsets.all(10),
+                        primary: AppColors.primaryColor,
+                        enableFeedback: false,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                      child: BodyTextTwo(
+                          text: "Change Status",
+                          textColor: AppColors.textColorPrimary),
+                    ),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width - 32,

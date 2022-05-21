@@ -67,7 +67,7 @@ class _PersonalUserSignupState extends State<PersonalUserSignup> {
                 InputField(
                   controller: _passwordTextEditingController,
                   suffixText: _passwordVisible ? "Show" : "Hide",
-                  onTap: () {
+                  onSuffixTextTap: () {
                     passwordVisible();
                   },
                   label: "Password",

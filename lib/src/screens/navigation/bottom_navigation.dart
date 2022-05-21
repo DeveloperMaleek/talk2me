@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:talk2me/theme/colors.dart';
 
 class FloatingBottomAppBar extends StatefulWidget {
-  const FloatingBottomAppBar({Key? key, required this.pageController})
-      : super(key: key);
+  const FloatingBottomAppBar({
+    Key? key,
+    required this.selectedIndex,
+    required this.onTabChanged,
+    // required this.pageController
+  }) : super(key: key);
 
-  final PageController pageController;
+//   final PageController pageController;
+//   @override
+//   _FloatingBottomAppBarState createState() => _FloatingBottomAppBarState();
+// }
+
+// class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
+  final int selectedIndex;
+  final Function onTabChanged;
+
   @override
-  _FloatingBottomAppBarState createState() => _FloatingBottomAppBarState();
+  State<FloatingBottomAppBar> createState() => _FloatingBottomAppBarState();
 }
 
 class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -23,11 +34,11 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [_roundedAppBar()],
+              children: [_roundedAppBar(context)],
             )));
   }
 
-  Widget _roundedAppBar() {
+  Widget _roundedAppBar(context) {
     return Container(
       width: MediaQuery.of(context).size.width - 48,
       height: 64,
@@ -45,43 +56,39 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
           borderRadius: BorderRadius.circular(15),
           color: AppColors.greenBackground),
       child: GNav(
-        textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-        tabBackgroundColor: AppColors.primaryColor,
-        gap: 4,
-        tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        activeColor: AppColors.textColorLightBg,
-        iconSize: 20,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        duration: const Duration(milliseconds: 400),
-        // tabBackgroundColor: Colors.grey[100]!,
-        color: AppColors.subtitleTextLightBg,
-
-        tabs: const [
-          GButton(
-            icon: Icons.dashboard,
-            text: 'Home',
-          ),
-          GButton(
-            icon: Icons.spa,
-            text: 'Therapy',
-          ),
-          GButton(
-            icon: Icons.workspaces,
-            text: 'Safe spaces',
-          ),
-          GButton(
-            icon: Icons.person,
-            text: 'Profile',
-          ),
-        ],
-        selectedIndex: _selectedIndex,
-        onTabChange: (index) {
-          setState(() {
-            _selectedIndex = index;
-            widget.pageController.jumpToPage(_selectedIndex);
-          });
-        },
-      ),
+          textStyle: GoogleFonts.josefinSans(
+              fontSize: 14, fontWeight: FontWeight.w600),
+          tabBackgroundColor: AppColors.primaryColor,
+          gap: 4,
+          tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          activeColor: AppColors.textColorLightBg,
+          iconSize: 20,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          duration: const Duration(milliseconds: 400),
+          // tabBackgroundColor: Colors.grey[100]!,
+          color: AppColors.subtitleTextLightBg,
+          tabs: const [
+            GButton(
+              icon: Icons.dashboard,
+              text: 'Home',
+            ),
+            GButton(
+              icon: Icons.spa,
+              text: 'Therapy',
+            ),
+            GButton(
+              icon: Icons.workspaces,
+              text: 'Safe spaces',
+            ),
+            GButton(
+              icon: Icons.person,
+              text: 'Profile',
+            ),
+          ],
+          selectedIndex: widget.selectedIndex,
+          onTabChange: (index) {
+            widget.onTabChanged(index);
+          }),
     );
   }
 }

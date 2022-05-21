@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:talk2me/src/components/profile_widgets.dart';
 import 'package:talk2me/src/screens/profile/components/anonymous_comp.dart';
 import 'package:talk2me/src/screens/profile/components/client_profile_comp.dart';
 import 'package:talk2me/theme/colors.dart';
 
 bool isAnonymous = false;
+
+void changeAnonymousStatus() {
+  isAnonymous = !isAnonymous;
+}
 
 class ClientProfile extends StatefulWidget {
   ClientProfile({Key? key}) : super(key: key);
@@ -36,7 +41,7 @@ class _ClientProfileState extends State<ClientProfile> {
               buttonText: "Change Status",
               onPressed: () {
                 setState(() {
-                  isAnonymous = !isAnonymous;
+                  changeAnonymousStatus();
                 });
               },
               statusButtonVisible: true,

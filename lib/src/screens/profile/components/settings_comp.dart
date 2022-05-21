@@ -192,7 +192,9 @@ class _SettingsCompState extends State<SettingsComp> {
             InputField(
               iconData: Icons.add_circle,
               onSuffixIconTap: () {
-                language.add(_languageTextEditingController.text);
+                setState(() {
+                  language.add(_languageTextEditingController.text);
+                });
                 _languageTextEditingController.clear();
               },
               controller: _languageTextEditingController,

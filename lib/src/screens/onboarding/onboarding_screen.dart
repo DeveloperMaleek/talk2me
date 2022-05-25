@@ -143,7 +143,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 48),
+                    padding: EdgeInsets.only(bottom: 56),
                     child: Column(
                       children: [
                         button.FilledButton(

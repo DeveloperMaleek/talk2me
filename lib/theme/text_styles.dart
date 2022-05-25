@@ -31,7 +31,7 @@ class HeadingOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 96,
         fontWeight: FontWeight.w400,
         letterSpacing: -1.5,
@@ -57,7 +57,7 @@ class HeadingTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 2 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 60,
         fontWeight: FontWeight.w400,
         letterSpacing: -0.5,
@@ -83,7 +83,7 @@ class HeadingThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 3 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 48,
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
@@ -109,7 +109,7 @@ class HeadingFour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 4 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 34,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
@@ -140,7 +140,7 @@ class HeadingFive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 24,
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
@@ -172,7 +172,7 @@ class HeadingSix extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 20,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
@@ -204,7 +204,7 @@ class SubtitleOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 16,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
@@ -237,7 +237,7 @@ class SubtitleTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Small Text Subtitle in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 13,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
@@ -270,7 +270,7 @@ class BodyTextOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Big Body Text  in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
@@ -300,7 +300,7 @@ class BodyTextTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Small Body Text in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
@@ -323,7 +323,7 @@ class ButtonText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Button in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 14,
         fontWeight: FontWeight.w600,
         letterSpacing: 1.25,
@@ -349,7 +349,7 @@ class CaptionText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 12,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
@@ -375,7 +375,7 @@ class OverlineText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
-    TextStyle _textStyle = GoogleFonts.josefinSans(
+    TextStyle _textStyle = GoogleFonts.raleway(
         fontSize: 10,
         fontWeight: FontWeight.w400,
         letterSpacing: 1.5,

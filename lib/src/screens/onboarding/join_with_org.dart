@@ -136,6 +136,7 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
     if (orgCode.isEmpty) {
       setState(() {
         errorTextOneVisible = true;
+        Navigator.pushNamedAndRemoveUntil(context, loginPage, (route) => false);
       });
     } else if (orgCode.length != codelength) {
       setState(() {

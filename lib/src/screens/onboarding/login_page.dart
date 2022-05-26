@@ -116,9 +116,9 @@ class _LoginPageState extends State<LoginPage> {
                           text: "New to Talk2me? ",
                           textColor: AppColors.subtitleTextDarkBg,
                         ),
-                        BodyTextOne(
+                        SubtitleOne(
                           text: "Create an Account",
-                          textColor: AppColors.textColorLightBg,
+                          textColor: AppColors.primaryColor,
                         )
                       ],
                     ),

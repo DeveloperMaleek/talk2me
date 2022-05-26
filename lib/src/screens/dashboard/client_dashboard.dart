@@ -21,6 +21,8 @@ class _ClientDashboardState extends State<ClientDashboard> {
     super.initState();
   }
 
+  List sessions = ["1", "2"];
+
   String greetings = "";
   String imageUrl = "";
   @override
@@ -30,7 +32,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
         child: Column(
           children: [
             Container(
-                padding: const EdgeInsets.fromLTRB(16, 64, 16, 24),
+                padding: const EdgeInsets.fromLTRB(20, 78, 20, 24),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.zero,
@@ -46,13 +48,13 @@ class _ClientDashboardState extends State<ClientDashboard> {
                 height: MediaQuery.of(context).size.height / 4.5,
                 child: Column(
                   children: [
-                    HeadingFive(
+                    HeadingSix(
                         text: "Good " + greetings + ", Amma",
                         textColor: AppColors.subtitleTextDarkBg),
                     const SizedBox(
                       height: 8,
                     ),
-                    const SubtitleOne(
+                    const SubtitleTwo(
                         text: "We are with you in every step of the journey.",
                         textColor: AppColors.textColorDarkBg)
                   ],
@@ -60,52 +62,79 @@ class _ClientDashboardState extends State<ClientDashboard> {
 
             //Feelings Question Section
             Container(
-                margin: const EdgeInsets.fromLTRB(16, 24, 16, 12),
-                // padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                        color: AppColors.outlineColor,
-                        width: 3,
-                        style: BorderStyle.solid)),
+                margin: const EdgeInsets.fromLTRB(20, 24, 20, 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-                      child: HeadingSix(
-                          text: "How are you feeling this " + greetings + "?",
-                          textColor: AppColors.textColorLightBg),
+                    HeadingSix(
+                        text: "How are you feeling this " + greetings + "?",
+                        textColor: AppColors.textColorLightBg),
+                    SizedBox(
+                      height: 16,
                     ),
                     FeelingsQuestionsTabBar(),
                   ],
                 )),
 
             // Upcoming session section
+            Visibility(
+              visible: sessions.length >= 1,
+              child: Container(
+                  margin: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const HeadingSix(
+                          text: "Upcoming Session",
+                          textColor: AppColors.textColorLightBg),
+                      haveSession(context)
+                    ],
+                  )),
+            ),
+
+            // Online Assesment
             Container(
-                margin: const EdgeInsets.fromLTRB(16, 12, 16, 12),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                        color: AppColors.outlineColor,
-                        width: 3,
-                        style: BorderStyle.solid)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const HeadingSix(
-                        text: "Upcoming Session",
-                        textColor: AppColors.textColorLightBg),
-                    haveSession(context)
-                  ],
-                )),
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                  color: AppColors.darkBackground,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeadingSix(
+                            text: "Take an assessment",
+                            textColor: AppColors.primaryColor),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        SubtitleTwo(
+                            text:
+                                'Consider this a celebration of curiosity and openness. Go ahead, try it.',
+                            textColor: AppColors.subtitleTextDarkBg)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    "assets/images/assessment.png",
+                    width: 80,
+                    height: 80,
+                  )
+                ],
+              ),
+            ),
 
             // Anonymous profile section
             Container(
                 width: MediaQuery.of(context).size.width,
-                height: 120,
-                margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+                margin: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -118,13 +147,10 @@ class _ClientDashboardState extends State<ClientDashboard> {
                             Colors.black.withOpacity(0.8), BlendMode.darken))),
                 // color: AppColors.darkBackground,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           HeadingSix(
                               text: "Set anonymous profile",
@@ -144,8 +170,8 @@ class _ClientDashboardState extends State<ClientDashboard> {
                     ),
                     Image.asset(
                       "assets/images/Anonymous.png",
-                      width: 100,
-                      height: 100,
+                      width: 80,
+                      height: 80,
                     )
                   ],
                 )),
@@ -183,7 +209,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
             ],
           ),
           const SizedBox(
-            height: 32,
+            height: 20,
           ),
           const OtherUpcomingSessions(
               borderColor: Colors.transparent,

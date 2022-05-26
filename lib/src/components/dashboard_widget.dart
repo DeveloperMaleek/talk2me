@@ -23,7 +23,7 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 5, vsync: this);
-    double gifSize = MediaQuery.of(context).size.width * 0.175;
+
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -57,13 +57,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                       child: Tab(
                         child: Column(
                           children: [
-                            Image.network(
-                              "https://res.cloudinary.com/michelletakuro/image/upload/v1647271301/talk2me-assets/gif/sad-look.gif",
-                              height: gifSize,
-                              width: gifSize,
-                            ),
+                            HeadingThree(
+                                text: "😓",
+                                textColor: AppColors.textColorLightBg),
                             _spacing(),
-                            const BodyTextTwo(
+                            const SubtitleTwo(
                               text: "Down",
                               textColor: AppColors.textColorLightBg,
                             ),
@@ -76,13 +74,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                       child: Tab(
                         child: Column(
                           children: [
-                            Image.network(
-                              "https://res.cloudinary.com/michelletakuro/image/upload/v1647271299/talk2me-assets/gif/just-there.gif",
-                              height: gifSize,
-                              width: gifSize,
-                            ),
+                            HeadingThree(
+                                text: "😐",
+                                textColor: AppColors.textColorLightBg),
                             _spacing(),
-                            BodyTextTwo(
+                            const SubtitleTwo(
                               text: "Just there",
                               textColor: AppColors.textColorLightBg,
                             ),
@@ -95,13 +91,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                       child: Tab(
                           child: Column(
                         children: [
-                          Image.network(
-                            "https://res.cloudinary.com/michelletakuro/image/upload/v1647271298/talk2me-assets/gif/normal.gif",
-                            height: gifSize,
-                            width: gifSize,
-                          ),
+                          HeadingThree(
+                              text: "🙂",
+                              textColor: AppColors.textColorLightBg),
                           _spacing(),
-                          BodyTextTwo(
+                          const SubtitleTwo(
                             text: "Normal",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -113,13 +107,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                       child: Tab(
                           child: Column(
                         children: [
-                          Image.network(
-                            "https://res.cloudinary.com/michelletakuro/image/upload/v1647271300/talk2me-assets/gif/good.gif",
-                            height: gifSize,
-                            width: gifSize,
-                          ),
+                          HeadingThree(
+                              text: "😊",
+                              textColor: AppColors.textColorLightBg),
                           _spacing(),
-                          BodyTextTwo(
+                          const SubtitleTwo(
                             text: "Good",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -131,13 +123,11 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
                       child: Tab(
                           child: Column(
                         children: [
-                          Image.network(
-                            "https://res.cloudinary.com/michelletakuro/image/upload/v1647271298/talk2me-assets/gif/great.gif",
-                            height: gifSize,
-                            width: gifSize,
-                          ),
+                          HeadingThree(
+                              text: "😎",
+                              textColor: AppColors.textColorLightBg),
                           _spacing(),
-                          BodyTextTwo(
+                          const SubtitleTwo(
                             text: "Great",
                             textColor: AppColors.textColorLightBg,
                           ),
@@ -150,7 +140,6 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
           Visibility(
             visible: tabContentVisible,
             child: Container(
-              margin: const EdgeInsets.all(16),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,21 +197,21 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
 
         if (timeNow <= 11) {
           return () {
-            tabHeaderVisible = true;
+            // tabHeaderVisible = true;
           };
         } else if ((timeNow > 12) && (timeNow <= 15)) {
           return () {
-            tabHeaderVisible = true;
+            // tabHeaderVisible = true;
           };
           ;
         } else if ((timeNow > 15) && (timeNow < 19)) {
           return () {
-            tabHeaderVisible = true;
+            // tabHeaderVisible = true;
           };
           ;
         } else {
           return () {
-            tabHeaderVisible = true;
+            // tabHeaderVisible = true;
           };
           ;
         }
@@ -255,21 +244,25 @@ class _FeelingsQuestionsTabBarState extends State<FeelingsQuestionsTabBar>
     Widget? button,
   ) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: AppColors.greenBackground),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        SubtitleOne(text: heading, textColor: AppColors.textColorLightBg),
-        SizedBox(
-          height: 16,
-        ),
-        BodyTextTwo(text: content, textColor: AppColors.textColorLightBg),
-        SizedBox(
-          height: 16,
-        ),
-        Container(child: button)
-      ]),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SubtitleOne(text: heading, textColor: AppColors.textColorLightBg),
+            SizedBox(
+              height: 16,
+            ),
+            BodyTextTwo(text: content, textColor: AppColors.textColorLightBg),
+            SizedBox(
+              height: 16,
+            ),
+            Container(child: button)
+          ]),
     );
   }
 }

@@ -11,10 +11,10 @@ class UpcomingSession extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
           color: AppColors.greenBackground,
-          borderRadius: BorderRadius.circular(15)),
+          borderRadius: BorderRadius.circular(30)),
       child: Column(
         children: [
           // Top Section

@@ -6,6 +6,8 @@ import 'package:talk2me/src/components/sessions_list.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
+List bookedSessions = [1];
+
 class ClientTherapy extends StatefulWidget {
   const ClientTherapy({Key? key}) : super(key: key);
 
@@ -14,7 +16,6 @@ class ClientTherapy extends StatefulWidget {
 }
 
 class _ClientTherapyState extends State<ClientTherapy> {
-  List bookedSessions = [1];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,17 +44,13 @@ class DataTherapyView extends StatelessWidget {
             children: [
               AppBarNav(
                 pageHeading: 'Therapy',
-                buttonText: 'My Notes',
-                buttonColor: AppColors.primaryColor,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.all(16),
-                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border:
-                        Border.all(color: AppColors.outlineColor, width: 2)),
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
@@ -71,7 +68,7 @@ class DataTherapyView extends StatelessWidget {
           ),
         ),
         Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.fromLTRB(0, 16, 0, 84),
             decoration: const BoxDecoration(
               color: AppColors.greenBackground,
@@ -80,7 +77,7 @@ class DataTherapyView extends StatelessWidget {
                   topRight: Radius.circular(15)),
             ),
             width: MediaQuery.of(context).size.width,
-            child: 1 == 1
+            child: bookedSessions.isNotEmpty
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [

@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_four.dart';
-import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_three.dart';
 import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup_two.dart';
 import 'package:talk2me/src/screens/onboarding/account_setup_steps/acount_setup_one.dart';
 import 'package:talk2me/src/static/progressIndicator.dart';
 import 'package:talk2me/theme/colors.dart';
 
-
 List<Widget> bodyContent = [
   const AccountSetupOne(),
   const AccountSetupTwo(),
-  const AccountSetupThree(),
   const AccountSetupFour()
 ];
 
@@ -32,7 +29,7 @@ class _AccountSetupState extends State<AccountSetup> {
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
         body: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(16, 52, 16, 24),
+          padding: const EdgeInsets.fromLTRB(20, 56, 20, 0),
           child: Column(
             children: [
               _progressIndicator(context),
@@ -59,10 +56,10 @@ class _AccountSetupState extends State<AccountSetup> {
             ],
           ),
         ),
-        floatingActionButtonLocation: pagePosition != 3
+        floatingActionButtonLocation: pagePosition != 2
             ? FloatingActionButtonLocation.endFloat
             : FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: pagePosition != 3
+        floatingActionButton: pagePosition != 2
             ? FloatingActionButton(
                 onPressed: () {
                   setState(() {
@@ -80,7 +77,8 @@ class _AccountSetupState extends State<AccountSetup> {
                 child: FilledButton(
                     buttonText: "complete",
                     onPressed: () {
-                      Navigator.pushNamed(context, wordsOfAffirmation);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, clientNavigation, (route) => false);
                     })));
   }
 
@@ -91,26 +89,20 @@ class _AccountSetupState extends State<AccountSetup> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SingleProgressIndicator(
-            totalLength: 4,
+            totalLength: 3,
             indicatorColor: pagePosition >= 0
                 ? AppColors.primaryColor
                 : AppColors.subtitleTextLightBg,
           ),
           SingleProgressIndicator(
-            totalLength: 4,
+            totalLength: 3,
             indicatorColor: pagePosition >= 1
                 ? AppColors.primaryColor
                 : AppColors.subtitleTextLightBg,
           ),
           SingleProgressIndicator(
-            totalLength: 4,
+            totalLength: 3,
             indicatorColor: pagePosition >= 2
-                ? AppColors.primaryColor
-                : AppColors.subtitleTextLightBg,
-          ),
-          SingleProgressIndicator(
-            totalLength: 4,
-            indicatorColor: pagePosition >= 3
                 ? AppColors.primaryColor
                 : AppColors.subtitleTextLightBg,
           ),

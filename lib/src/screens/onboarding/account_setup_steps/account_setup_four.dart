@@ -8,8 +8,6 @@ List responseState = [
   false,
   false,
   false,
-  false,
-  false,
 ];
 
 class AccountSetupFour extends StatefulWidget {
@@ -38,7 +36,7 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
             textColor: AppColors.textColorLightBg,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 24),
+            padding: const EdgeInsets.only(top: 24, bottom: 36),
             child: Align(
               alignment: Alignment.center,
               child: Column(
@@ -59,54 +57,19 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
           )
         ],
       ),
-      Padding(
-        padding: EdgeInsets.only(top: 36),
-        child: Column(
+      Align(
+        alignment: Alignment.center,
+        child: Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          runAlignment: WrapAlignment.center,
+          alignment: WrapAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BodyTextOne(
-                    text: "Personal", textColor: AppColors.textColorLightBg),
-                SingleChildScrollView(
-                  padding: const EdgeInsets.only(top: 10, bottom: 16),
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                    spacing: 16,
-                    children: [
-                      responseContainer("Sleeping Better",
-                          "assets/images/sleep_analysis.svg", 0),
-                      responseContainer(
-                          "Managing Anger", "assets/images/anger.svg", 1),
-                      responseContainer(
-                          "Living Happier", "assets/images/happier.svg", 2),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BodyTextOne(
-                    text: "Work", textColor: AppColors.textColorLightBg),
-                SingleChildScrollView(
-                  padding: const EdgeInsets.only(top: 10),
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                    spacing: 16,
-                    children: [
-                      responseContainer(
-                          "Tackling Stress", "assets/images/stress.svg", 3),
-                      responseContainer(
-                          "Communication", "assets/images/stress.svg", 4),
-                      responseContainer(
-                          "Make Friends", "assets/images/stress.svg", 5),
-                    ],
-                  ),
-                )
-              ],
-            ),
+            responseContainer(
+                "Sleeping Better", "assets/images/sleep_analysis.svg", 0),
+            responseContainer("Managing Anger", "assets/images/anger.svg", 1),
+            responseContainer("Living Happier", "assets/images/happier.svg", 2),
+            responseContainer("Tackling Stress", "assets/images/stress.svg", 3),
           ],
         ),
       )
@@ -127,11 +90,11 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
             },
       onTapCancel: () {},
       child: Container(
-        width: 140,
-        height: 160,
+        width: 150,
+        height: 150,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-            color: responseState[index] ? AppColors.primaryColor25 : null,
+            color: responseState[index] ? AppColors.greenBackground : null,
             borderRadius: BorderRadius.circular(15),
             border: responseState[index]
                 ? Border.all(color: AppColors.primaryColor, width: 2)

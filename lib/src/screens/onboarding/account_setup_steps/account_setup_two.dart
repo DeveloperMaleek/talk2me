@@ -69,7 +69,7 @@ class _AccountSetupTwoState extends State<AccountSetupTwo> {
                     HeadingSix(
                         textAlignment: TextAlign.center,
                         text:
-                            "What do you consider always influence\nyour “okay” days?",
+                            "What do you consider influence\nyour “okay” days?",
                         textColor: AppColors.textColorLightBg),
                     Padding(
                         padding: EdgeInsets.only(top: 8),
@@ -138,7 +138,7 @@ class _AccountSetupTwoState extends State<AccountSetupTwo> {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            color: responseTextState[index] ? AppColors.primaryColor25 : null,
+            color: responseTextState[index] ? AppColors.greenBackground : null,
             border: responseTextState[index]
                 ? Border.all(color: AppColors.primaryColor, width: 1)
                 : Border.all(color: AppColors.subtitleTextLightBg, width: 1),

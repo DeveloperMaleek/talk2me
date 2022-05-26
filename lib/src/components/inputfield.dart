@@ -70,10 +70,10 @@ class InputField extends StatelessWidget {
                     textColor: AppColors.subtitleTextLightBg)),
             contentPadding: const EdgeInsets.fromLTRB(16, 19, 16, 19),
             errorText: errorText,
-            errorStyle: GoogleFonts.josefinSans(
+            errorStyle: GoogleFonts.raleway(
                 color: AppColors.errorColor,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
-                fontWeight: FontWeight.w400),
+                fontWeight: FontWeight.w500),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15.0),
                 borderSide:
@@ -82,8 +82,15 @@ class InputField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
                 borderSide:
                     BorderSide(color: AppColors.primaryColor, width: 2)),
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                borderSide: BorderSide(color: AppColors.errorColor, width: 2)),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                borderSide:
+                    BorderSide(color: AppColors.primaryColor, width: 2)),
             hintText: placeholder,
-            hintStyle: GoogleFonts.josefinSans(
+            hintStyle: GoogleFonts.raleway(
                 color: AppColors.subtitleTextLightBg,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
                 fontWeight: FontWeight.w400),

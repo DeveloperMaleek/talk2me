@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
-import 'package:talk2me/src/static/shapes.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -28,11 +26,12 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Stack(
           children: [
             Container(
               height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 56),
+              padding: const EdgeInsets.only(bottom: 56),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -136,12 +135,14 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
     if (orgCode.isEmpty) {
       setState(() {
         errorTextOneVisible = true;
-        Navigator.pushNamedAndRemoveUntil(context, loginPage, (route) => false);
       });
     } else if (orgCode.length != codelength) {
       setState(() {
         errorTextTwoVisible = true;
       });
+    } else {
+      Navigator.pushNamedAndRemoveUntil(
+          context, employeeVerification, (route) => false);
     }
   }
 }

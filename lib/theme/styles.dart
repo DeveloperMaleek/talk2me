@@ -7,7 +7,7 @@ ThemeData appTheme() {
     primaryColor: AppColors.primaryColor,
     // primarySwatch: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightBackground,
-    primaryTextTheme: GoogleFonts.josefinSansTextTheme(),
+    primaryTextTheme: GoogleFonts.ralewayTextTheme(),
     hintColor: Colors.white,
     textSelectionTheme:
         TextSelectionThemeData(cursorColor: AppColors.primaryColor),

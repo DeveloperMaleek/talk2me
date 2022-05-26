@@ -1,13 +1,39 @@
 class User {
   int id;
+  String email;
   String firstName;
   String lastName;
+  bool isTherapist;
+  bool isAnonymous;
   String profileImage;
-  String status;
+  int anonymousProfileImage;
+  String anonymousDisplayName;
+  int coverImage;
   String bio;
-  String email;
+  List goals;
+  List socialUrls;
+  List expertise;
+  List language;
+  int feelingState;
   // Timestamp creationDate;
 
-  User(this.id, this.firstName, this.lastName, this.profileImage, this.status,
-      this.bio, this.email);
+  User(
+      this.id,
+      this.firstName,
+      this.lastName,
+      this.profileImage,
+      this.isAnonymous,
+      this.anonymousDisplayName,
+      this.anonymousProfileImage,
+      this.coverImage,
+      this.bio,
+      this.email,
+      this.expertise,
+      this.feelingState,
+      this.goals,
+      this.isTherapist,
+      this.language,
+      this.socialUrls);
+
+      
 }

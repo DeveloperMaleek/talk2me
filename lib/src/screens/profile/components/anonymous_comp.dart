@@ -105,6 +105,9 @@ class _AnonymousCompState extends State<AnonymousComp> {
 
   GestureDetector avatarImage(String imageUrl) {
     return GestureDetector(
+      onTap: (){
+        
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Image.asset(

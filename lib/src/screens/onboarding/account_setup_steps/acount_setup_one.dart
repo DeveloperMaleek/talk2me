@@ -66,12 +66,12 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
           padding: const EdgeInsets.only(top: 36),
           child: Wrap(
             spacing: 16,
-            runSpacing: 8,
+            runSpacing: 16,
             children: [
               _feelingsResponse(
                 context,
                 "Hopeful",
-                "assets/images/profile-background-1.jpg",
+                "assets/images/profile-background-1.png",
                 () {
                   _selectItem(0);
                 },
@@ -80,7 +80,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Excited",
-                "assets/images/profile-background-2.jpg",
+                "assets/images/profile-background-2.png",
                 () {
                   _selectItem(1);
                 },
@@ -89,7 +89,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Sad",
-                "assets/images/profile-background-3.jpg",
+                "assets/images/profile-background-3.png",
                 () {
                   _selectItem(2);
                 },
@@ -98,7 +98,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Anxious",
-                "assets/images/profile-background-4.jpg",
+                "assets/images/profile-background-4.png",
                 () {
                   _selectItem(3);
                 },
@@ -107,7 +107,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Frustrated",
-                "assets/images/profile-background-5.jpg",
+                "assets/images/profile-background-5.png",
                 () {
                   _selectItem(4);
                 },
@@ -116,7 +116,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Withdrawn",
-                "assets/images/profile-background-6.jpg",
+                "assets/images/profile-background-5.png",
                 () {
                   _selectItem(5);
                 },
@@ -125,7 +125,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Stressed",
-                "assets/images/profile-background-7.jpg",
+                "assets/images/profile-background-5.png",
                 () {
                   _selectItem(6);
                 },
@@ -134,7 +134,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Scared",
-                "assets/images/profile-background-8.jpg",
+                "assets/images/profile-background-8.png",
                 () {
                   _selectItem(7);
                 },
@@ -143,7 +143,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Lonely",
-                "assets/images/profile-background-9.jpg",
+                "assets/images/profile-background-9.png",
                 () {
                   _selectItem(8);
                 },
@@ -152,7 +152,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Happy",
-                "assets/images/profile-background-10.jpg",
+                "assets/images/profile-background-10.png",
                 () {
                   _selectItem(9);
                 },
@@ -161,7 +161,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Indifferent",
-                "assets/images/profile-background-11.jpg",
+                "assets/images/profile-background-11.png",
                 () {
                   _selectItem(10);
                 },
@@ -170,7 +170,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
               _feelingsResponse(
                 context,
                 "Angry",
-                "assets/images/profile-background-12.jpg",
+                "assets/images/profile-background-5.png",
                 () {
                   _selectItem(11);
                 },
@@ -194,30 +194,33 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
         onPress();
       },
       child: Container(
+        width: 150,
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         decoration: BoxDecoration(
+          color: feelingsItem[index]
+              ? AppColors.greenBackground
+              : AppColors.outlineColor,
           border: feelingsItem[index]
               ? Border.all(
                   width: 2,
                   color: AppColors.primaryColor,
                 )
-              : Border.all(width: 2, color: Colors.transparent),
+              : Border.all(width: 2, color: AppColors.outlineColor),
           borderRadius: BorderRadius.circular(15),
-          image:
-              DecorationImage(fit: BoxFit.fill, image: AssetImage(responseBg)),
         ),
-        child: Opacity(
-            opacity: 0.7,
-            child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15)),
-                width: (MediaQuery.of(context).size.width - 56) / 2,
-                height: 100,
-                child: SubtitleOne(
-                  text: responseText,
-                  textColor: AppColors.textColorDarkBg,
-                ))),
+        child: Column(
+          children: [
+            Image.asset(
+              responseBg,
+              width: 100,
+              height: 70,
+            ),
+            SubtitleOne(
+              text: responseText,
+              textColor: AppColors.textColorLightBg,
+            ),
+          ],
+        ),
       ),
     );
   }

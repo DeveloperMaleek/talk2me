@@ -12,7 +12,7 @@ class SingleProgressIndicator extends StatelessWidget {
     return Expanded(
       child: Container(
         color: indicatorColor,
-        width: MediaQuery.of(context).size.height / totalLength,
+        width: MediaQuery.of(context).size.width / totalLength,
         height: 4,
       ),
     );

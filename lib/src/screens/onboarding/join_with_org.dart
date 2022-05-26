@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
-import 'package:talk2me/src/static/shapes.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -27,11 +26,12 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Stack(
           children: [
             Container(
               height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 48),
+              padding: const EdgeInsets.only(bottom: 56),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -44,12 +44,10 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
                       SizedBox(height: 12),
                       SubtitleOne(
                           text: "Copy text is here",
-                          textColor: AppColors.subtitleTextLightBg)
+                          textColor: AppColors.primaryColor)
                     ],
                   ),
-                  const SizedBox(
-                    height: 64,
-                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.075),
                   Column(
                     children: [
                       Column(
@@ -79,25 +77,21 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
                       ),
                       FilledButton(
                         buttonText: "Continue",
-                        onPressed: () {
-                          onSubmit();
-                        },
+                        onPressed: onSubmit,
                         buttonTextColor: codelength ==
                                 codeTextEditingController.text.trim().length
                             ? AppColors.textColorPrimary
-                            : AppColors.subtitleTextLightBg,
+                            : AppColors.textColorDarkBg,
                         buttonColor: codelength ==
                                 codeTextEditingController.text.trim().length
                             ? AppColors.primaryColor
-                            : AppColors.primaryColor50,
+                            : AppColors.subtitleTextDarkBg,
                       ),
                       const SizedBox(
                         height: 24,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, loginPage);
-                        },
+                        onTap: onLoginPressed,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
@@ -105,30 +99,9 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
                               text: "Already have an account? ",
                               textColor: AppColors.subtitleTextLightBg,
                             ),
-                            BodyTextOne(
+                            SubtitleOne(
                               text: "Login",
-                              textColor: AppColors.textColorLightBg,
-                            )
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, personalSignUp);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            BodyTextOne(
-                              text: "Create a personal account? ",
-                              textColor: AppColors.subtitleTextLightBg,
-                            ),
-                            BodyTextOne(
-                              text: "Continue here",
-                              textColor: AppColors.textColorLightBg,
+                              textColor: AppColors.primaryColor,
                             )
                           ],
                         ),
@@ -139,38 +112,25 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
               ),
             ),
             Positioned(
-                top: -60,
-                right: -60,
-                child: Container(
-                  child: CustomPaint(
-                    size: Size(
-                        250,
-                        (250 * 1)
-                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                    painter: RPSCustomPainter(),
-                  ),
-                )),
-            Positioned(
-                top: -60,
-                right: -60,
-                child: Container(
-                  child: CustomPaint(
-                    size: Size(
-                        280,
-                        (280 * 1)
-                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                    painter: RPSCustomPainterTwo(),
-                  ),
-                ))
+                top: 280,
+                right: 100,
+                child:
+                    Container(child: Image.asset("assets/images/heart.png"))),
           ],
         ),
       ),
     );
   }
 
-  void onSubmit() {
+  // Functon to direct user to login page
+  onLoginPressed() {
+    Navigator.pushNamed(context, loginPage);
+  }
+
+  // Function to submit organization's code
+  onSubmit() {
     String orgCode = codeTextEditingController.text.trim();
-    int code = int.parse(orgCode);
+    // int code = int.parse(orgCode);
 
     if (orgCode.isEmpty) {
       setState(() {
@@ -180,6 +140,9 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
       setState(() {
         errorTextTwoVisible = true;
       });
+    } else {
+      Navigator.pushNamedAndRemoveUntil(
+          context, employeeVerification, (route) => false);
     }
   }
 }

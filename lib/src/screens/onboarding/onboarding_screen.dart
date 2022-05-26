@@ -1,59 +1,75 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/routes.dart' as route;
+import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart' as button;
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-List onBoardingImages = [
-  "assets/images/image-bg-1.jpg",
-  "assets/images/image-bg-2.jpg",
-  "assets/images/image-bg-3.jpg"
-];
 
 List onBoardingContent = [
+  //  Content one
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const <Widget>[
-      HeadingFive(
-        text: 'Get access to professional therapists in minutes.',
+    children: <Widget>[
+      Image.asset(
+        "assets/images/image-bg-1.jpg",
+        width: 250,
+        height: 250,
+      ),
+      SizedBox(height: 24.0),
+      HeadingSix(
+        text: 'Get access to professional \ntherapists in minutes.',
         textAlignment: TextAlign.center,
-        textColor: AppColors.textColorDarkBg,
+        textColor: AppColors.textColorLightBg,
       ),
       SizedBox(height: 16.0),
       SubtitleOne(
-        text: 'Subcopy Text specific to client',
+        text: 'We are here to help you',
         textColor: AppColors.primaryColor,
       ),
     ],
   ),
+
+  //  Content two
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const <Widget>[
-      HeadingFive(
-        text: 'Copy Text specific to users',
+    children: <Widget>[
+      Image.asset(
+        "assets/images/image-bg-2.jpg",
+        width: 250,
+        height: 250,
+      ),
+      SizedBox(height: 24.0),
+      HeadingSix(
+        text: 'Get access to professional \ntherapists in minutes.',
         textAlignment: TextAlign.center,
-        textColor: AppColors.textColorDarkBg,
+        textColor: AppColors.textColorLightBg,
       ),
       SizedBox(height: 16.0),
       SubtitleOne(
-        text: 'Subcopy Text specific to client',
-        textColor: AppColors.textColorDarkBg,
+        text: 'We are here to help you',
+        textColor: AppColors.primaryColor,
       ),
     ],
   ),
+
+  //  Content three
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const <Widget>[
-      HeadingFive(
-        text: 'Copy Text specific to users',
+    children: <Widget>[
+      Image.asset(
+        "assets/images/image-bg-3.jpg",
+        width: 250,
+        height: 250,
+      ),
+      SizedBox(height: 24.0),
+      HeadingSix(
+        text: 'Get access to professional \ntherapists in minutes.',
         textAlignment: TextAlign.center,
-        textColor: AppColors.textColorDarkBg,
+        textColor: AppColors.textColorLightBg,
       ),
       SizedBox(height: 16.0),
       SubtitleOne(
-        text: 'Subcopy Text specific to client',
-        textColor: AppColors.textColorDarkBg,
+        text: 'We are here to help you',
+        textColor: AppColors.primaryColor,
       ),
     ],
   ),
@@ -71,157 +87,88 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.lightBackground,
       body: SingleChildScrollView(
-          child: Stack(
-        children: [
-          SizedBox(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
-            child: PageView.builder(
-              itemCount: onBoardingContent.length,
-              itemBuilder: (context, index) {
-                return ScrollableBodyWidget(
-                  index: index,
-                );
-              },
-              onPageChanged: (index) {
-                setState(() {
-                  pagePosition = index;
-                });
-                // print(index);
-              },
-            ),
-          ),
-          Positioned(
-            left: 0,
-            top: 48,
-            right: 0,
-            bottom: 24,
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SvgPicture.asset(
-                    "assets/images/talk2me_logo_white.svg",
-                    width: 100,
+                  SizedBox(
+                    height: 400,
+                    child: PageView.builder(
+                      itemCount: onBoardingContent.length,
+                      itemBuilder: (context, index) {
+                        return onBoardingContent[index];
+                      },
+                      onPageChanged: (index) {
+                        setState(() {
+                          pagePosition = index;
+                        });
+                        // print(index);
+                      },
+                    ),
                   ),
-                  Column(
-                    children: [
-                      button.FilledButton(
-                        buttonText: "Create an Account",
-                        onPressed: () {
-                          Navigator.pushNamed(context, route.personalSignUp);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      button.OutlineButton(
-                          buttonText: "Join with organization code",
-                          buttonTextColor: AppColors.primaryColor,
+                  SizedBox(height: 24.0),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          color: pagePosition == 0
+                              ? AppColors.primaryColor
+                              : AppColors.subtitleTextLightBg,
+                          width: 50,
+                          height: 4,
+                        ),
+                        Container(
+                          color: pagePosition == 1
+                              ? AppColors.primaryColor
+                              : AppColors.subtitleTextLightBg,
+                          width: 50,
+                          height: 4,
+                        ),
+                        Container(
+                          color: pagePosition == 2
+                              ? AppColors.primaryColor
+                              : AppColors.subtitleTextLightBg,
+                          width: 50,
+                          height: 4,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 56),
+                    child: Column(
+                      children: [
+                        button.FilledButton(
+                            buttonText: 'create an account',
+                            onPressed: onCreateAccount),
+                        SizedBox(height: 16.0),
+                        button.OutlineButton(
+                          buttonText: 'log in',
+                          onPressed: onLogin,
                           outlineColor: AppColors.primaryColor,
-                          onPressed: () {
-                            Navigator.pushNamed(context, route.joinWithOrg);
-                          }),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, route.loginPage);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            BodyTextOne(
-                              text: "Already have an account? ",
-                              textColor: AppColors.subtitleTextDarkBg,
-                            ),
-                            BodyTextOne(
-                              text: "Login",
-                              textColor: AppColors.primaryColor,
-                            )
-                          ],
+                          buttonTextColor: AppColors.primaryColor,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              color: pagePosition == 0
-                                  ? AppColors.primaryColor
-                                  : AppColors.subtitleTextLightBg,
-                              width: 50,
-                              height: 4,
-                            ),
-                            Container(
-                              color: pagePosition == 1
-                                  ? AppColors.primaryColor
-                                  : AppColors.subtitleTextLightBg,
-                              width: 50,
-                              height: 4,
-                            ),
-                            Container(
-                              color: pagePosition == 2
-                                  ? AppColors.primaryColor
-                                  : AppColors.subtitleTextLightBg,
-                              width: 50,
-                              height: 4,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-          )
-        ],
-      )),
+                ]),
+          )),
     );
   }
 
-  // Widget ProgressScroll(int index) {
-  //   return
-  // }
-}
+  onCreateAccount() {
+    Navigator.pushNamed(context, joinWithOrg);
+  }
 
-class ScrollableBodyWidget extends StatelessWidget {
-  const ScrollableBodyWidget({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-            height: MediaQuery.of(context).size.height,
-            child: Image.asset(onBoardingImages[index],
-                colorBlendMode: BlendMode.darken,
-                color: AppColors.darkBackground.withOpacity(0.8),
-                alignment: Alignment.center,
-                fit: BoxFit.fitHeight)),
-        Positioned(
-            child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          height: MediaQuery.of(context).size.height,
-          child: Center(
-            child: onBoardingContent[index],
-          ),
-        )),
-      ],
-    );
+  onLogin() {
+    Navigator.pushNamed(context, loginPage);
   }
 }

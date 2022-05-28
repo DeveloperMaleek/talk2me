@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/routes.dart';
+import 'package:talk2me/src/animations/dashboard_animation.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/dashboard_widget.dart';
 import 'package:talk2me/src/components/sessions_list.dart';
@@ -15,7 +16,7 @@ class ClientDashboard extends StatefulWidget {
 
 class _ClientDashboardState extends State<ClientDashboard> {
   @override
-  initState() {
+  void initState() {
     greetingMessage();
     greetingImageUrl();
     super.initState();
@@ -28,39 +29,65 @@ class _ClientDashboardState extends State<ClientDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
+      backgroundColor: AppColors.darkBackground,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            collapsedHeight: 300,
+            backgroundColor: Colors.transparent,
+            expandedHeight: 500,
+            flexibleSpace: Stack(children: [
+              Container(
                 padding: const EdgeInsets.fromLTRB(20, 78, 20, 24),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.zero,
                         topRight: Radius.zero,
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30)),
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(imageUrl),
                         colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.6), BlendMode.darken))),
+                            Colors.black.withOpacity(0.2), BlendMode.darken))),
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4.5,
-                child: Column(
-                  children: [
-                    HeadingSix(
-                        text: "Good " + greetings + ", Amma",
-                        textColor: AppColors.subtitleTextDarkBg),
-                    const SizedBox(
-                      height: 8,
+                height: MediaQuery.of(context).size.height,
+              ),
+              Opacity(
+                opacity: 1,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(20, 78, 20, 24),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: const Alignment(0.1, 0.8),
+                      colors: [
+                        Color.fromARGB(0, 0, 0, 0),
+                        AppColors.darkBackground,
+                      ],
                     ),
-                    const SubtitleTwo(
-                        text: "We are with you in every step of the journey.",
-                        textColor: AppColors.textColorDarkBg)
-                  ],
-                )),
-
-            //Feelings Question Section
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      HeadingSix(
+                          text: "Good " + greetings + ", Amma",
+                          textColor: AppColors.subtitleTextDarkBg),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      TypeWriterBox(),
+                      // HeadingFour(
+                      //     text: "We are with you in every step of the journey.",
+                      //     textColor: AppColors.textColorDarkBg)
+                    ],
+                  ),
+                ),
+              )
+            ]),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
             Container(
                 margin: const EdgeInsets.fromLTRB(20, 24, 20, 12),
                 child: Column(
@@ -91,8 +118,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
                     ],
                   )),
             ),
-
-            // Online Assesment
+            // // Online Assesment
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               width: MediaQuery.of(context).size.width,
@@ -178,8 +204,172 @@ class _ClientDashboardState extends State<ClientDashboard> {
             const SizedBox(
               height: 100,
             ),
-          ],
-        ),
+          ]))
+
+          //Feelings Question Section
+
+          // Container(
+          //     margin: const EdgeInsets.fromLTRB(20, 24, 20, 12),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         HeadingSix(
+          //             text: "How are you feeling this " + greetings + "?",
+          //             textColor: AppColors.textColorLightBg),
+          //         SizedBox(
+          //           height: 16,
+          //         ),
+          //         FeelingsQuestionsTabBar(),
+          //       ],
+          //     )),
+          // Container(
+          //     padding: const EdgeInsets.fromLTRB(20, 78, 20, 24),
+          //     decoration: BoxDecoration(
+          //         borderRadius: const BorderRadius.only(
+          //             topLeft: Radius.zero,
+          //             topRight: Radius.zero,
+          //             bottomLeft: Radius.circular(15),
+          //             bottomRight: Radius.circular(15)),
+          //         image: DecorationImage(
+          //             fit: BoxFit.cover,
+          //             image: AssetImage(imageUrl),
+          //             colorFilter: ColorFilter.mode(
+          //                 Colors.black.withOpacity(0.6), BlendMode.darken))),
+          //     width: MediaQuery.of(context).size.width,
+          //     height: MediaQuery.of(context).size.height / 2,
+          //     child: Column(
+          //       children: [
+          //         HeadingSix(
+          //             text: "Good " + greetings + ", Amma",
+          //             textColor: AppColors.subtitleTextDarkBg),
+          //         const SizedBox(
+          //           height: 8,
+          //         ),
+          //         const SubtitleTwo(
+          //             text: "We are with you in every step of the journey.",
+          //             textColor: AppColors.textColorDarkBg)
+          //       ],
+          //     )),
+
+          // //Feelings Question Section
+          // Container(
+          //     margin: const EdgeInsets.fromLTRB(20, 24, 20, 12),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         HeadingSix(
+          //             text: "How are you feeling this " + greetings + "?",
+          //             textColor: AppColors.textColorLightBg),
+          //         SizedBox(
+          //           height: 16,
+          //         ),
+          //         FeelingsQuestionsTabBar(),
+          //       ],
+          //     )),
+
+          // // Upcoming session section
+          // Visibility(
+          //   visible: sessions.length >= 1,
+          //   child: Container(
+          //       margin: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           const HeadingSix(
+          //               text: "Upcoming Session",
+          //               textColor: AppColors.textColorLightBg),
+          //           haveSession(context)
+          //         ],
+          //       )),
+          // ),
+
+          // // Online Assesment
+          // Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          //   width: MediaQuery.of(context).size.width,
+          //   padding: EdgeInsets.all(16),
+          //   decoration: BoxDecoration(
+          //       color: AppColors.darkBackground,
+          //       borderRadius: BorderRadius.circular(15)),
+          //   child: Row(
+          //     children: [
+          //       Expanded(
+          //         child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             HeadingSix(
+          //                 text: "Take an assessment",
+          //                 textColor: AppColors.primaryColor),
+          //             SizedBox(
+          //               height: 8,
+          //             ),
+          //             SubtitleTwo(
+          //                 text:
+          //                     'Consider this a celebration of curiosity and openness. Go ahead, try it.',
+          //                 textColor: AppColors.subtitleTextDarkBg)
+          //           ],
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         width: 10,
+          //       ),
+          //       Image.asset(
+          //         "assets/images/assessment.png",
+          //         width: 80,
+          //         height: 80,
+          //       )
+          //     ],
+          //   ),
+          // ),
+
+          // // Anonymous profile section
+          // Container(
+          //     width: MediaQuery.of(context).size.width,
+          //     margin: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+          //     padding: const EdgeInsets.all(16),
+          //     decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(15),
+          //         // color: AppColors.darkBackground,
+          //         image: DecorationImage(
+          //             fit: BoxFit.cover,
+          //             image: const AssetImage(
+          //                 "assets/images/anonymous-profile-bg.jpg"),
+          //             colorFilter: ColorFilter.mode(
+          //                 Colors.black.withOpacity(0.8), BlendMode.darken))),
+          //     // color: AppColors.darkBackground,
+          //     child: Row(
+          //       children: [
+          //         Expanded(
+          //           child: Column(
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: const [
+          //               HeadingSix(
+          //                   text: "Set anonymous profile",
+          //                   textColor: AppColors.primaryColor),
+          //               SizedBox(
+          //                 height: 8,
+          //               ),
+          //               SubtitleTwo(
+          //                   text:
+          //                       "Talk to therapist without revealing who you are.",
+          //                   textColor: AppColors.textColorDarkBg)
+          //             ],
+          //           ),
+          //         ),
+          //         const SizedBox(
+          //           width: 16,
+          //         ),
+          //         Image.asset(
+          //           "assets/images/Anonymous.png",
+          //           width: 80,
+          //           height: 80,
+          //         )
+          //       ],
+          //     )),
+          // const SizedBox(
+          //   height: 100,
+          // ),
+        ],
       ),
     );
   }

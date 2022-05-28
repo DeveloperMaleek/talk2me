@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
+import 'package:talk2me/src/logic/create_an%20_account.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -205,11 +207,7 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
       if (password.isEmpty) {
         showPasswordError = true;
       }
-
-      if (firstName.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
-        Navigator.pushNamedAndRemoveUntil(
-            context, accountSetup, (route) => false);
-      }
+      Get.off(accountSetup);
     });
   }
 }

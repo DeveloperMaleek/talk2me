@@ -8,6 +8,8 @@ import 'package:talk2me/src/screens/onboarding/login_page.dart';
 import 'package:talk2me/src/screens/onboarding/onboarding_screen.dart';
 import 'package:talk2me/src/screens/onboarding/personal_user_signup.dart';
 import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_page.dart';
+import 'package:talk2me/src/screens/profile/settings.dart';
+import 'package:talk2me/src/screens/profile/settings_demo.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
 import 'package:talk2me/src/screens/therapy/booking_session_success.dart';
@@ -34,11 +36,17 @@ const String personalSignUp = "personalSignup";
 const String loginPage = "loginPage";
 const String accountSetup = "accountSetup";
 const String wordsOfAffirmation = "wordsOfAffirmation";
+const String profileSettings = "settings";
+const String settingsdemo = "settingsdemo";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case clientNavigation:
       return MaterialPageRoute(builder: (context) => ClientNavigation());
+    case profileSettings:
+      return MaterialPageRoute(builder: (context) => Settings());
+    case settingsdemo:
+      return MaterialPageRoute(builder: (context) => Settings_Demo());
     case accountSetup:
       return MaterialPageRoute(builder: (context) => AccountSetup());
     case wordsOfAffirmation:

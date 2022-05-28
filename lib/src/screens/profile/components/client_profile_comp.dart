@@ -1,113 +1,108 @@
 import 'package:flutter/material.dart';
-import 'package:talk2me/src/screens/profile/components/anonymous_comp.dart';
-import 'package:talk2me/src/screens/profile/components/overview_comp.dart';
-import 'package:talk2me/src/screens/profile/components/settings_comp.dart';
+import 'package:get/get.dart';
+import 'package:talk2me/routes.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
-class ClientProfileTab extends StatefulWidget {
-  const ClientProfileTab({
-    Key? key,
-  }) : super(key: key);
+// This section is for the top container of the profile page. It can be used for both the therapists and the clients. It must contain the following information: Profile Name, Cover Image, Profile Image, Plan or Status Text. It can contain either of the followings: Button text, Ratings Icon for therapists or Status text for clients.
 
-  @override
-  State<ClientProfileTab> createState() => _ClientProfileTab();
-}
+class UserTopSection extends StatelessWidget {
+  const UserTopSection(
+      {Key? key,
+      required this.profileName,
+      required this.coverImage,
+      required this.profileImage,
+      required this.planOrStatus,
+      required this.planOrStatusColor,
+      this.onPressed})
+      : super(key: key);
 
-class _ClientProfileTab extends State<ClientProfileTab>
-    with TickerProviderStateMixin {
-  int tab = 0;
+  final String profileName;
+  final String coverImage;
+  final String profileImage;
+  final String planOrStatus; // Use this for texts under the profile name
+  final Color planOrStatusColor;
+  final Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 3, vsync: this);
-    return SizedBox(
-        width: double.maxFinite,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TabBar(
-              padding: EdgeInsets.only(top: 15),
-              controller: _tabController,
-              onTap: (index) {
-                setState(() {
-                  tab = index;
-                });
-              },
-              indicator:
-                  const UnderlineTabIndicator(borderSide: BorderSide.none),
-              labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              indicatorSize: TabBarIndicatorSize.label,
-              labelColor: AppColors.textColorLightBg,
-              unselectedLabelColor: AppColors.subtitleTextLightBg,
-              isScrollable: true,
-              tabs: [
-                Tab(
-                    child: Column(
+    return Column(children: [
+      Stack(clipBehavior: Clip.none, children: [
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.zero,
+                  topRight: Radius.zero,
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(coverImage),
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.6), BlendMode.darken))),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height / 4.5,
+        ),
+        Positioned(
+          left: 20,
+          top: MediaQuery.of(context).size.height / 6,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            // Profile picture
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 40,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                            color: AppColors.primaryColor,
+                            width: 2,
+                            style: BorderStyle.solid)),
+                    child: ClipRRect(
+                        clipBehavior: Clip.antiAlias,
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          profileImage,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.fill,
+                        )),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 8),
+              width: MediaQuery.of(context).size.width - 40,
+              child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SubtitleOne(
-                      text: "Overview",
-                      textColor: AppColors.textColorLightBg,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeadingSix(
+                          text: profileName,
+                          textColor: AppColors.textColorLightBg,
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        SubtitleTwo(
+                          text: planOrStatus,
+                          textColor: planOrStatusColor,
+                        )
+                      ],
                     ),
-                    Visibility(
-                      visible: tab == 0,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 8),
-                        width: 70,
-                        height: 4,
-                        color: AppColors.darkBackground,
-                      ),
-                    )
-                  ],
-                )),
-                Tab(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SubtitleOne(
-                      text: "Anonymous",
-                      textColor: AppColors.textColorLightBg,
-                    ),
-                    Visibility(
-                      visible: tab == 1,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 8),
-                        width: 84,
-                        height: 4,
-                        color: AppColors.darkBackground,
-                      ),
-                    )
-                  ],
-                )),
-                Tab(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SubtitleOne(
-                      text: "Settings",
-                      textColor: AppColors.textColorLightBg,
-                    ),
-                    Visibility(
-                      visible: tab == 2,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 8),
-                        width: 60,
-                        height: 4,
-                        color: AppColors.darkBackground,
-                      ),
-                    )
-                  ],
-                ))
-              ]),
-          Container(
-            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-            width: MediaQuery.of(context).size.width,
-            // height: MediaQuery.of(context).size.height -
-            //     (MediaQuery.of(context).size.height / 4.5),
-            child: IndexedStack(index: tab, children: [
-              Visibility(visible: tab == 0, child: OverviewComp()),
-              Visibility(visible: tab == 1, child: AnonymousComp()),
-              Visibility(visible: tab == 2, child: SettingsComp()),
-            ]),
-          )
-        ]));
+                  ]),
+            )
+          ]),
+        )
+      ])
+    ]);
   }
 }

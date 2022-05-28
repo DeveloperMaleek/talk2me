@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart' as buttons;
 import 'package:talk2me/src/components/inputfield.dart';
-import 'package:talk2me/src/static/shapes.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -15,6 +14,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _passwordVisible = true;
+
+  bool makeButtonActive = false;
+
+  //  Error text
+  bool showEmailError = false;
+  bool showPasswordError = false;
+
+  // Text Editing controller
   final TextEditingController _emailTextEditingController =
       TextEditingController();
   final TextEditingController _passwordTextEditingController =
@@ -24,6 +31,39 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _passwordVisible = !_passwordVisible;
     });
+  }
+
+  @override
+  void initState() {
+    setState(() {
+      _emailTextEditingController.addListener(() {
+        if (_emailTextEditingController.text.isNotEmpty) {
+          showEmailError = false;
+        } else {
+          showEmailError = true;
+        }
+
+        if (_emailTextEditingController.text.isNotEmpty &&
+            _passwordTextEditingController.text.isNotEmpty) {
+          makeButtonActive = true;
+        }
+      });
+
+      _passwordTextEditingController.addListener(() {
+        if (_passwordTextEditingController.text.isNotEmpty) {
+          showPasswordError = false;
+        } else {
+          showPasswordError = true;
+        }
+
+        if (_emailTextEditingController.text.isNotEmpty &&
+            _passwordTextEditingController.text.isNotEmpty) {
+          makeButtonActive = true;
+        }
+      });
+    });
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -50,6 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _emailTextEditingController,
                     inputType: TextInputType.emailAddress,
                     label: "Email address",
+                    errorText:
+                        showEmailError == true ? "Email cannot be empty" : null,
                     placeholder: "email address",
                   ),
                   const SizedBox(height: 16),
@@ -61,6 +103,9 @@ class _LoginPageState extends State<LoginPage> {
                         suffixText: _passwordVisible ? "Show" : "Hide",
                         onSuffixTextTap: passwordVisible,
                         label: "Password",
+                        errorText: showPasswordError == true
+                            ? "Password cannot be empty"
+                            : null,
                         obscureText: _passwordVisible,
                         placeholder: "password",
                       ),
@@ -72,7 +117,16 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 24),
                   buttons.FilledButton(
-                      buttonText: "Login", onPressed: onLoginButtonPressed),
+                    buttonText: "Login",
+                    onPressed: onLoginButtonPressed,
+                    buttonColor: makeButtonActive == true
+                        ? AppColors.primaryColor
+                        : AppColors.subtitleTextDarkBg,
+                    buttonTextColor: makeButtonActive == true
+                        ? AppColors.textColorLightBg
+                        : AppColors.textColorDarkBg,
+                  ),
+
                   const SizedBox(height: 16),
                   // Row(
                   //   children: [
@@ -108,13 +162,13 @@ class _LoginPageState extends State<LoginPage> {
                   //     outlineColor: AppColors.errorColor),
                   // const SizedBox(height: 24),
                   GestureDetector(
-                    onTap: onLoginTextTapped,
+                    onTap: onCreateAccountTextTapped,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         BodyTextOne(
                           text: "New to Talk2me? ",
-                          textColor: AppColors.subtitleTextDarkBg,
+                          textColor: AppColors.subtitleTextLightBg,
                         ),
                         SubtitleOne(
                           text: "Create an Account",
@@ -128,12 +182,28 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 
-  onLoginTextTapped() {
+  onCreateAccountTextTapped() {
     Navigator.popAndPushNamed(context, joinWithOrg);
   }
 
   onLoginButtonPressed() {
-    Navigator.pushNamedAndRemoveUntil(
-        context, clientNavigation, (route) => false);
+    String email = _emailTextEditingController.text;
+    String password = _passwordTextEditingController.text;
+
+    // Function to validate email and password
+    setState(() {
+      if (email.isEmpty) {
+        showEmailError = true;
+      }
+
+      if (password.isEmpty) {
+        showPasswordError = true;
+      }
+
+      if (email.isNotEmpty & password.isNotEmpty) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, clientNavigation, (route) => false);
+      }
+    });
   }
 }

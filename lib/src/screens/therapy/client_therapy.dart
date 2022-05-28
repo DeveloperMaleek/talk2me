@@ -6,7 +6,7 @@ import 'package:talk2me/src/components/sessions_list.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
-List bookedSessions = [1];
+List bookedSessions = [];
 
 class ClientTherapy extends StatefulWidget {
   const ClientTherapy({Key? key}) : super(key: key);
@@ -48,9 +48,6 @@ class DataTherapyView extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
@@ -73,8 +70,8 @@ class DataTherapyView extends StatelessWidget {
             decoration: const BoxDecoration(
               color: AppColors.greenBackground,
               borderRadius: const BorderRadius.only(
-                  topLeft: const Radius.circular(15),
-                  topRight: Radius.circular(15)),
+                  topLeft: const Radius.circular(30),
+                  topRight: Radius.circular(30)),
             ),
             width: MediaQuery.of(context).size.width,
             child: bookedSessions.isNotEmpty
@@ -130,8 +127,6 @@ class NoTherapyDataView extends StatelessWidget {
             children: [
               AppBarNav(
                 pageHeading: 'Therapy',
-                buttonText: 'My Notes',
-                buttonColor: AppColors.primaryColor,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 100),

@@ -8,6 +8,27 @@ import 'package:talk2me/theme/text_styles.dart';
 import "package:images_picker/images_picker.dart";
 import 'dart:async';
 
+bool isTherapist = true;
+
+enum coverImageList { bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9, bg10 }
+
+int coverImageIndex = 0;
+
+String selectedCoverImage = coverImage[coverImageIndex];
+
+List coverImage = [
+  "assets/images/avatar-two.png",
+  "assets/images/avatar-three.png",
+  "assets/images/avatar-four.png",
+  "assets/images/avatar-five.png",
+  "assets/images/avatar-six.png",
+  "assets/images/avatar-two.png",
+  "assets/images/avatar-two.png",
+  "assets/images/avatar-two.png",
+  "assets/images/avatar-two.png",
+  "assets/images/avatar-two.png",
+];
+
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -26,6 +47,8 @@ class _SettingsState extends State<Settings> {
       _passwordVisible = !_passwordVisible;
     });
   }
+
+  // bool selectedCoverImage = false;
 
   bool allowEmailNotification = true;
 
@@ -50,9 +73,6 @@ class _SettingsState extends State<Settings> {
       TextEditingController();
 
   final TextEditingController _emailTextEditingController =
-      TextEditingController();
-
-  final TextEditingController _uploadImageTextEditingController =
       TextEditingController();
 
   final TextEditingController _bioTextEditingController =
@@ -147,68 +167,182 @@ class _SettingsState extends State<Settings> {
                     label: "Email address",
                     placeholder: "malik@talk2me.com",
                   ),
-
-                  // spacingSmall,
-                  // Column(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     InputField(
-                  //       characterLength: _characterLength,
-                  //       maxLines: 5,
-                  //       controller: _bioTextEditingController,
-                  //       label: "Brief about you",
-                  //       placeholder: "Tell people a little about yourself",
-                  //       inputType: TextInputType.multiline,
-                  //     ),
-                  //     BodyTextTwo(
-                  //         text: "300 characters",
-                  //         textColor: AppColors.textColorLightBg)
-                  //   ],
-                  // ),
-                ],
-              ),
-            ),
-
-            // Goal section
-            Container(
-              padding: EdgeInsets.all(16),
-              margin: EdgeInsets.symmetric(vertical: 10),
-              // padding: EdgeInsets.all(16),
-              decoration: _customBoxDecoration(),
-              child: AnonymousSettingsComp(),
-            ),
-
-            // Cover image
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(16),
-              decoration: _customBoxDecoration(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BodyTextOne(
-                      text: "Goals", textColor: AppColors.textColorLightBg),
+                  spacingSmall,
                   Visibility(
-                    visible: showGoalError,
-                    child: SubtitleTwo(
-                        text: "You cannot select more than 3 goals at once.",
-                        textColor: AppColors.errorColor),
+                    visible: isTherapist,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputField(
+                          characterLength: _characterLength,
+                          maxLines: 5,
+                          controller: _bioTextEditingController,
+                          label: "Brief about you",
+                          placeholder: "Tell people a little about yourself",
+                          inputType: TextInputType.multiline,
+                        ),
+                        BodyTextTwo(
+                            text: "300 characters",
+                            textColor: AppColors.textColorLightBg)
+                      ],
+                    ),
                   ),
-                  spacingMedium,
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: [
-                      responseContainer(0, "Sleeping Better"),
-                      responseContainer(1, "Managing Anger"),
-                      responseContainer(3, "Tackling Stress"),
-                      responseContainer(4, "Work-Life Balance"),
-                    ],
-                  )
                 ],
               ),
             ),
+
+            // Expertise section
+            isTherapist == true
+                ? Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.all(16),
+                    decoration: _customBoxDecoration(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputField(
+                          iconData: Icons.add_circle,
+                          onSuffixIconTap: () {
+                            setState(() {
+                              interest.add(_interestTextEditingController.text);
+                            });
+                            _interestTextEditingController.clear();
+                          },
+                          controller: _interestTextEditingController,
+                          label: "Expertise",
+                          placeholder: "What's your focus area?",
+                        ),
+                        spacingMedium,
+                        Visibility(
+                          visible: interest.isNotEmpty,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CaptionText(
+                                  text: 'Click on any option to remove',
+                                  textColor: AppColors.textColorLightBg),
+                              spacingSmall,
+                              Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Wrap(
+                                      spacing: 10,
+                                      runSpacing: 10,
+                                      children: [
+                                        for (int i = 0;
+                                            i < interest.length;
+                                            i++)
+                                          textAreaContainer(i, "${interest[i]}",
+                                              () {
+                                            interest.removeAt(i);
+                                          })
+                                      ]))
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    padding: EdgeInsets.all(16),
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    // padding: EdgeInsets.all(16),
+                    decoration: _customBoxDecoration(),
+                    child: AnonymousSettingsComp(),
+                  ),
+
+            //Language section
+            isTherapist == true
+                ? Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.all(16),
+                    decoration: _customBoxDecoration(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InputField(
+                          iconData: Icons.add_circle,
+                          onSuffixIconTap: () {
+                            setState(() {
+                              language.add(_languageTextEditingController.text);
+                            });
+                            _languageTextEditingController.clear();
+                          },
+                          controller: _languageTextEditingController,
+                          label: "Language",
+                          placeholder: "What languages do you speak?",
+                        ),
+                        spacingMedium,
+                        Visibility(
+                          visible: language.isNotEmpty,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CaptionText(
+                                  text: 'Click on any option to remove',
+                                  textColor: AppColors.textColorLightBg),
+                              spacingSmall,
+                              Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Wrap(
+                                      spacing: 10,
+                                      runSpacing: 10,
+                                      children: [
+                                        for (int i = 0;
+                                            i < language.length;
+                                            i++)
+                                          textAreaContainer(i, "${language[i]}",
+                                              () {
+                                            language.removeAt(i);
+                                          })
+                                      ]))
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(16),
+                    decoration: _customBoxDecoration(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BodyTextOne(
+                            text: "Goals",
+                            textColor: AppColors.textColorLightBg),
+                        Visibility(
+                          visible: showGoalError,
+                          child: SubtitleTwo(
+                              text:
+                                  "You cannot select more than 3 goals at once.",
+                              textColor: AppColors.errorColor),
+                        ),
+                        spacingMedium,
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: [
+                            responseContainer(0, "Sleeping Better"),
+                            responseContainer(1, "Managing Anger"),
+                            responseContainer(3, "Tackling Stress"),
+                            responseContainer(4, "Work-Life Balance"),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+
+            //Interest section
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: Column(
@@ -227,120 +361,15 @@ class _SettingsState extends State<Settings> {
                           spacing: 10,
                           runSpacing: 10,
                           children: [
-                            profileCoverImage("assets/images/avatar-two.png"),
-                            profileCoverImage("assets/images/avatar-two.png"),
-                            profileCoverImage("assets/images/avatar-three.png"),
-                            profileCoverImage("assets/images/avatar-four.png"),
-                            profileCoverImage("assets/images/avatar-five.png"),
-                            profileCoverImage("assets/images/avatar-six.png"),
-                            profileCoverImage("assets/images/avatar-seven.png"),
-                            profileCoverImage("assets/images/avatar-eight.png"),
-                            profileCoverImage("assets/images/avatar-nine.png"),
-                            profileCoverImage("assets/images/avatar-ten.png"),
+                            for (int i = 0; i < coverImage.length; i++)
+                              profileCoverImage(
+                                  coverImage[i], i, coverImageList.values[i]),
                           ]),
                     ),
                   )
                 ],
               ),
             ),
-
-            // //Language section
-            // Container(
-            //   margin: EdgeInsets.symmetric(vertical: 10),
-            //   padding: EdgeInsets.all(16),
-            //   decoration: _customBoxDecoration(),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       InputField(
-            //         iconData: Icons.add_circle,
-            //         onSuffixIconTap: () {
-            //           setState(() {
-            //             language.add(_languageTextEditingController.text);
-            //           });
-            //           _languageTextEditingController.clear();
-            //         },
-            //         controller: _languageTextEditingController,
-            //         label: "Language",
-            //         placeholder: "What languages do you speak?",
-            //       ),
-            //       spacingMedium,
-            //       Visibility(
-            //         visible: language.isNotEmpty,
-            //         child: Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             CaptionText(
-            //                 text: 'Click on any option to remove',
-            //                 textColor: AppColors.textColorLightBg),
-            //             spacingSmall,
-            //             Container(
-            //                 width: MediaQuery.of(context).size.width,
-            //                 padding: EdgeInsets.all(10),
-            //                 decoration: BoxDecoration(
-            //                     color: AppColors.primaryColor,
-            //                     borderRadius: BorderRadius.circular(15)),
-            //                 child: Wrap(spacing: 10, runSpacing: 10, children: [
-            //                   for (int i = 0; i < language.length; i++)
-            //                     textAreaContainer(i, "${language[i]}", () {
-            //                       language.removeAt(i);
-            //                     })
-            //                 ]))
-            //           ],
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
-            // //Interest section
-            // Container(
-            //   margin: EdgeInsets.symmetric(vertical: 10),
-            //   padding: EdgeInsets.all(16),
-            //   decoration: _customBoxDecoration(),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       InputField(
-            //         iconData: Icons.add_circle,
-            //         onSuffixIconTap: () {
-            //           setState(() {
-            //             interest.add(_interestTextEditingController.text);
-            //           });
-            //           _interestTextEditingController.clear();
-            //         },
-            //         controller: _interestTextEditingController,
-            //         label: "Expertise",
-            //         placeholder: "What's your focus area?",
-            //       ),
-            //       spacingMedium,
-            //       Visibility(
-            //         visible: interest.isNotEmpty,
-            //         child: Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             CaptionText(
-            //                 text: 'Click on any option to remove',
-            //                 textColor: AppColors.textColorLightBg),
-            //             spacingSmall,
-            //             Container(
-            //                 width: MediaQuery.of(context).size.width,
-            //                 padding: EdgeInsets.all(10),
-            //                 decoration: BoxDecoration(
-            //                     color: AppColors.primaryColor,
-            //                     borderRadius: BorderRadius.circular(15)),
-            //                 child: Wrap(spacing: 10, runSpacing: 10, children: [
-            //                   for (int i = 0; i < interest.length; i++)
-            //                     textAreaContainer(i, "${interest[i]}", () {
-            //                       interest.removeAt(i);
-            //                     })
-            //                 ]))
-            //           ],
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
 
             // //Notification section
             // Container(
@@ -551,16 +580,31 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  GestureDetector profileCoverImage(String imageUrl) {
+  GestureDetector profileCoverImage(String imageUrl, int index, var value) {
     return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedCoverImage = value.toString();
+        });
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Image.asset(
-          imageUrl,
-          width: 120,
-          height: 80,
-          fit: BoxFit.fill,
-        ),
+        child: Stack(children: [
+          Image.asset(
+            imageUrl,
+            width: 120,
+            height: 80,
+            fit: BoxFit.fill,
+          ),
+          Visibility(
+            visible: selectedCoverImage == value.toString(),
+            child: Positioned(
+                child: Icon(
+              Icons.check_outlined,
+              color: AppColors.successColor,
+            )),
+          )
+        ]),
       ),
     );
   }
@@ -620,7 +664,12 @@ class _SettingsState extends State<Settings> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                selectedCoverImage = coverImage[coverImageIndex];
+                print(coverImage[coverImageIndex]);
+              });
+            },
             child: SubtitleOne(
               text: "Save",
               textColor: AppColors.textColorPrimary,

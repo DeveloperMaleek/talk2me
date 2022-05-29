@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: appTheme(),
       // home: const TherapistSelection(),
       onGenerateRoute: controller,
-      initialRoute: therapistDashboard,
+      initialRoute: onboardingScreen,
     );
   }
 }

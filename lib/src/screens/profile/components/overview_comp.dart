@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
+
+List expertise = [
+  "Clinical therapy",
+  "Counselling",
+  "Teen Talk",
+  "Psychotherapy"
+];
+
+List language = ["English", "Twi", "French", "Ashanti", "Igbo", "Yoruba"];
 
 class OverviewComp extends StatelessWidget {
   OverviewComp({Key? key}) : super(key: key);
@@ -14,38 +22,6 @@ class OverviewComp extends StatelessWidget {
           text:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed morbi habitant imperdiet volutpat nunc eget.",
           textColor: AppColors.textColorLightBg,
-        ),
-        spacing,
-        Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.facebookSquare),
-              iconSize: 30,
-            ),
-            IconButton(
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.twitterSquare),
-              iconSize: 30,
-            ),
-            IconButton(
-              color: AppColors.darkBackground,
-              splashColor: AppColors.primaryColor,
-              onPressed: () {},
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(0),
-              icon: const FaIcon(FontAwesomeIcons.linkedin),
-              iconSize: 30,
-            ),
-          ],
         ),
         spacing,
         SizedBox(
@@ -62,10 +38,8 @@ class OverviewComp extends StatelessWidget {
                 runSpacing: 10,
                 spacing: 10,
                 children: [
-                  containerBox("Counselling"),
-                  containerBox("Teen Talk"),
-                  containerBox("Psychotherapy"),
-                  containerBox("Clinical Therapy")
+                  for (int i = 0; i < expertise.length; i++)
+                    containerBox(expertise[i])
                 ],
               )
             ],
@@ -86,48 +60,18 @@ class OverviewComp extends StatelessWidget {
                 runSpacing: 10,
                 spacing: 10,
                 children: [
-                  containerBox("English"),
-                  containerBox("French"),
-                  containerBox("Ashanti"),
-                  containerBox("Twi"),
-                  containerBox("Swahili"),
-                  containerBox("Yoruba"),
-                  containerBox("Igbo"),
+                  for (int i = 0; i < language.length; i++)
+                    containerBox(language[i]),
                 ],
               )
             ],
           ),
         ),
-        spacing,
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SubtitleOne(
-                text: "Interests",
-                textColor: AppColors.textColorLightBg,
-              ),
-              spacing,
-              Wrap(
-                runSpacing: 10,
-                spacing: 10,
-                children: [
-                  containerBox("Gender"),
-                  containerBox("Mental Health"),
-                  containerBox("Football"),
-                  containerBox("Organization Psychology"),
-                  containerBox("Human Evolution"),
-                ],
-              )
-            ],
-          ),
-        )
       ],
     );
   }
 
-  SizedBox spacing = const SizedBox(
+  final SizedBox spacing = const SizedBox(
     height: 16,
   );
 

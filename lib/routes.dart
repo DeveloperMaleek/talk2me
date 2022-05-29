@@ -10,6 +10,7 @@ import 'package:talk2me/src/screens/onboarding/onboarding_screen.dart';
 import 'package:talk2me/src/screens/onboarding/personal_user_signup.dart';
 import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_page.dart';
 import 'package:talk2me/src/screens/profile/settings.dart';
+import 'package:talk2me/src/screens/profile/therapist_profile.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
 import 'package:talk2me/src/screens/therapy/booking_session_success.dart';
@@ -17,6 +18,7 @@ import 'package:talk2me/src/screens/therapy/client_session_mode.dart';
 import 'package:talk2me/src/screens/therapy/client_therapy.dart';
 import 'package:talk2me/src/screens/therapy/select_available_sessions.dart';
 import 'package:talk2me/src/screens/therapy/session_therapist_preview.dart';
+import 'package:talk2me/src/screens/therapy/therapist/sessions_page.dart';
 import 'package:talk2me/src/screens/therapy/therapist_selection.dart';
 
 const String clientDashboardPage = 'clientDashboardPage';
@@ -39,6 +41,8 @@ const String wordsOfAffirmation = "wordsOfAffirmation";
 const String profileSettings = "settings";
 const String settingsdemo = "settingsdemo";
 const String therapistDashboard = "therapistDashboard";
+const String therapistSessionPage = "therapistSessionPage";
+const String therapistProfilePage = "therapistProfilePage";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
@@ -46,6 +50,10 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ClientNavigation());
     case therapistDashboard:
       return MaterialPageRoute(builder: (context) => TherapistDashboard());
+    case therapistSessionPage:
+      return MaterialPageRoute(builder: (context) => TherapistSessions());
+    case therapistProfilePage:
+      return MaterialPageRoute(builder: (context) => TherapistProfile());
     case profileSettings:
       return MaterialPageRoute(builder: (context) => Settings());
     case accountSetup:

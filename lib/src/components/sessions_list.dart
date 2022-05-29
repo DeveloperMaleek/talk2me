@@ -6,8 +6,18 @@ import 'package:talk2me/theme/text_styles.dart';
 // import 'package:talk2me/widgets/buttons.dart' as button;
 
 class UpcomingSession extends StatelessWidget {
-  const UpcomingSession({Key? key}) : super(key: key);
+  const UpcomingSession(
+      {Key? key,
+      required this.buttonText,
+      required this.onButtonPressed,
+      required this.isTherapist,
+      required this.planOrStatusText})
+      : super(key: key);
 
+  final String buttonText;
+  final Function() onButtonPressed;
+  final bool isTherapist;
+  final String planOrStatusText;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +44,7 @@ class UpcomingSession extends StatelessWidget {
                     height: 8,
                   ),
                   CaptionText(
-                      text: "Available",
+                      text: planOrStatusText,
                       textColor: AppColors.subtitleTextLightBg)
                 ],
               ),
@@ -123,27 +133,29 @@ class UpcomingSession extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledButton(
-                        buttonText: "start session",
-                        onPressed: () {
-                          Navigator.pushNamed(context, clientSessionMode);
-                        }),
+                      buttonText: buttonText,
+                      onPressed: onButtonPressed,
+                    ),
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(15),
+                  Visibility(
+                    visible: isTherapist == false,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: IconButton(
+                          // padding: EdgeInsets.all(16),
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.more_vert,
+                            size: 24,
+                            color: AppColors.textColorLightBg,
+                          )),
                     ),
-                    child: IconButton(
-                        // padding: EdgeInsets.all(16),
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.more_vert,
-                          size: 24,
-                          color: AppColors.textColorLightBg,
-                        )),
                   )
                 ],
               ))

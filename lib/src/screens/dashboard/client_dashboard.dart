@@ -29,13 +29,14 @@ class _ClientDashboardState extends State<ClientDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.darkBackground,
+      backgroundColor: AppColors.lightBackground,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            floating: true,
             collapsedHeight: 300,
             backgroundColor: Colors.transparent,
-            expandedHeight: 500,
+            expandedHeight: MediaQuery.of(context).size.height,
             flexibleSpace: Stack(children: [
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 78, 20, 24),

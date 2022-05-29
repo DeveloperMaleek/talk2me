@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk2me/src/screens/dashboard/client_dashboard.dart';
+import 'package:talk2me/src/screens/dashboard/therapist_dashboard.dart';
 import 'package:talk2me/src/screens/navigation/navigation.dart';
 import 'package:talk2me/src/screens/onboarding/account_setup_steps/account_setup.dart';
 import 'package:talk2me/src/screens/onboarding/employee_verification.dart';
@@ -9,7 +10,6 @@ import 'package:talk2me/src/screens/onboarding/onboarding_screen.dart';
 import 'package:talk2me/src/screens/onboarding/personal_user_signup.dart';
 import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_page.dart';
 import 'package:talk2me/src/screens/profile/settings.dart';
-import 'package:talk2me/src/screens/profile/settings_demo.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
 import 'package:talk2me/src/screens/therapy/booking_session_success.dart';
@@ -38,15 +38,16 @@ const String accountSetup = "accountSetup";
 const String wordsOfAffirmation = "wordsOfAffirmation";
 const String profileSettings = "settings";
 const String settingsdemo = "settingsdemo";
+const String therapistDashboard = "therapistDashboard";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case clientNavigation:
       return MaterialPageRoute(builder: (context) => ClientNavigation());
+    case therapistDashboard:
+      return MaterialPageRoute(builder: (context) => TherapistDashboard());
     case profileSettings:
       return MaterialPageRoute(builder: (context) => Settings());
-    case settingsdemo:
-      return MaterialPageRoute(builder: (context) => Settings_Demo());
     case accountSetup:
       return MaterialPageRoute(builder: (context) => AccountSetup());
     case wordsOfAffirmation:

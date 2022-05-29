@@ -50,14 +50,18 @@ class DataTherapyView extends StatelessWidget {
                 margin: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     HeadingSix(
                         text: "Upcoming Session",
                         textColor: AppColors.textColorLightBg),
                     SizedBox(
                       height: 16,
                     ),
-                    UpcomingSession(),
+                    UpcomingSession(
+                      planOrStatusText: "Available",
+                        buttonText: 'Start Session',
+                        isTherapist: false,
+                        onButtonPressed: () {}),
                   ],
                 ),
               ),

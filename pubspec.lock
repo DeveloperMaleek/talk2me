@@ -158,13 +158,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.11"
-  intl:
-    dependency: transitive
+  indexed_list_view:
+    dependency: "direct main"
     description:
-      name: intl
+      name: indexed_list_view
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.0"
+    version: "2.0.2"
   lints:
     dependency: transitive
     description:
@@ -319,13 +319,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
-  simple_gesture_detector:
-    dependency: transitive
-    description:
-      name: simple_gesture_detector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -352,6 +345,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  sticky_headers:
+    dependency: "direct main"
+    description:
+      name: sticky_headers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   stream_channel:
     dependency: transitive
     description:
@@ -380,13 +380,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-  table_calendar:
-    dependency: "direct main"
-    description:
-      name: table_calendar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.5"
   term_glyph:
     dependency: transitive
     description:

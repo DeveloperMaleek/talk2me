@@ -10,13 +10,14 @@ class AppBarNav extends StatelessWidget with PreferredSizeWidget {
       {Key? key,
       this.pageHeading = '',
       this.buttonText = '',
-      this.buttonColor = Colors.transparent})
+      this.buttonColor = Colors.transparent, this.onPressed})
       : preferredSize = const Size.fromHeight(56.0),
         super(key: key);
 
   final String pageHeading;
   final String buttonText;
   final Color buttonColor;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class AppBarNav extends StatelessWidget with PreferredSizeWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
             ),
-            onPressed: () {},
+            onPressed: onPressed,
             child: SubtitleOne(
               text: buttonText,
               textColor: AppColors.textColorPrimary,

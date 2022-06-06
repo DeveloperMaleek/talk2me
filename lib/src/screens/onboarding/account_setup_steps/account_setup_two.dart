@@ -56,10 +56,6 @@ class _AccountSetupTwoState extends State<AccountSetupTwo> {
       children: [
         Column(
           children: [
-            const HeadingSix(
-              text: "Good evening, Malik",
-              textColor: AppColors.textColorLightBg,
-            ),
             Padding(
               padding: const EdgeInsets.only(top: 24),
               child: Align(

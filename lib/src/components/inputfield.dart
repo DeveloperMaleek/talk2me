@@ -18,7 +18,7 @@ class InputField extends StatelessWidget {
     this.suffixText = '',
     this.iconData,
     this.onTextInputTapped,
-    this.maxLines = 1,
+    this.maxLines = 1, this.validator,
   }) : super(key: key);
 
   final String label;
@@ -34,6 +34,7 @@ class InputField extends StatelessWidget {
   final TextEditingController controller;
   final IconData? iconData;
   final int? maxLines;
+  final FormFieldValidator? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class InputField extends StatelessWidget {
         ),
         TextFormField(
           controller: controller,
+          validator: validator,
           maxLines: maxLines,
           onTap: onTextInputTapped,
           keyboardType: inputType,

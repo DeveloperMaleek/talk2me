@@ -31,10 +31,6 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Column(
         children: [
-          const HeadingSix(
-            text: "Good evening, Malik",
-            textColor: AppColors.textColorLightBg,
-          ),
           Padding(
             padding: const EdgeInsets.only(top: 24, bottom: 36),
             child: Align(

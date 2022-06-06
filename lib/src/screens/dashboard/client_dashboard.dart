@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/animations/dashboard_animation.dart';
 import 'package:talk2me/src/components/buttons.dart';
@@ -21,6 +22,8 @@ class _ClientDashboardState extends State<ClientDashboard> {
     greetingImageUrl();
     super.initState();
   }
+
+
 
   List sessions = ["1", "2"];
 
@@ -78,9 +81,6 @@ class _ClientDashboardState extends State<ClientDashboard> {
                         height: 16,
                       ),
                       TypeWriterBox(),
-                      // HeadingFour(
-                      //     text: "We are with you in every step of the journey.",
-                      //     textColor: AppColors.textColorDarkBg)
                     ],
                   ),
                 ),
@@ -202,6 +202,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
                     )
                   ],
                 )),
+
             const SizedBox(
               height: 100,
             ),
@@ -435,6 +436,45 @@ class _ClientDashboardState extends State<ClientDashboard> {
         ],
       ),
     );
+  }
+
+  onDashboardPage() {
+    Get.bottomSheet(
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 350,
+          padding: EdgeInsets.fromLTRB(16, 24, 16, 48),
+          decoration: BoxDecoration(color: AppColors.greenBackground),
+          child: Column(
+            children: [
+              Container(
+                height: 8,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: AppColors.greenBackground,
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+              HeadingFive(
+                  text: "Welcome to Moyo 💕",
+                  textColor: AppColors.textColorLightBg),
+              SizedBox(
+                height: 24,
+              ),
+              BodyTextOne(
+                  text:
+                      "Moyo is built on the belief that it's good to talk, but it's even better to listen. Here you'll find a safe space to explore your voice. We know it can be overwhelming at first, but I am happy to let you know that you can switch to being anonymous and still enjoy Moyo.\n\nWe look forward to having the deep, meaningful conversations with you soon.",
+                  textColor: AppColors.textColorLightBg),
+              FilledButton(buttonText: "Get started 👍🏽", onPressed: () {})
+            ],
+          ),
+        ),
+        backgroundColor: AppColors.greenBackground,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+        clipBehavior: Clip.antiAlias,
+        isScrollControlled: true,
+        ignoreSafeArea: true);
   }
 
   void greetingMessage() {

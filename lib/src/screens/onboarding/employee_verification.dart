@@ -4,6 +4,7 @@ import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
 import 'package:talk2me/src/logic/create_an%20_account.dart';
+import 'package:talk2me/src/mixins/validator_mixin.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
@@ -14,7 +15,10 @@ class EmployeeVerification extends StatefulWidget {
   State<EmployeeVerification> createState() => _EmployeeVerificationState();
 }
 
-class _EmployeeVerificationState extends State<EmployeeVerification> {
+class _EmployeeVerificationState extends State<EmployeeVerification>
+    with ValidationMixin {
+  final formKey = GlobalKey<FormState>();
+
   bool _passwordVisible = true;
 
   //  Text controllers declarations
@@ -44,13 +48,9 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
       // Checks if first name is not empty and collapse error
       _firstnameTextEditingController.addListener(() {
         if (_firstnameTextEditingController.text.isNotEmpty) {
-          showFirstNameError = false;
-        } else {
-          showFirstNameError = true;
+          formKey.currentState!.validate();
         }
-        if (_emailTextEditingController.text.isNotEmpty &&
-            _passwordTextEditingController.text.isNotEmpty &&
-            _firstnameTextEditingController.text.isNotEmpty) {
+        if (formKey.currentState!.validate()) {
           makeButtonActive = true;
         }
       });
@@ -58,13 +58,9 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
       // Checks if email is not empty and collapse error
       _emailTextEditingController.addListener(() {
         if (_emailTextEditingController.text.isNotEmpty) {
-          showEmailError = false;
-        } else {
-          showEmailError = true;
+          formKey.currentState!.validate();
         }
-        if (_emailTextEditingController.text.isNotEmpty &&
-            _passwordTextEditingController.text.isNotEmpty &&
-            _firstnameTextEditingController.text.isNotEmpty) {
+        if (formKey.currentState!.validate()) {
           makeButtonActive = true;
         }
       });
@@ -72,13 +68,9 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
       // Checks if password is not empty and collapse error
       _passwordTextEditingController.addListener(() {
         if (_passwordTextEditingController.text.isNotEmpty) {
-          showPasswordError = false;
-        } else {
-          showPasswordError = true;
+          formKey.currentState!.validate();
         }
-        if (_emailTextEditingController.text.isNotEmpty &&
-            _passwordTextEditingController.text.isNotEmpty &&
-            _firstnameTextEditingController.text.isNotEmpty) {
+        if (formKey.currentState!.validate()) {
           makeButtonActive = true;
         }
       });
@@ -110,46 +102,56 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
                         textColor: AppColors.subtitleTextLightBg),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.075),
-                  InputField(
-                    label: "First name",
-                    placeholder: "first name",
-                    controller: _firstnameTextEditingController,
-                    errorText: showFirstNameError == true
-                        ? "First name cannot be empty"
-                        : null,
-                  ),
-                  const SizedBox(height: 16),
-                  InputField(
-                    suffixText: "@talk2me.com",
-                    // inputType: TextInputType.emailAddress,
-                    label: "Email address",
-                    placeholder: "email address",
-                    errorText: showEmailError == true
-                        ? "Email field cannot be empty"
-                        : null,
-                    controller: _emailTextEditingController,
-                  ),
-                  const SizedBox(height: 16),
-                  InputField(
-                    label: "Password",
-                    obscureText: true,
-                    placeholder: "password",
-                    errorText: showPasswordError == true
-                        ? "Password cannot be empty"
-                        : null,
-                    controller: _passwordTextEditingController,
-                    onSuffixTextTap: passwordVisible,
-                  ),
-                  const SizedBox(height: 24),
-                  FilledButton(
-                    buttonText: "create an account",
-                    onPressed: onCreateAccount,
-                    buttonColor: makeButtonActive == true
-                        ? AppColors.primaryColor
-                        : AppColors.subtitleTextDarkBg,
-                    buttonTextColor: makeButtonActive == true
-                        ? AppColors.textColorLightBg
-                        : AppColors.outlineColor,
+                  Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        InputField(
+                          label: "First name",
+                          placeholder: "first name",
+                          controller: _firstnameTextEditingController,
+                          validator: validateField,
+                          errorText: showFirstNameError == true
+                              ? "First name cannot be empty"
+                              : null,
+                        ),
+                        const SizedBox(height: 16),
+                        InputField(
+                          suffixText: "@talk2me.com",
+                          // inputType: TextInputType.emailAddress,
+                          label: "Email address",
+                          placeholder: "email address",
+                          errorText: showEmailError == true
+                              ? "Email field cannot be empty"
+                              : null,
+                          controller: _emailTextEditingController,
+                          validator: validateEmail,
+                        ),
+                        const SizedBox(height: 16),
+                        InputField(
+                          label: "Password",
+                          obscureText: true,
+                          placeholder: "password",
+                          errorText: showPasswordError == true
+                              ? "Password cannot be empty"
+                              : null,
+                          controller: _passwordTextEditingController,
+                          validator: validatePassword,
+                          onSuffixTextTap: passwordVisible,
+                        ),
+                        const SizedBox(height: 24),
+                        FilledButton(
+                          buttonText: "create an account",
+                          onPressed: onCreateAccount,
+                          buttonColor: makeButtonActive == true
+                              ? AppColors.primaryColor
+                              : AppColors.subtitleTextDarkBg,
+                          buttonTextColor: makeButtonActive == true
+                              ? AppColors.textColorLightBg
+                              : AppColors.outlineColor,
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16),
                   richTextSpan("Creating an account means you agree to the\n",
@@ -194,20 +196,24 @@ class _EmployeeVerificationState extends State<EmployeeVerification> {
 
     setState(() {
       // Checks if first name is empty and returns error
-      if (firstName.isEmpty) {
-        showFirstNameError = true;
+      if (firstName.isNotEmpty) {
+        formKey.currentState!.validate();
       }
 
-      // Checks if email is empty and returns error
-      if (email.isEmpty) {
-        showEmailError = true;
+      // // Checks if email is empty and returns error
+      if (email.isNotEmpty) {
+        formKey.currentState!.validate();
       }
 
-      // Checks if password is empty and returns error
-      if (password.isEmpty) {
-        showPasswordError = true;
+      // // Checks if password is empty and returns error
+      if (password.isNotEmpty) {
+        formKey.currentState!.validate();
       }
-      Get.off(accountSetup);
+
+      // Checks if all First name, email, and password are validated and create a user
+      if (formKey.currentState!.validate()) {
+        createAccount(email, password, firstName);
+      }
     });
   }
 }

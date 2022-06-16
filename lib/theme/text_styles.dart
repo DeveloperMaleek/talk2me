@@ -32,7 +32,7 @@ class HeadingOne extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 96,
+        fontSize: MediaQuery.of(context).size.width * 0.23,
         fontWeight: FontWeight.w400,
         letterSpacing: -1.5,
         color: textColor);
@@ -58,7 +58,7 @@ class HeadingTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 2 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 60,
+        fontSize: MediaQuery.of(context).size.width * 0.15,
         fontWeight: FontWeight.w400,
         letterSpacing: -0.5,
         color: textColor);
@@ -84,7 +84,7 @@ class HeadingThree extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 3 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 48,
+        fontSize: MediaQuery.of(context).size.width * 0.11,
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
         color: textColor);
@@ -110,7 +110,7 @@ class HeadingFour extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 4 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 34,
+        fontSize: MediaQuery.of(context).size.width * 0.08,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         color: textColor);
@@ -141,7 +141,7 @@ class HeadingFive extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 24,
+        fontSize: MediaQuery.of(context).size.width * 0.06,
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
         color: textColor);
@@ -173,7 +173,7 @@ class HeadingSix extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for headline 1 in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 20,
+        fontSize: MediaQuery.of(context).size.width * 0.05,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
         color: textColor);
@@ -205,7 +205,7 @@ class SubtitleOne extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 16,
+        fontSize: MediaQuery.of(context).size.width * 0.04,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
         color: textColor);
@@ -238,7 +238,7 @@ class SubtitleTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Small Text Subtitle in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 13,
+        fontSize: MediaQuery.of(context).size.width * 0.032,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
         color: textColor);
@@ -271,7 +271,7 @@ class BodyTextOne extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Big Body Text  in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 16,
+        fontSize: MediaQuery.of(context).size.width * 0.04,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
         color: textColor);
@@ -301,7 +301,7 @@ class BodyTextTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Small Body Text in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 14,
+        fontSize: MediaQuery.of(context).size.width * 0.034,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         color: textColor);
@@ -324,7 +324,7 @@ class ButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Button in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 14,
+        fontSize: MediaQuery.of(context).size.width * 0.034,
         fontWeight: FontWeight.w600,
         letterSpacing: 1.25,
         color: textColor);
@@ -350,7 +350,7 @@ class CaptionText extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 12,
+        fontSize: MediaQuery.of(context).size.width * 0.03,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
         color: textColor);
@@ -376,7 +376,7 @@ class OverlineText extends StatelessWidget {
   Widget build(BuildContext context) {
     //Used for Big Text Subtitle in pages
     TextStyle _textStyle = GoogleFonts.raleway(
-        fontSize: 10,
+        fontSize: MediaQuery.of(context).size.width * 0.025,
         fontWeight: FontWeight.w400,
         letterSpacing: 1.5,
         color: textColor);

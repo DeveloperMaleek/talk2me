@@ -6,6 +6,7 @@ ThemeData appTheme() {
   return ThemeData(
     primaryColor: AppColors.primaryColor,
     // primarySwatch: AppColors.primaryColor,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.lightBackground,
     primaryTextTheme: GoogleFonts.ralewayTextTheme(),
     hintColor: Colors.white,

@@ -12,14 +12,17 @@ import 'package:talk2me/src/screens/onboarding/words_of_affirmation/woa_page.dar
 import 'package:talk2me/src/screens/profile/settings.dart';
 import 'package:talk2me/src/screens/profile/therapist_profile.dart';
 import 'package:talk2me/src/screens/therapy/book_therapy_1.dart';
-import 'package:talk2me/src/screens/therapy/book_therapy_2.dart';
+import 'package:talk2me/src/screens/therapy/diagnostic_test.dart';
 import 'package:talk2me/src/screens/therapy/booking_session_success.dart';
 import 'package:talk2me/src/screens/therapy/client_session_mode.dart';
 import 'package:talk2me/src/screens/therapy/client_therapy.dart';
 import 'package:talk2me/src/screens/therapy/select_available_sessions.dart';
 import 'package:talk2me/src/screens/therapy/session_therapist_preview.dart';
+import 'package:talk2me/src/screens/therapy/test_result.dart';
 import 'package:talk2me/src/screens/therapy/therapist/sessions_page.dart';
 import 'package:talk2me/src/screens/therapy/therapist_selection.dart';
+import 'package:talk2me/src/services/callpage.dart';
+import 'package:talk2me/src/services/temp_video.dart';
 
 const String clientDashboardPage = 'clientDashboardPage';
 const String selectAvailableSessions = 'selectAvailableSessions';
@@ -27,7 +30,7 @@ const String sessionTherapistPreview = 'sessionTherapistPreview';
 const String bookedSessionSuccessful = 'bookedSessionSuccessful';
 const String clientNavigation = "clientNavigation";
 const String therapyBookSession = "therapyBookSession";
-const String therapyBookSession2 = "therapyBookSession2";
+const String diagnosticTestPage = "diagnosticTestPage";
 const String therapySelection = "therapySelection";
 const String clientTherapy = "clientTherapy";
 const String clientSessionMode = "clientSessionMode";
@@ -43,6 +46,9 @@ const String settingsdemo = "settingsdemo";
 const String therapistDashboard = "therapistDashboard";
 const String therapistSessionPage = "therapistSessionPage";
 const String therapistProfilePage = "therapistProfilePage";
+const String diagnosticResultPage = "diagnosticResultPage";
+const String callPage = "callPage";
+const String calendarTest = "calendar";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
@@ -50,6 +56,12 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ClientNavigation());
     case therapistDashboard:
       return MaterialPageRoute(builder: (context) => TherapistDashboard());
+    case calendarTest:
+      return MaterialPageRoute(builder: (context) => CalenderTest());
+    case callPage:
+      return MaterialPageRoute(builder: (context) => CallPage());
+    case diagnosticResultPage:
+      return MaterialPageRoute(builder: (context) => DiagnosticTestResult());
     case therapistSessionPage:
       return MaterialPageRoute(builder: (context) => TherapistSessions());
     case therapistProfilePage:
@@ -84,8 +96,8 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => SessionSuccessPage());
     case therapyBookSession:
       return MaterialPageRoute(builder: (context) => BookTherapy1());
-    case therapyBookSession2:
-      return MaterialPageRoute(builder: (context) => BookTherapy2());
+    case diagnosticTestPage:
+      return MaterialPageRoute(builder: (context) => DiagnosticTestPage());
     case therapySelection:
       return MaterialPageRoute(builder: (context) => TherapistSelection());
     default:

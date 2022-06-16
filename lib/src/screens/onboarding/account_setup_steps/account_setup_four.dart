@@ -86,8 +86,8 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
             },
       onTapCancel: () {},
       child: Container(
-        width: 150,
-        height: 150,
+        width: MediaQuery.of(context).size.width * 0.36,
+        height: MediaQuery.of(context).size.height * 0.19,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
             color: responseState[index] ? AppColors.greenBackground : null,
@@ -99,7 +99,9 @@ class _AccountSetupFourState extends State<AccountSetupFour> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(imageUrl, width: 100, height: 100),
+            SvgPicture.asset(imageUrl,
+                width: MediaQuery.of(context).size.width * 0.24,
+                height: MediaQuery.of(context).size.height * 0.11),
             SizedBox(
               height: 8,
             ),

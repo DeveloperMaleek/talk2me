@@ -56,12 +56,14 @@ class OutlineButton extends StatelessWidget {
       required this.buttonText,
       required this.buttonTextColor,
       required this.onPressed,
-      required this.outlineColor})
+      required this.outlineColor,
+      this.backgroundColor})
       : super(key: key);
 
   final String buttonText;
   final Color outlineColor;
   final Color buttonTextColor;
+  final Color? backgroundColor;
   final Function() onPressed;
 
   @override
@@ -73,6 +75,7 @@ class OutlineButton extends StatelessWidget {
         textColor: buttonTextColor,
       ),
       style: OutlinedButton.styleFrom(
+        backgroundColor: backgroundColor,
         fixedSize: Size(MediaQuery.of(context).size.width, 50),
         elevation: 0,
         padding: const EdgeInsets.all(16),

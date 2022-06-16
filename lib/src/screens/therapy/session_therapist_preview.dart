@@ -34,7 +34,7 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview> {
           )
         ]),
         child: FilledButton(
-          buttonText: "Proceed to book session",
+          buttonText: "Proceed to book session 👍🏽",
           onPressed: () {
             Navigator.pushNamed(context, route.selectAvailableSessions);
           },
@@ -46,8 +46,8 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview> {
           children: [
             const TopSection(
                 profileName: "Asamoah Gyan",
-                coverImage: "assets/images/profile-background-8.jpg",
-                profileImage: "assets/images/profile-background-9.jpg",
+                coverImage: "assets/images/good-morning.jpg",
+                profileImage: "assets/images/avatar-four.png",
                 planOrStatus: "Available",
                 planOrStatusColor: AppColors.successColor,
                 ratingOrStatusText: "Rating",
@@ -57,7 +57,7 @@ class _SessionTherapistPreviewState extends State<SessionTherapistPreview> {
 
             // Overview and Review Tabs are here
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.15,
             ),
             ProfileTab(),
           ],

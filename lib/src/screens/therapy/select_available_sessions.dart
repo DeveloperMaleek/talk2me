@@ -39,7 +39,7 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
             )
           ]),
           child: FilledButton(
-            buttonText: "Confirm Booking",
+            buttonText: "Confirm Booking 👍🏽",
             onPressed: () {
               Navigator.pushNamed(context, route.bookedSessionSuccessful);
             },
@@ -49,14 +49,10 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
           iconColor: AppColors.textColorLightBg,
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProgressIndicatorBar(
-                totalSteps: 4,
-                currentStep: 4,
-              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.symmetric(vertical: 24),
@@ -68,14 +64,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Available sessions section
-                    HeadingSix(
+                    SubtitleOne(
                       text: "Available sessions",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    SubtitleTwo(
+                    CaptionText(
                       text: "Date you select here will be your session days",
                       textColor: AppColors.subtitleTextLightBg,
                     ),
@@ -100,14 +96,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
 
                     // Select interval section
 
-                    HeadingSix(
+                    SubtitleOne(
                       text: "Select interval",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    SubtitleTwo(
+                    CaptionText(
                       text: "How do you want your sessions to come on?",
                       textColor: AppColors.subtitleTextLightBg,
                     ),
@@ -115,7 +111,7 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                       height: 16,
                     ),
                     Wrap(
-                      spacing: 16,
+                      spacing: 8,
                       runSpacing: 16,
                       children: [
                         _containerBox("Weekly", 0, Interval.weekly),
@@ -127,14 +123,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                         height: 40,
                         thickness: 2,
                         color: AppColors.outlineColor),
-                    HeadingSix(
+                    SubtitleOne(
                       text: "Available time slot",
                       textColor: AppColors.textColorLightBg,
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    SubtitleTwo(
+                    CaptionText(
                       text:
                           "What time do you want to always have your sessions?",
                       textColor: AppColors.subtitleTextLightBg,
@@ -146,11 +142,14 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
                       spacing: 16,
                       runSpacing: 16,
                       children: [
-                        // _containerBox("07:00 PM", 0, TimeSlot.timeOne),
-                        // _containerBox("04:00 PM", 1, TimeSlot.timeTwo),
-                        // _containerBox("11:15 PM", 2, TimeSlot.timeThree),
+                        _containerBox("07:00 PM", 0, TimeSlot.timeOne),
+                        _containerBox("04:00 PM", 1, TimeSlot.timeTwo),
+                        _containerBox("11:15 PM", 2, TimeSlot.timeThree),
                       ],
                     ),
+                    SizedBox(
+                      height: 64,
+                    )
                   ],
                 ),
               )
@@ -167,17 +166,20 @@ class _SelectAvailableSessionsState extends State<SelectAvailableSessions> {
         });
       },
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
+          color: selectedInterval == value.toString()
+              ? AppColors.greenBackground
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(50),
           border: selectedInterval == value.toString()
               ? Border.all(
                   color: AppColors.primaryColor,
-                  width: 1,
+                  width: 2,
                   style: BorderStyle.solid)
               : Border.all(
                   color: AppColors.subtitleTextDarkBg,
-                  width: 1,
+                  width: 2,
                   style: BorderStyle.solid),
         ),
         child: BodyTextOne(

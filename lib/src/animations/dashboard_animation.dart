@@ -54,7 +54,7 @@ class TypeWriterText extends StatelessWidget {
             children: [
               Text(text.substring(0, textLength),
                   style: GoogleFonts.raleway(
-                      fontSize: 34,
+                      fontSize: MediaQuery.of(context).size.width * 0.08,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 0.25,
                       color: AppColors.lightBackground)),

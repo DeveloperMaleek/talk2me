@@ -23,8 +23,6 @@ class _ClientDashboardState extends State<ClientDashboard> {
     super.initState();
   }
 
-
-
   List sessions = ["1", "2"];
 
   String greetings = "";
@@ -120,41 +118,44 @@ class _ClientDashboardState extends State<ClientDashboard> {
                   )),
             ),
             // // Online Assesment
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: AppColors.darkBackground,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        HeadingSix(
-                            text: "Take an assessment",
-                            textColor: AppColors.primaryColor),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        SubtitleTwo(
-                            text:
-                                'Consider this a celebration of curiosity and openness. Go ahead, try it.',
-                            textColor: AppColors.subtitleTextDarkBg)
-                      ],
+            GestureDetector(
+              onTap: (() => Navigator.pushNamed(context, therapyBookSession)),
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: AppColors.darkBackground,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          HeadingSix(
+                              text: "Take an assessment",
+                              textColor: AppColors.primaryColor),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          SubtitleTwo(
+                              text:
+                                  'Consider this a celebration of curiosity and openness. Go ahead, try it.',
+                              textColor: AppColors.subtitleTextDarkBg)
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Image.asset(
-                    "assets/images/assessment.png",
-                    width: 80,
-                    height: 80,
-                  )
-                ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Image.asset(
+                      "assets/images/assessment.png",
+                      width: 80,
+                      height: 80,
+                    )
+                  ],
+                ),
               ),
             ),
 

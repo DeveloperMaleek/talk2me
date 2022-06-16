@@ -67,8 +67,8 @@ class UserTopSection extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
                           profileImage,
-                          height: 80,
-                          width: 80,
+                          height: MediaQuery.of(context).size.width * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.2,
                           fit: BoxFit.fill,
                         )),
                   ),

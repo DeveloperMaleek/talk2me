@@ -22,8 +22,14 @@ class SessionSuccessPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.network(
-                  "https://res.cloudinary.com/michelletakuro/image/upload/v1647271299/talk2me-assets/gif/success-message.gif"),
+              Image.asset(
+                "assets/images/success.png",
+                height: 200,
+                width: 300,
+              ),
+              SizedBox(
+                height: 24,
+              ),
               SubtitleOne(
                 text:
                     "Congratulations! You have successfully booked therapy sessions with Dr. Asamoah Gyan. \n\n Your first session is on 09 Mar at 07:00 PM",
@@ -34,16 +40,17 @@ class SessionSuccessPage extends StatelessWidget {
                 height: 48,
               ),
               button.OutlineButton(
-                  buttonText: "view upcoming sessions",
+                  buttonText: "view upcoming sessions 👌🏽",
                   buttonTextColor: AppColors.textColorLightBg,
                   onPressed: () {
-                    Get.offAllNamed(clientTherapy);
-                    
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, clientNavigation, (route) => false);
+
                     // Provider.of<booloi>(context, listen: false).toggle();
                     // Navigator.pushNamedAndRemoveUntil(
                     //     context, clientTherapy, (route) => false);
                   },
-                  outlineColor: Colors.transparent)
+                  outlineColor: AppColors.textColorLightBg)
             ],
           )),
     );

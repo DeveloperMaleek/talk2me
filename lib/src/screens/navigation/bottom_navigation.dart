@@ -25,13 +25,15 @@ class FloatingBottomAppBar extends StatefulWidget {
 }
 
 class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
+  bool isTherapist = false;
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
         elevation: 0,
         color: Colors.transparent,
         child: Container(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [_roundedAppBar(context)],
@@ -57,28 +59,30 @@ class _FloatingBottomAppBarState extends State<FloatingBottomAppBar> {
           color: AppColors.greenBackground),
       child: GNav(
           textStyle: GoogleFonts.josefinSans(
-              fontSize: 14, fontWeight: FontWeight.w600),
+              fontSize: MediaQuery.of(context).size.width * 0.032,
+              fontWeight: FontWeight.w600),
           tabBackgroundColor: AppColors.primaryColor,
           gap: 4,
-          tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          tabMargin: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.0095),
           activeColor: AppColors.textColorLightBg,
-          iconSize: 20,
+          iconSize: MediaQuery.of(context).size.width * 0.046,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           duration: const Duration(milliseconds: 400),
           // tabBackgroundColor: Colors.grey[100]!,
           color: AppColors.subtitleTextLightBg,
-          tabs: const [
+          tabs: [
             GButton(
               icon: Icons.dashboard,
               text: 'Home',
             ),
             GButton(
               icon: Icons.spa,
-              text: 'Therapy',
+              text: isTherapist == false ? 'Therapy' : 'Sessions',
             ),
             GButton(
-              icon: Icons.workspaces,
-              text: 'Safe spaces',
+              icon: isTherapist == false ? Icons.workspaces : Icons.widgets,
+              text: isTherapist == false ? 'Safe spaces' : 'Summary',
             ),
             GButton(
               icon: Icons.person,

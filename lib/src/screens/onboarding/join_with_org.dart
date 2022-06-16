@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/buttons.dart';
 import 'package:talk2me/src/components/inputfield.dart';
@@ -26,12 +27,18 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        // padding: EdgeInsets.symmetric(horizontal: 20),
         child: Stack(
           children: [
             Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      matchTextDirection: true,
+                      repeat: ImageRepeat.repeat,
+                      opacity: 0.05,
+                      image: AssetImage("assets/images/bg_icon.png"))),
               height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(bottom: 56),
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 56),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -112,8 +119,8 @@ class _JoinWithOrganizationState extends State<JoinWithOrganization> {
               ),
             ),
             Positioned(
-                top: 280,
-                right: 100,
+                top: MediaQuery.of(context).size.height * 0.32,
+                right: MediaQuery.of(context).size.width * 0.25,
                 child:
                     Container(child: Image.asset("assets/images/heart.png"))),
           ],

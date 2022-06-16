@@ -71,111 +71,132 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          // padding: EdgeInsets.symmetric(horizontal: 20),
           child: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(top: 36, bottom: 56),
+              height: MediaQuery.of(context).size.height > 600
+                  ? MediaQuery.of(context).size.height
+                  : null,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      matchTextDirection: true,
+                      repeat: ImageRepeat.repeat,
+                      opacity: 0.05,
+                      image: AssetImage("assets/images/bg_icon.png"))),
+              padding: const EdgeInsets.only(
+                  top: 44, right: 20, left: 20, bottom: 56),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Align(
+                  Align(
                     alignment: Alignment.centerLeft,
-                    child: HeadingThree(
-                        text: "Smile, 😁\nbe happy.",
-                        textColor: AppColors.textColorLightBg),
-                  ),
-                  const SizedBox(height: 36),
-                  InputField(
-                    controller: _emailTextEditingController,
-                    inputType: TextInputType.emailAddress,
-                    label: "Email address",
-                    errorText:
-                        showEmailError == true ? "Email cannot be empty" : null,
-                    placeholder: "email address",
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      InputField(
-                        controller: _passwordTextEditingController,
-                        suffixText: _passwordVisible ? "Show" : "Hide",
-                        onSuffixTextTap: passwordVisible,
-                        label: "Password",
-                        errorText: showPasswordError == true
-                            ? "Password cannot be empty"
-                            : null,
-                        obscureText: _passwordVisible,
-                        placeholder: "password",
-                      ),
-                      const SizedBox(height: 10),
-                      SubtitleOne(
-                          text: "Forgot password?",
-                          textColor: AppColors.textColorLightBg)
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  buttons.FilledButton(
-                    buttonText: "Login",
-                    onPressed: onLoginButtonPressed,
-                    buttonColor: makeButtonActive == true
-                        ? AppColors.primaryColor
-                        : AppColors.subtitleTextDarkBg,
-                    buttonTextColor: makeButtonActive == true
-                        ? AppColors.textColorLightBg
-                        : AppColors.textColorDarkBg,
-                  ),
-
-                  const SizedBox(height: 16),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Container(
-                  //         height: 2,
-                  //         color: AppColors.subtitleTextDarkBg,
-                  //         width: 200,
-                  //       ),
-                  //     ),
-                  //     const SizedBox(
-                  //       width: 8,
-                  //     ),
-                  //     const ButtonText(
-                  //         text: "or", textColor: AppColors.textColorLightBg),
-                  //     const SizedBox(
-                  //       width: 8,
-                  //     ),
-                  //     Expanded(
-                  //       child: Container(
-                  //         height: 2,
-                  //         color: AppColors.subtitleTextDarkBg,
-                  //         width: 200,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  // const SizedBox(height: 16),
-                  // buttons.OutlineButton(
-                  //     buttonText: "Continue with google",
-                  //     buttonTextColor: AppColors.errorColor,
-                  //     onPressed: () {},
-                  //     outlineColor: AppColors.errorColor),
-                  // const SizedBox(height: 24),
-                  GestureDetector(
-                    onTap: onCreateAccountTextTapped,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        BodyTextOne(
-                          text: "New to Talk2me? ",
-                          textColor: AppColors.subtitleTextLightBg,
-                        ),
-                        SubtitleOne(
-                          text: "Create an Account",
-                          textColor: AppColors.primaryColor,
-                        )
-                      ],
+                    child: Image(
+                      image: AssetImage("assets/images/Logo.png"),
+                      height: MediaQuery.of(context).size.height * 0.04,
                     ),
+                  ),
+                  Column(
+                    children: [
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: HeadingThree(
+                            text: "Smile, 😁\nbe happy.",
+                            textColor: AppColors.textColorLightBg),
+                      ),
+                      const SizedBox(height: 36),
+                      InputField(
+                        controller: _emailTextEditingController,
+                        inputType: TextInputType.emailAddress,
+                        label: "Email address",
+                        errorText: showEmailError == true
+                            ? "Email cannot be empty"
+                            : null,
+                        placeholder: "email address",
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          InputField(
+                            controller: _passwordTextEditingController,
+                            suffixText: _passwordVisible ? "Show" : "Hide",
+                            onSuffixTextTap: passwordVisible,
+                            label: "Password",
+                            errorText: showPasswordError == true
+                                ? "Password cannot be empty"
+                                : null,
+                            obscureText: _passwordVisible,
+                            placeholder: "password",
+                          ),
+                          const SizedBox(height: 10),
+                          SubtitleOne(
+                              text: "Forgot password?",
+                              textColor: AppColors.textColorLightBg)
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      buttons.FilledButton(
+                        buttonText: "Login",
+                        onPressed: onLoginButtonPressed,
+                        buttonColor: makeButtonActive == true
+                            ? AppColors.primaryColor
+                            : AppColors.subtitleTextDarkBg,
+                        buttonTextColor: makeButtonActive == true
+                            ? AppColors.textColorLightBg
+                            : AppColors.textColorDarkBg,
+                      ),
+
+                      const SizedBox(height: 16),
+                      // Row(
+                      //   children: [
+                      //     Expanded(
+                      //       child: Container(
+                      //         height: 2,
+                      //         color: AppColors.subtitleTextDarkBg,
+                      //         width: 200,
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 8,
+                      //     ),
+                      //     const ButtonText(
+                      //         text: "or", textColor: AppColors.textColorLightBg),
+                      //     const SizedBox(
+                      //       width: 8,
+                      //     ),
+                      //     Expanded(
+                      //       child: Container(
+                      //         height: 2,
+                      //         color: AppColors.subtitleTextDarkBg,
+                      //         width: 200,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(height: 16),
+                      // buttons.OutlineButton(
+                      //     buttonText: "Continue with google",
+                      //     buttonTextColor: AppColors.errorColor,
+                      //     onPressed: () {},
+                      //     outlineColor: AppColors.errorColor),
+                      // const SizedBox(height: 24),
+                      GestureDetector(
+                        onTap: onCreateAccountTextTapped,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            BodyTextOne(
+                              text: "New to Talk2me? ",
+                              textColor: AppColors.subtitleTextLightBg,
+                            ),
+                            SubtitleOne(
+                              text: "Create an Account",
+                              textColor: AppColors.primaryColor,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               )),

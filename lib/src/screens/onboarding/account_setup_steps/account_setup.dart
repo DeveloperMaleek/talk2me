@@ -30,30 +30,32 @@ class _AccountSetupState extends State<AccountSetup> {
         backgroundColor: AppColors.lightBackground,
         body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 56, 20, 0),
-          child: Column(
-            children: [
-              _progressIndicator(context),
-              const SizedBox(
-                height: 48,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: bodyContent.length,
-                  itemBuilder: ((context, index) {
-                    return BodyContent(
-                      index: index,
-                    );
-                  }),
-                  onPageChanged: (index) {
-                    setState(() {
-                      pagePosition = index;
-                    });
-                  },
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height + 110,
+            child: Column(
+              children: [
+                _progressIndicator(context),
+                const SizedBox(
+                  height: 48,
                 ),
-              ),
-            ],
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: bodyContent.length,
+                    itemBuilder: ((context, index) {
+                      return BodyContent(
+                        index: index,
+                      );
+                    }),
+                    onPageChanged: (index) {
+                      setState(() {
+                        pagePosition = index;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         floatingActionButtonLocation: pagePosition != 2

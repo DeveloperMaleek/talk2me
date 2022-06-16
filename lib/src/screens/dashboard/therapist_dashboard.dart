@@ -1,15 +1,14 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:talk2me/src/components/sessions_list.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
 List userSessionList = [
-  ["Sane madman", "Anonymous", "Thursday, 12 March", "12:15pm"],
-  ["Malik Kolade", "Public", "Wednesday, 17 March", "01:15pm"],
-  ["Sane madman", "Anonymous", "Thursday, 12 March", "12:15pm"],
-  ["Just Caleb", "Anonymous", "Friday, 12 March", "12:15pm"],
-  ["Sane madman", "Anonymous", "Thursday, 12 March", "12:15pm"],
+  ["Sane madman", "Anonymous", "Thursday, 12 Mar", "12:15pm"],
+  ["Malik Kolade", "Public", "Wednesday, 17 Mar", "01:15pm"],
+  ["Sane madman", "Anonymous", "Thursday, 12 Mar", "12:15pm"],
+  ["Just Caleb", "Anonymous", "Friday, 12 Mar", "12:15pm"],
+  ["Sane madman", "Anonymous", "Thursday, 12 Mar", "12:15pm"],
 ];
 
 class TherapistDashboard extends StatefulWidget {
@@ -138,8 +137,8 @@ class UserSessionList extends StatelessWidget {
                     child: Image(
                       image: AssetImage("assets/images/avatar-four.png"),
                       fit: BoxFit.cover,
-                      height: 48,
-                      width: 48,
+                      height: MediaQuery.of(context).size.width * 0.116,
+                      width: MediaQuery.of(context).size.width * 0.116,
                     ),
                   ),
                   SizedBox(

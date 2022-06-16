@@ -36,7 +36,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
               indicator:
                   const UnderlineTabIndicator(borderSide: BorderSide.none),
               labelPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              indicatorSize: TabBarIndicatorSize.label,
+              indicatorSize: TabBarIndicatorSize.tab,
               labelStyle: GoogleFonts.josefinSans(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
@@ -50,7 +50,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HeadingSix(
+                    SubtitleOne(
                       text: "Overview",
                       textColor: AppColors.textColorLightBg,
                     ),
@@ -69,7 +69,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HeadingSix(
+                    SubtitleOne(
                       text: "Reviews",
                       textColor: AppColors.textColorLightBg,
                     ),
@@ -86,7 +86,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
                 ))
               ]),
           Container(
-            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+            margin: const EdgeInsets.fromLTRB(16, 0, 16, 20),
             width: MediaQuery.of(context).size.width,
             // height: MediaQuery.of(context).size.height -
             //     (MediaQuery.of(context).size.height / 4.5),
@@ -165,7 +165,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingSix(
+              SubtitleOne(
                 text: "Expertise",
                 textColor: AppColors.textColorLightBg,
               ),
@@ -189,7 +189,7 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingSix(
+              SubtitleOne(
                 text: "Fluent in",
                 textColor: AppColors.textColorLightBg,
               ),
@@ -210,31 +210,6 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
             ],
           ),
         ),
-        spacing,
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeadingSix(
-                text: "Interests",
-                textColor: AppColors.textColorLightBg,
-              ),
-              spacing,
-              Wrap(
-                runSpacing: 10,
-                spacing: 10,
-                children: [
-                  containerBox("Gender"),
-                  containerBox("Mental Health"),
-                  containerBox("Football"),
-                  containerBox("Organization Psychology"),
-                  containerBox("Human Evolution"),
-                ],
-              )
-            ],
-          ),
-        )
       ],
     );
   }
@@ -359,7 +334,6 @@ class _ProfileTab extends State<ProfileTab> with TickerProviderStateMixin {
 
 // This section is for the top container of the profile page. It can be used for both the therapists and the clients. It must contain the following information: Profile Name, Cover Image, Profile Image, Plan or Status Text. It can contain either of the followings: Button text, Ratings Icon for therapists or Status text for clients.
 
-
 class TopSection extends StatelessWidget {
   const TopSection(
       {Key? key,
@@ -435,8 +409,8 @@ class TopSection extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
                           profileImage,
-                          height: 80,
-                          width: 80,
+                          height: MediaQuery.of(context).size.width * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.2,
                           fit: BoxFit.fill,
                         )),
                   ),
@@ -470,7 +444,7 @@ class TopSection extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        HeadingFive(
+                        HeadingSix(
                           text: profileName,
                           textColor: AppColors.textColorLightBg,
                         ),

@@ -44,73 +44,35 @@ class _TherapistSelectionState extends State<TherapistSelection> {
           iconColor: AppColors.textColorLightBg,
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const ProgressIndicatorBar(
-                totalSteps: 5,
-                currentStep: 3,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 24),
-                child: HeadingFive(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeadingFive(
                     text: "Select your therapist",
                     textColor: AppColors.textColorLightBg),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SubtitleOne(
-                      text: "Previous therapist",
-                      textColor: AppColors.textColorLightBg),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: 170,
-                    child: ListView.builder(
-                        itemCount: previousTherapist.length,
-                        itemBuilder: ((context, index) {
-                          return PreviousTherapist(index: index);
-                        })),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SubtitleOne(
-                      text: "Suggested by your friends",
-                      textColor: AppColors.textColorLightBg),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: 170,
-                    child: ListView.builder(
-                        itemCount: previousTherapist.length,
-                        itemBuilder: ((context, index) {
-                          return PreviousTherapist(index: index);
-                        })),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SubtitleOne(
-                      text: "Also recommended for you",
-                      textColor: AppColors.textColorLightBg),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: 170,
-                    child: ListView.builder(
-                        itemCount: previousTherapist.length,
-                        itemBuilder: ((context, index) {
-                          return PreviousTherapist(index: index);
-                        })),
-                  ),
-                ],
-              ),
-            ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 24),
+                    const SubtitleOne(
+                        text: "Recommended for you",
+                        textColor: AppColors.textColorLightBg),
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 16),
+                      height: 170,
+                      child: ListView.builder(
+                          itemCount: previousTherapist.length,
+                          itemBuilder: ((context, index) {
+                            return PreviousTherapist(index: index);
+                          })),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ));
   }

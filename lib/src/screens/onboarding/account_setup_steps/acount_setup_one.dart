@@ -190,7 +190,7 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
         onPress();
       },
       child: Container(
-        width: 150,
+        width: MediaQuery.of(context).size.width * 0.36,
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         decoration: BoxDecoration(
           color: feelingsItem[index]
@@ -208,8 +208,8 @@ class _AccountSetupOneState extends State<AccountSetupOne> {
           children: [
             Image.asset(
               responseBg,
-              width: 100,
-              height: 70,
+              width: MediaQuery.of(context).size.width * 0.24,
+              height: MediaQuery.of(context).size.height * 0.078,
             ),
             SubtitleOne(
               text: responseText,

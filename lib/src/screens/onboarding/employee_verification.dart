@@ -83,10 +83,16 @@ class _EmployeeVerificationState extends State<EmployeeVerification>
     return Scaffold(
         backgroundColor: AppColors.lightBackground,
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          // padding: EdgeInsets.symmetric(horizontal: 20),
           child: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(bottom: 56),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      matchTextDirection: true,
+                      repeat: ImageRepeat.repeat,
+                      opacity: 0.05,
+                      image: AssetImage("assets/images/bg_icon.png"))),
+              // height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.only(bottom: 56, right: 20, left: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -212,7 +218,8 @@ class _EmployeeVerificationState extends State<EmployeeVerification>
 
       // Checks if all First name, email, and password are validated and create a user
       if (formKey.currentState!.validate()) {
-        createAccount(email, password, firstName);
+        // createAccount(email, password, firstName);
+        Navigator.pushNamed(context, accountSetup);
       }
     });
   }

@@ -6,7 +6,7 @@ import 'package:talk2me/src/components/sessions_list.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
 
-List bookedSessions = [];
+List bookedSessions = ["2"];
 
 class ClientTherapy extends StatefulWidget {
   const ClientTherapy({Key? key}) : super(key: key);
@@ -58,10 +58,12 @@ class DataTherapyView extends StatelessWidget {
                       height: 16,
                     ),
                     UpcomingSession(
-                      planOrStatusText: "Available",
+                        planOrStatusText: "Available",
                         buttonText: 'Start Session',
                         isTherapist: false,
-                        onButtonPressed: () {}),
+                        onButtonPressed: () {
+                          Navigator.pushNamed(context, clientSessionMode);
+                        }),
                   ],
                 ),
               ),
@@ -133,7 +135,8 @@ class NoTherapyDataView extends StatelessWidget {
                 pageHeading: 'Therapy',
               ),
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 100),
+                margin: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.width * 0.11),
                 alignment: Alignment.center,
                 child: const BodyTextOne(
                   text: 'Your upcoming therapy session \nwill appear here',

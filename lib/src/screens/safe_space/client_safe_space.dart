@@ -38,12 +38,12 @@ class _ClientSafeSpaceState extends State<ClientSafeSpace> {
               children: [
                 GestureDetector(child: _chatMode("Video", Icons.videocam)),
                 SizedBox(
-                  width: 16,
+                  width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 GestureDetector(
                     child: _chatMode("Audio", Icons.settings_voice)),
                 SizedBox(
-                  width: 16,
+                  width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 GestureDetector(child: _chatMode("Chat", Icons.message))
               ],
@@ -56,7 +56,7 @@ class _ClientSafeSpaceState extends State<ClientSafeSpace> {
 
   Widget _chatMode(String type, IconData iconType) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.275,
+      width: MediaQuery.of(context).size.width * 0.26,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
           border: Border.all(color: AppColors.primaryColor, width: 2),

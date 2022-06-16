@@ -108,8 +108,8 @@ class _SettingsState extends State<Settings> {
             GestureDetector(
               onTap: getImage,
               child: Container(
-                width: 100,
-                height: 100,
+                width: MediaQuery.of(context).size.width * 0.24,
+                height: MediaQuery.of(context).size.width * 0.24,
                 margin: EdgeInsets.all(24),
                 decoration: BoxDecoration(
                     color: AppColors.darkBackground,
@@ -121,8 +121,8 @@ class _SettingsState extends State<Settings> {
                     borderRadius: BorderRadius.circular(100),
                     child: Image.asset(
                       "assets/images/avatar-three.png",
-                      width: 100,
-                      height: 100,
+                      width: MediaQuery.of(context).size.width * 0.24,
+                      height: MediaQuery.of(context).size.width * 0.24,
                     ),
                   ),
                   Positioned(

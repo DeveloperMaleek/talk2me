@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:talk2me/routes.dart';
 import 'package:talk2me/src/components/appBar.dart';
 import 'package:talk2me/theme/colors.dart';
 import 'package:talk2me/theme/text_styles.dart';
@@ -58,7 +59,9 @@ class _BookTherapy1State extends State<BookTherapy1> {
                       ),
                       button.FilledButton(
                         buttonText: "Start test 👍🏽",
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, diagnosticTestPage);
+                        },
                         buttonColor: AppColors.textColorLightBg,
                         buttonTextColor: AppColors.lightBackground,
                       )

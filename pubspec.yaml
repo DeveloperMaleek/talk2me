@@ -38,8 +38,6 @@ dependencies:
   google_nav_bar: ^5.0.5
   getwidget: ^2.0.5
   font_awesome_flutter: ^9.2.0
-  multi_select_flutter: ^4.1.2
-  provider: ^6.0.2
   flutter_svg: ^1.0.3
   get: ^4.6.1
   images_picker: ^1.2.11
@@ -47,7 +45,11 @@ dependencies:
   supercharged: ^2.1.1
   simple_animations: ^4.0.2
   sticky_headers: ^0.2.0
-  indexed_list_view: ^2.0.2
+  agora_rtc_engine: ^5.2.0
+  permission_handler: ^9.2.0
+  googleapis: ^9.1.0
+  google_sign_in: ^5.3.3
+  extension_google_sign_in_as_googleapis_auth: ^2.0.5
 
 dev_dependencies:
   flutter_test:
